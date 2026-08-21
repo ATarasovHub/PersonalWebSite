@@ -623,40 +623,19 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  /* Without this the rows stretch to the height of the bio beside them. */
-  align-content: start;
-}
-
-/* Chessboard across the two columns: in a 2-wide grid the light squares
-   are cards 1 and 4, the dark ones 2 and 3 — not simply odd and even. */
-.about-stats > *:nth-child(4n + 1) .stat-card,
-.about-stats > *:nth-child(4n) .stat-card {
-  background: linear-gradient(150deg, #1a2822 0%, #16231e 100%);
-  border-color: #24352d;
-}
-
-.about-stats > *:nth-child(4n + 2) .stat-card,
-.about-stats > *:nth-child(4n + 3) .stat-card {
-  background: #080d0c;
-  border-color: #141d19;
 }
 
 .stat-card {
-  height: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 18px;
   padding: 24px 20px;
-  transition:
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.5s ease,
-    box-shadow 0.5s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-4px);
-  border-color: var(--color-accent);
-  box-shadow: 0 18px 36px -20px rgba(0, 0, 0, 0.8), 0 0 22px -14px var(--color-accent-glow);
+  border-color: var(--color-accent-dim);
 }
 
 .stat-value {
