@@ -98,7 +98,7 @@ export const en: Content = {
     close: 'Close',
     prev: 'Previous project',
     next: 'Next project',
-    dragHint: 'Drag or use the arrows',
+    slider: 'Scroll through the projects',
   },
 
   projects: [

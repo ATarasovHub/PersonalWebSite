@@ -746,16 +746,6 @@ main {
 
 /* ---------- projects carousel ---------- */
 
-.carousel-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-bottom: 16px;
-  color: var(--color-text-muted);
-  font-size: 0.8rem;
-  opacity: 0.75;
-}
-
 /* Full-bleed track: the cards run past the container on both sides. */
 .carousel {
   position: relative;
@@ -770,20 +760,6 @@ main {
   touch-action: pan-y;
   /* Fade the cards out as they reach either edge. */
   mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-}
-
-/* Narrow screens swap the drift for snapping — running both means the snap
-   keeps yanking the position back. The edge fade goes too: at this width it
-   would dim the text of the card being read. */
-@media (max-width: 600px) {
-  .carousel {
-    scroll-snap-type: x mandatory;
-    mask-image: none;
-  }
-
-  .project-card {
-    scroll-snap-align: center;
-  }
 }
 
 .carousel::-webkit-scrollbar {
@@ -809,7 +785,6 @@ main {
 .project-card {
   position: relative;
   flex: 0 0 auto;
-  cursor: pointer;
   width: min(420px, 82vw);
   display: flex;
   flex-direction: column;
@@ -961,53 +936,84 @@ main {
 }
 
 .carousel-arrow:focus-visible,
-.carousel-dot:focus-visible,
-.project-more:focus-visible {
+.carousel-slider input:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-.carousel-counter {
-  font-family: var(--font-display);
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--color-text);
-  letter-spacing: 0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-.carousel-counter-sep {
-  margin: 0 4px;
-  color: var(--color-text-muted);
-  opacity: 0.6;
-}
-
-.carousel-dots {
+/* A real range input, laid over a rail we can style freely. */
+.carousel-slider {
+  position: relative;
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-right: auto;
+  height: 40px;
+  cursor: pointer;
 }
 
-.carousel-dot {
-  width: 8px;
-  height: 8px;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background: var(--color-border);
-  transition: background 0.35s ease, width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.carousel-dot:hover {
-  background: var(--color-accent-dim);
-}
-
-.carousel-dot.active {
-  width: 22px;
+.carousel-rail {
+  position: absolute;
+  inset-inline: 0;
+  height: 4px;
   border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.carousel-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent-dim), var(--color-accent));
+  transform-origin: left center;
+  box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+.carousel-slider input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+.carousel-slider input::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+.carousel-slider input::-moz-range-track {
+  height: 4px;
+  background: transparent;
+}
+
+.carousel-slider input::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 0 10px var(--color-accent-glow);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  transition: transform 0.25s ease;
+}
+
+.carousel-slider input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+.carousel-slider input:hover::-webkit-slider-thumb,
+.carousel-slider input:active::-webkit-slider-thumb {
+  transform: scale(1.2);
 }
 
 .sr-only {
