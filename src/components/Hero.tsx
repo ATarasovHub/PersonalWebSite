@@ -54,10 +54,10 @@ export default function Hero() {
             </a>
             <a
               className="pill-button"
-              href="#experience"
+              href="#projects"
               onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
               }}
             >
               See my work

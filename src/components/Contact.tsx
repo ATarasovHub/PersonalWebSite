@@ -23,7 +23,7 @@ export default function Contact() {
   }
 
   return (
-    <Section id="contact" index="05" title="Contact">
+    <Section id="contact" index="06" title="Contact" alt>
       <div className="contact-wrap">
         <GradientBlobs />
 

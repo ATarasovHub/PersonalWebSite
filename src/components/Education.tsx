@@ -5,7 +5,7 @@ import { education } from '../data/profile'
 
 export default function Education() {
   return (
-    <Section id="education" index="04" title="Education" alt>
+    <Section id="education" index="05" title="Education">
       <div className="education-grid">
         {education.map((entry, i) => (
           <Reveal key={entry.title} from={i % 2 === 0 ? 'left' : 'right'} delay={i * 0.08}>

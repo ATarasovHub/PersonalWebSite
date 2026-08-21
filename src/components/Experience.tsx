@@ -22,7 +22,7 @@ export default function Experience() {
   })
 
   return (
-    <Section id="experience" index="03" title="Experience">
+    <Section id="experience" index="04" title="Experience" alt>
       <div className="timeline" ref={timelineRef}>
         <div className="timeline-track" />
         <motion.div className="timeline-line" style={{ scaleY: lineScale }} />

@@ -661,6 +661,147 @@ main {
   }
 }
 
+/* ---------- projects ---------- */
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.project-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  padding: 32px;
+  overflow: hidden;
+  transition:
+    border-color 0.6s ease,
+    box-shadow 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 88% 0%, var(--color-accent-glow), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-dim);
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.85);
+}
+
+.project-card:hover::before {
+  opacity: 0.35;
+}
+
+.project-index {
+  position: absolute;
+  top: 24px;
+  right: 30px;
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.project-head {
+  margin-bottom: 22px;
+}
+
+.project-head h3 {
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  margin-bottom: 6px;
+}
+
+.project-context {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-family: var(--font-display);
+}
+
+.project-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin-bottom: 26px;
+}
+
+.project-block h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.project-block p {
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+}
+
+.project-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 22px;
+}
+
+.project-metric-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1.1;
+}
+
+.project-metric-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tech {
+  padding: 5px 11px;
+  border-radius: 7px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 860px) {
+  .project-body {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 34px;
+  }
+
+  .project-card {
+    padding: 38px 40px;
+  }
+}
+
 /* ---------- experience timeline ---------- */
 
 .timeline {

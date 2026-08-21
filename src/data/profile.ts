@@ -66,6 +66,70 @@ export const languages = [
   { name: 'Ukrainian', level: 'Native' },
 ]
 
+export type Project = {
+  title: string
+  context: string
+  problem: string
+  approach: string
+  metrics: { value: string; label: string }[]
+  stack: string[]
+}
+
+export const projects: Project[] = [
+  {
+    title: 'On-Prem AI Ticket Triage',
+    context: 'tyntec · 2025',
+    problem:
+      'Support engineers were reading every incoming Jira ticket end to end just to work out what it was about and who should own it. The obvious fix was an LLM, but customer data could not leave the company network, which ruled out every hosted API.',
+    approach:
+      'I built a service that runs the model entirely on our own hardware: FastAPI pulls the ticket, hands it to a local Ollama model for a summary and a classification, and validates the response against a strict Pydantic schema — retrying when the model returns something malformed. A Rocket.Chat bot puts the result where the team already works and drafts a reply, with a `take TICKET-KEY` command to claim the ticket. To pick the model I ran a comparison tracked in MLflow and blind-scored the outputs in Label Studio, rather than going with a hunch.',
+    metrics: [
+      { value: '€22,080', label: 'saved per year' },
+      { value: '~6 weeks', label: 'to pay for itself' },
+      { value: '7 min', label: 'saved per ticket' },
+    ],
+    stack: ['Python', 'FastAPI', 'Ollama', 'Pydantic', 'MLflow', 'Label Studio', 'Rocket.Chat'],
+  },
+  {
+    title: 'MSISDN Inventory Platform',
+    context: 'tyntec · 2024—2026',
+    problem:
+      'Phone number allocation was spread across a legacy Java EE tool and manual process. With 56 upstream providers feeding numbers to thousands of customers, there was no single source of truth for what was allocated, free, or reserved.',
+    approach:
+      'I designed and built a REST API that owns the whole inventory: allocation, reservation and release, with Flyway-managed schema evolution and a Caffeine cache in front of the hot lookups. Every endpoint is documented through OpenAPI, and the integration suite runs against a real PostgreSQL in Testcontainers on Jenkins — so the tests exercise actual SQL rather than a mock. I also migrated the old Java EE/EJB tool onto this platform with a React frontend.',
+    metrics: [
+      { value: '56', label: 'upstream providers' },
+      { value: '18,600', label: 'customers served' },
+    ],
+    stack: ['Java 21', 'Spring Boot 3', 'PostgreSQL', 'JPA', 'Flyway', 'Caffeine', 'OpenAPI', 'Testcontainers', 'Jenkins'],
+  },
+  {
+    title: 'Unified Outbound Messaging',
+    context: 'tyntec · 2025—2026',
+    problem:
+      'Reaching a customer meant choosing a channel by hand, and every channel spoke a different protocol. Cost per message varied widely between routes, with nothing systematically picking the cheapest viable one.',
+    approach:
+      'I contributed to a platform that puts SMS, WhatsApp, RCS, Viber and text-to-speech behind one interface, speaking SMPP and REST underneath. Messages are classified on the way in, and a routing layer picks the least-cost channel that can actually deliver to that recipient.',
+    metrics: [
+      { value: '5', label: 'channels behind one API' },
+    ],
+    stack: ['Java', 'Spring Boot', 'SMPP', 'REST', 'Least-cost routing'],
+  },
+  {
+    title: 'Warehouse Logistics App',
+    context: 'Freelance · 2026—present',
+    problem:
+      'A logistics client needed their warehouse staff to record stock movements on the floor, where the network is unreliable and a web app simply stops working.',
+    approach:
+      'A native Android app built local-first: Room/SQLite holds everything on the device with versioned migrations, so an update never costs the user their data. MVVM with Coroutines keeps the UI responsive, and the data leaves the device on demand through Excel export and local backup. I own the whole thing — requirements, architecture, implementation, testing and the Play Store release.',
+    metrics: [
+      { value: 'End to end', label: 'sole developer' },
+      { value: 'Offline', label: 'first by design' },
+    ],
+    stack: ['Kotlin', 'MVVM', 'Coroutines', 'Room', 'SQLite', 'Material UI', 'Play Store'],
+  },
+]
+
 export type ExperienceEntry = {
   role: string
   org: string
