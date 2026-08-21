@@ -723,6 +723,7 @@ main {
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
+  cursor: grab;
   margin-inline: calc(50% - 50vw);
   padding-inline: max(24px, calc(50vw - var(--max-width) / 2));
   /* The page owns vertical scrolling; this track owns horizontal. */
@@ -734,6 +735,15 @@ main {
 
 .carousel::-webkit-scrollbar {
   display: none;
+}
+
+.carousel.is-dragging {
+  cursor: grabbing;
+}
+
+/* Hover lift would fight the drag, so hold the cards still while scrubbing. */
+.carousel.is-dragging .project-card {
+  transition: none;
 }
 
 .carousel-track {

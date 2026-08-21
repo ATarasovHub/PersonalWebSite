@@ -21,7 +21,8 @@ type Options = {
  * scrubbed explicitly. The content is expected to be duplicated once, so
  * the halfway point wraps back to the start without a visible seam.
  *
- * Deliberately ignores the mouse wheel — that belongs to the page.
+ * The mouse can drag the track, which costs the page nothing. The wheel
+ * is deliberately left alone — that belongs to the page's own scrolling.
  */
 export function useMarquee({ paused = false, step = 444 }: Options = {}) {
   const ref = useRef<HTMLDivElement>(null)
@@ -122,7 +123,7 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     }
     rafId = requestAnimationFrame(step_)
 
-    // Swipe to scrub, with a flick carrying over when released.
+    // Drag or swipe to scrub, with a flick carrying over when released.
     let startX = 0
     let startScroll = 0
     let lastX = 0
@@ -130,17 +131,21 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     let moved = 0
 
     const onPointerDown = (e: PointerEvent) => {
-      if (e.pointerType === 'mouse') return
+      // Ignore secondary mouse buttons; let every other pointer through.
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      // Stops the browser starting a text or image drag mid-scrub.
+      if (e.pointerType === 'mouse') e.preventDefault()
       dragging.current = true
       moved = 0
       startX = lastX = e.clientX
       startScroll = el.scrollLeft
       lastMoveTs = performance.now()
       velocity.current = 0
+      el.classList.add('is-dragging')
     }
 
     const onPointerMove = (e: PointerEvent) => {
-      if (!dragging.current || e.pointerType === 'mouse') return
+      if (!dragging.current) return
       const dx = e.clientX - startX
       moved = Math.max(moved, Math.abs(dx))
       el.scrollLeft = startScroll - dx
@@ -156,8 +161,9 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     const endDrag = () => {
       if (!dragging.current) return
       dragging.current = false
+      el.classList.remove('is-dragging')
       hold()
-      // A real swipe must not also fire the button underneath it.
+      // A real drag must not also fire the button underneath it.
       if (moved > 6) {
         const swallow = (ev: MouseEvent) => {
           ev.preventDefault()
