@@ -82,6 +82,9 @@ export type Content = {
     stack: string
     diagramTitle: string
     close: string
+    prev: string
+    next: string
+    slider: string
   }
   projects: Project[]
 

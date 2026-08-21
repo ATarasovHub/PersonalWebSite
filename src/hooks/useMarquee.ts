@@ -1,30 +1,68 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 /** Pixels per second the track drifts on its own. */
-const DRIFT_SPEED = 26
+const DRIFT_SPEED = 34
 
-/** How quickly a swipe bleeds off, per second. */
+/** How quickly a swipe or a nudge bleeds off, per second. */
 const FRICTION = 2.6
+
+/** Drift stays off this long after the visitor takes control. */
+const RESUME_DELAY_MS = 2500
 
 type Options = {
   /** Stop drifting while a dialog is open. */
   paused?: boolean
+  /** Width of one card plus its gap, used by the arrow buttons. */
+  step?: number
 }
 
 /**
- * Turns a horizontally scrollable element into a track that drifts on its
- * own. The content is expected to be duplicated once, so the halfway point
- * can be wrapped back to the start without a visible seam.
+ * Drives the project track: it drifts on its own, and can be stepped or
+ * scrubbed explicitly. The content is expected to be duplicated once, so
+ * the halfway point wraps back to the start without a visible seam.
  *
- * Deliberately ignores the mouse: the wheel belongs to the page, and
- * hijacking it here made the section awkward to scroll past. Touch and pen
- * can still swipe, which costs the page nothing.
+ * Deliberately ignores the mouse wheel — that belongs to the page.
  */
-export function useMarquee({ paused = false }: Options = {}) {
+export function useMarquee({ paused = false, step = 444 }: Options = {}) {
   const ref = useRef<HTMLDivElement>(null)
   /** Extra velocity from a swipe, on top of the constant drift. */
   const velocity = useRef(0)
+  /**
+   * Drift position kept as a float. scrollLeft rounds to whole pixels, so
+   * adding a sub-pixel step to it each frame would round straight back and
+   * never move at all on a high-refresh display.
+   */
+  const offset = useRef(0)
   const dragging = useRef(false)
+  /** Timestamp until which the drift stays out of the way. */
+  const holdUntil = useRef(0)
+  const [progress, setProgress] = useState(0)
+
+  const hold = useCallback(() => {
+    holdUntil.current = performance.now() + RESUME_DELAY_MS
+  }, [])
+
+  /** Move by one card, wrapping around the ends. */
+  const nudge = useCallback((direction: 1 | -1) => {
+    const el = ref.current
+    if (!el) return
+    hold()
+    velocity.current = 0
+    const half = el.scrollWidth / 2
+    let target = el.scrollLeft + direction * step
+    if (target < 0) target += half
+    if (target >= half) target -= half
+    el.scrollTo({ left: target, behavior: 'smooth' })
+  }, [hold, step])
+
+  /** Jump to a fraction (0–1) of the way through one copy of the list. */
+  const seek = useCallback((fraction: number) => {
+    const el = ref.current
+    if (!el) return
+    hold()
+    velocity.current = 0
+    el.scrollLeft = (el.scrollWidth / 2) * fraction
+  }, [hold])
 
   useEffect(() => {
     const el = ref.current
@@ -34,6 +72,7 @@ export function useMarquee({ paused = false }: Options = {}) {
 
     let rafId: number | null = null
     let lastTs = 0
+    let lastReported = -1
 
     /** Keep the scroll position inside the first copy of the content. */
     const wrap = () => {
@@ -41,24 +80,47 @@ export function useMarquee({ paused = false }: Options = {}) {
       if (half <= 0) return
       if (el.scrollLeft >= half) el.scrollLeft -= half
       else if (el.scrollLeft < 0) el.scrollLeft += half
+      offset.current = el.scrollLeft
     }
 
-    const step = (ts: number) => {
+    const step_ = (ts: number) => {
       if (lastTs === 0) lastTs = ts
       const dt = Math.min((ts - lastTs) / 1000, 0.1)
       lastTs = ts
 
-      if (!dragging.current) {
+      const held = ts < holdUntil.current
+      if (dragging.current || held) {
+        // The visitor owns the position; follow it rather than fight it.
+        offset.current = el.scrollLeft
+      } else {
         const drift = paused || prefersReducedMotion ? 0 : DRIFT_SPEED
-        el.scrollLeft += (drift + velocity.current) * dt
+        // Resync if anything else moved the track since the last frame.
+        if (Math.abs(el.scrollLeft - offset.current) > 1.5) offset.current = el.scrollLeft
+        offset.current += (drift + velocity.current) * dt
         velocity.current *= Math.exp(-FRICTION * dt)
         if (Math.abs(velocity.current) < 0.5) velocity.current = 0
-        wrap()
+
+        const half = el.scrollWidth / 2
+        if (half > 0) {
+          if (offset.current >= half) offset.current -= half
+          else if (offset.current < 0) offset.current += half
+        }
+        el.scrollLeft = offset.current
       }
 
-      rafId = requestAnimationFrame(step)
+      const half = el.scrollWidth / 2
+      if (half > 0) {
+        const next = Math.min(1, Math.max(0, el.scrollLeft / half))
+        // Only re-render when the thumb would actually move.
+        if (Math.abs(next - lastReported) > 0.004) {
+          lastReported = next
+          setProgress(next)
+        }
+      }
+
+      rafId = requestAnimationFrame(step_)
     }
-    rafId = requestAnimationFrame(step)
+    rafId = requestAnimationFrame(step_)
 
     // Swipe to scrub, with a flick carrying over when released.
     let startX = 0
@@ -94,6 +156,7 @@ export function useMarquee({ paused = false }: Options = {}) {
     const endDrag = () => {
       if (!dragging.current) return
       dragging.current = false
+      hold()
       // A real swipe must not also fire the button underneath it.
       if (moved > 6) {
         const swallow = (ev: MouseEvent) => {
@@ -117,7 +180,7 @@ export function useMarquee({ paused = false }: Options = {}) {
       window.removeEventListener('pointerup', endDrag)
       window.removeEventListener('pointercancel', endDrag)
     }
-  }, [paused])
+  }, [paused, hold])
 
-  return ref
+  return { ref, progress, seek, nudge }
 }

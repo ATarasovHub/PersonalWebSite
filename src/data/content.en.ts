@@ -91,6 +91,9 @@ export const en: Content = {
     stack: 'Stack',
     diagramTitle: 'How it fits together',
     close: 'Close',
+    prev: 'Previous project',
+    next: 'Next project',
+    slider: 'Scroll through the projects',
   },
 
   projects: [

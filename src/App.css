@@ -866,6 +866,129 @@ main {
   gap: 12px;
 }
 
+/* ---------- carousel controls ---------- */
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.carousel-arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  transition: color 0.35s ease, border-color 0.35s ease, background 0.35s ease, transform 0.35s ease;
+}
+
+.carousel-arrow:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent-dim);
+  background: var(--color-surface-hover);
+  transform: translateY(-2px);
+}
+
+.carousel-arrow:focus-visible,
+.carousel-slider input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* A real range input, laid over a rail we can style freely. */
+.carousel-slider {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  cursor: pointer;
+}
+
+.carousel-rail {
+  position: absolute;
+  inset-inline: 0;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.carousel-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent-dim), var(--color-accent));
+  transform-origin: left center;
+  box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+.carousel-slider input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+.carousel-slider input::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+.carousel-slider input::-moz-range-track {
+  height: 4px;
+  background: transparent;
+}
+
+.carousel-slider input::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  transition: transform 0.25s ease;
+}
+
+.carousel-slider input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+}
+
+.carousel-slider input:hover::-webkit-slider-thumb,
+.carousel-slider input:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* ---------- project dialog ---------- */
 
 .modal-backdrop {

@@ -91,6 +91,9 @@ export const de: Content = {
     stack: 'Technologien',
     diagramTitle: 'So greift es ineinander',
     close: 'Schließen',
+    prev: 'Vorheriges Projekt',
+    next: 'Nächstes Projekt',
+    slider: 'Durch die Projekte blättern',
   },
 
   projects: [
