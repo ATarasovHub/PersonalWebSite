@@ -90,7 +90,6 @@ export const de: Content = {
     less: 'Weniger anzeigen',
     stack: 'Technologien',
     diagramTitle: 'So greift es ineinander',
-    diagramCaption: 'Alles innerhalb der gestrichelten Grenze läuft auf firmeneigener Hardware – keine Kundendaten verlassen das Netz.',
   },
 
   projects: [
@@ -109,7 +108,7 @@ export const de: Content = {
         { value: '7 Min.', label: 'gespart pro Ticket' },
       ],
       stack: ['Python', 'FastAPI', 'Ollama', 'Pydantic', 'MLflow', 'Label Studio', 'Rocket.Chat'],
-      diagram: true,
+      diagram: 'triage',
     },
     {
       title: 'MSISDN-Bestandsplattform',
@@ -127,16 +126,21 @@ export const de: Content = {
       stack: ['Java 21', 'Spring Boot 3', 'PostgreSQL', 'JPA', 'Flyway', 'Caffeine', 'OpenAPI', 'Testcontainers', 'Jenkins'],
     },
     {
-      title: 'Einheitlicher Nachrichtenversand',
-      context: 'tyntec · 2025—2026',
+      title: 'Einheitliches Messaging-Gateway',
+      context: 'Eigenes Projekt · 2026',
       summary:
-        'SMS, WhatsApp, RCS, Viber und Text-to-Speech hinter einer API, mit Routing auf den günstigsten Kanal, der wirklich zustellt.',
+        'Ein API-Vertrag für sechs Kanäle, nach Preis geroutet mit automatischem Ausweichen – die Antwort kommt in Millisekunden, zugestellt wird im Hintergrund.',
       problem:
-        'Um einen Kunden zu erreichen, musste der Kanal von Hand gewählt werden, und jeder Kanal sprach ein anderes Protokoll. Die Kosten pro Nachricht schwankten zwischen den Routen erheblich, ohne dass jemand systematisch die günstigste tragfähige Route ausgewählt hätte.',
+        'Einen Kunden über SMS, WhatsApp oder einen anderen Kanal zu erreichen bedeutet für jeden Kanal ein eigenes Protokoll, ein eigenes Fehlerverhalten und einen eigenen Preis. Ruft man die Anbieter direkt im Request auf, ist die API zudem nur so schnell wie der langsamste von ihnen, und eine Lastspitze trifft ungebremst denselben Empfänger.',
       approach:
-        'Ich war an einer Plattform beteiligt, die alle fünf Kanäle hinter einer einzigen Schnittstelle bündelt und darunter SMPP und REST spricht. Nachrichten werden beim Eingang klassifiziert, und eine Routing-Schicht wählt den günstigsten Kanal, der den jeweiligen Empfänger tatsächlich erreichen kann.',
-      metrics: [{ value: '5', label: 'Kanäle hinter einer API' }],
-      stack: ['Java', 'Spring Boot', 'SMPP', 'REST', 'Least-Cost-Routing'],
+        'Die Anfrage wird pro Empfänger begrenzt, als QUEUED gespeichert und sofort mit 202 beantwortet. Die Zustellung startet über ein Ereignis, das erst nach dem Commit der Transaktion veröffentlicht wird – ein langsamer Anbieter kann den Aufrufer damit weder blockieren noch zurückrollen. Der Router sortiert die aktiven Kanäle nach Preis und arbeitet sie ab, bis einer annimmt, mit einer ausdrücklichen Kette WhatsApp → SMS → E-Mail und einer Obergrenze für Versuche. Rückmeldungen der Anbieter kommen über einen per Secret geschützten Webhook und setzen den Endzustand. Alle Anbieter liegen hinter einer Schnittstelle, sodass ein echtes SDK ein Mock ersetzen kann, ohne das Routing anzufassen.',
+      metrics: [
+        { value: '6', label: 'Kanäle, ein Vertrag' },
+        { value: '202', label: 'Antwort vor der Zustellung' },
+        { value: 'Preis-sortiert', label: 'Routing mit Ausweichkette' },
+      ],
+      stack: ['Java 25', 'Spring Boot 4', 'PostgreSQL', 'Flyway', 'Redis', 'Docker', 'OpenAPI', 'Virtual Threads'],
+      diagram: 'gateway',
     },
     {
       title: 'App für die Lagerlogistik',
@@ -152,22 +156,63 @@ export const de: Content = {
         { value: 'Offline', label: 'von Grund auf ausgelegt' },
       ],
       stack: ['Kotlin', 'MVVM', 'Coroutines', 'Room', 'SQLite', 'Material UI', 'Play Store'],
+      diagram: 'stock',
     },
   ],
 
-  diagram: {
-    jira: 'Jira',
-    jiraSub: 'Webhook bei neuem Ticket',
-    api: 'FastAPI-Dienst',
-    apiSub: 'abrufen · orchestrieren',
-    llm: 'Ollama',
-    llmSub: 'lokales LLM · Zusammenfassung + Klasse',
-    validate: 'Pydantic',
-    validateSub: 'Schema-Prüfung',
-    chat: 'Rocket.Chat',
-    chatSub: 'Antwortentwurf · take TICKET-KEY',
-    boundary: 'On-Premises',
-    retry: 'Wiederholung bei ungültiger Ausgabe',
+  diagrams: {
+    triage: {
+      caption:
+        'Alles innerhalb der gestrichelten Grenze läuft auf firmeneigener Hardware – keine Kundendaten verlassen das Netz.',
+      boundary: 'On-Premises',
+      jira: 'Jira',
+      jiraSub: 'Webhook bei neuem Ticket',
+      api: 'FastAPI-Dienst',
+      apiSub: 'abrufen · orchestrieren',
+      llm: 'Ollama',
+      llmSub: ['lokales LLM', 'Zusammenfassung + Klasse'],
+      chat: 'Rocket.Chat',
+      chatSub: ['Antwortentwurf', 'take TICKET-KEY'],
+      validate: 'Pydantic-Schemaprüfung',
+      retry: 'Wiederholung bei ungültiger Ausgabe',
+    },
+    stock: {
+      caption:
+        'Jeder Schreibvorgang wird geprüft, bevor er die Datenbank erreicht; Lesevorgänge kommen als beobachtbare Ströme zurück, sodass sich die Oberfläche selbst aktualisiert. Nichts davon braucht Netz – die Daten verlassen das Gerät nur, wenn der Nutzer sie exportiert.',
+      boundary: 'Auf dem Gerät',
+      ui: 'Fragments + ViewModels',
+      uiSub: 'Lager · Artikel · Historie · Archiv',
+      repo: 'StockRepository',
+      repoSub: 'Zugang · Verkauf · Abschreibung · Korrektur, geprüft vom StockMovementValidator',
+      room: 'Room-DAOs → SQLite',
+      roomSub: '5 Entitäten · versioniertes Schema · transaktionale Schreibvorgänge',
+      writes: 'schreiben',
+      reads: 'Flow',
+      excel: 'Excel-Export',
+      excelSub: 'bei Bedarf',
+      backup: 'Lokale Sicherung',
+      backupSub: 'Wiederherstellung auf neuem Gerät',
+    },
+    gateway: {
+      caption:
+        'Der Aufrufer erhält eine Antwort, sobald die Nachricht gespeichert ist. Die Zustellung beginnt erst nach dem Commit dieser Transaktion, sodass ein langsamer Anbieter den Request nie blockiert – ein Rückruf des Anbieters setzt anschließend den Endzustand.',
+      request: 'POST /messages',
+      requestSub: 'ein Vertrag, jeder Kanal',
+      rateLimit: 'Ratenbegrenzung',
+      rateLimitSub: 'pro Empfänger, je Minute',
+      store: 'PostgreSQL',
+      storeSub: 'gespeichert als QUEUED',
+      accepted: '202 Accepted zurück · Versand nach dem Commit',
+      event: 'Asynchroner Versand',
+      eventSub: 'Ereignis nach dem Commit',
+      router: 'ChannelRouter',
+      routerSub: ['günstigster Kanal zuerst', 'WhatsApp → SMS → E-Mail'],
+      providers: 'Anbieter-Adapter',
+      providersSub: ['SMS · WhatsApp · Telegram', 'E-Mail · RCS · Viber'],
+      webhook: 'Rückruf des Anbieters → POST /webhooks/messages/{id}/status',
+      states: 'QUEUED → SENT',
+      statesSub: '→ DELIVERED · FAILED → erneut',
+    },
   },
 
   experience: {

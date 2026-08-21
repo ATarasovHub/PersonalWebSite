@@ -1,5 +1,7 @@
 export type Lang = 'en' | 'de'
 
+export type DiagramKey = 'triage' | 'stock' | 'gateway'
+
 export type SkillGroup = {
   title: string
   items: string[]
@@ -14,8 +16,8 @@ export type Project = {
   approach: string
   metrics: { value: string; label: string }[]
   stack: string[]
-  /** Renders the AI triage architecture diagram inside this card. */
-  diagram?: boolean
+  /** Which architecture diagram to render inside this card. */
+  diagram?: DiagramKey
 }
 
 export type ExperienceEntry = {
@@ -79,23 +81,59 @@ export type Content = {
     less: string
     stack: string
     diagramTitle: string
-    diagramCaption: string
   }
   projects: Project[]
 
-  diagram: {
-    jira: string
-    jiraSub: string
-    api: string
-    apiSub: string
-    llm: string
-    llmSub: string
-    validate: string
-    validateSub: string
-    chat: string
-    chatSub: string
-    boundary: string
-    retry: string
+  diagrams: {
+    triage: {
+      caption: string
+      boundary: string
+      jira: string
+      jiraSub: string
+      api: string
+      apiSub: string
+      llm: string
+      llmSub: string[]
+      chat: string
+      chatSub: string[]
+      validate: string
+      retry: string
+    }
+    stock: {
+      caption: string
+      boundary: string
+      ui: string
+      uiSub: string
+      repo: string
+      repoSub: string
+      room: string
+      roomSub: string
+      writes: string
+      reads: string
+      excel: string
+      excelSub: string
+      backup: string
+      backupSub: string
+    }
+    gateway: {
+      caption: string
+      request: string
+      requestSub: string
+      rateLimit: string
+      rateLimitSub: string
+      store: string
+      storeSub: string
+      accepted: string
+      event: string
+      eventSub: string
+      router: string
+      routerSub: string[]
+      providers: string
+      providersSub: string[]
+      webhook: string
+      states: string
+      statesSub: string
+    }
   }
 
   experience: EducationExperienceLabels

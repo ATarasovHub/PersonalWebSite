@@ -3,7 +3,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import Section from './Section'
 import Reveal from './Reveal'
-import TriageDiagram from './TriageDiagram'
+import TriageDiagram from './diagrams/TriageDiagram'
+import StockKeeperDiagram from './diagrams/StockKeeperDiagram'
+import GatewayDiagram from './diagrams/GatewayDiagram'
 import { useLanguage } from '../i18n/useLanguage'
 
 export default function Projects() {
@@ -72,7 +74,9 @@ export default function Projects() {
                         </div>
                       </div>
 
-                      {project.diagram && <TriageDiagram />}
+                      {project.diagram === 'triage' && <TriageDiagram />}
+                      {project.diagram === 'stock' && <StockKeeperDiagram />}
+                      {project.diagram === 'gateway' && <GatewayDiagram />}
 
                       <div className="project-stack-wrap">
                         <h4>{content.projectLabels.stack}</h4>

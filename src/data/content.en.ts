@@ -90,7 +90,6 @@ export const en: Content = {
     less: 'Show less',
     stack: 'Stack',
     diagramTitle: 'How it fits together',
-    diagramCaption: 'Everything inside the dashed boundary runs on company hardware — no customer data leaves the network.',
   },
 
   projects: [
@@ -109,7 +108,7 @@ export const en: Content = {
         { value: '7 min', label: 'saved per ticket' },
       ],
       stack: ['Python', 'FastAPI', 'Ollama', 'Pydantic', 'MLflow', 'Label Studio', 'Rocket.Chat'],
-      diagram: true,
+      diagram: 'triage',
     },
     {
       title: 'MSISDN Inventory Platform',
@@ -127,16 +126,21 @@ export const en: Content = {
       stack: ['Java 21', 'Spring Boot 3', 'PostgreSQL', 'JPA', 'Flyway', 'Caffeine', 'OpenAPI', 'Testcontainers', 'Jenkins'],
     },
     {
-      title: 'Unified Outbound Messaging',
-      context: 'tyntec · 2025—2026',
+      title: 'Unified Messaging Gateway',
+      context: 'Personal project · 2026',
       summary:
-        'SMS, WhatsApp, RCS, Viber and text-to-speech behind one API, with routing that picks the cheapest channel that can actually deliver.',
+        'One API contract for six messaging channels, routed by price with automatic fallback — built to answer in milliseconds while delivery happens in the background.',
       problem:
-        'Reaching a customer meant choosing a channel by hand, and every channel spoke a different protocol. Cost per message varied widely between routes, with nothing systematically picking the cheapest viable one.',
+        'Reaching a customer through SMS, WhatsApp or any other channel means a different protocol, a different failure mode and a different price for each one. Calling providers inline also makes the API only as fast as the slowest one, and a burst of traffic can hammer a single recipient.',
       approach:
-        'I contributed to a platform that puts all five channels behind one interface, speaking SMPP and REST underneath. Messages are classified on the way in, and a routing layer picks the least-cost channel that can actually reach that recipient.',
-      metrics: [{ value: '5', label: 'channels behind one API' }],
-      stack: ['Java', 'Spring Boot', 'SMPP', 'REST', 'Least-cost routing'],
+        'The request is rate-limited per recipient, persisted as QUEUED and answered with 202 immediately. Delivery is triggered by an event published only after that transaction commits, so a slow provider can never block or roll back the caller. The router sorts enabled channels by price and walks them until one accepts, with an explicit WhatsApp → SMS → Email fallback chain and a cap on attempts. Provider callbacks arrive through a secret-protected webhook and move the message to its final state. Providers sit behind one interface, so a real SDK can replace a mock without touching the routing.',
+      metrics: [
+        { value: '6', label: 'channels, one contract' },
+        { value: '202', label: 'returned before dispatch' },
+        { value: 'Price-sorted', label: 'routing with fallback' },
+      ],
+      stack: ['Java 25', 'Spring Boot 4', 'PostgreSQL', 'Flyway', 'Redis', 'Docker', 'OpenAPI', 'Virtual threads'],
+      diagram: 'gateway',
     },
     {
       title: 'Warehouse Logistics App',
@@ -152,22 +156,63 @@ export const en: Content = {
         { value: 'Offline', label: 'first by design' },
       ],
       stack: ['Kotlin', 'MVVM', 'Coroutines', 'Room', 'SQLite', 'Material UI', 'Play Store'],
+      diagram: 'stock',
     },
   ],
 
-  diagram: {
-    jira: 'Jira',
-    jiraSub: 'webhook on new ticket',
-    api: 'FastAPI service',
-    apiSub: 'fetch · orchestrate',
-    llm: 'Ollama',
-    llmSub: 'local LLM · summary + class',
-    validate: 'Pydantic',
-    validateSub: 'schema check',
-    chat: 'Rocket.Chat',
-    chatSub: 'drafted reply · take TICKET-KEY',
-    boundary: 'On-premises',
-    retry: 'retry on invalid output',
+  diagrams: {
+    triage: {
+      caption:
+        'Everything inside the dashed boundary runs on company hardware — no customer data leaves the network.',
+      boundary: 'On-premises',
+      jira: 'Jira',
+      jiraSub: 'webhook on new ticket',
+      api: 'FastAPI service',
+      apiSub: 'fetch · orchestrate',
+      llm: 'Ollama',
+      llmSub: ['local LLM', 'summary + classification'],
+      chat: 'Rocket.Chat',
+      chatSub: ['drafted reply', 'take TICKET-KEY'],
+      validate: 'Pydantic schema check',
+      retry: 'retry on invalid output',
+    },
+    stock: {
+      caption:
+        'Every write is validated before it reaches the database, and reads flow back as observable streams so the screen updates itself. Nothing needs the network — data only leaves the device when the user exports it.',
+      boundary: 'On the device',
+      ui: 'Fragments + ViewModels',
+      uiSub: 'warehouse · product · history · archive',
+      repo: 'StockRepository',
+      repoSub: 'receipt · sale · write-off · adjustment, guarded by StockMovementValidator',
+      room: 'Room DAOs → SQLite',
+      roomSub: '5 entities · versioned schema · transactional writes',
+      writes: 'writes',
+      reads: 'Flow',
+      excel: 'Excel export',
+      excelSub: 'on demand',
+      backup: 'Local backup',
+      backupSub: 'restore on a new device',
+    },
+    gateway: {
+      caption:
+        'The caller gets an answer as soon as the message is stored. Delivery starts only after that transaction commits, so a slow provider never blocks the request — and a provider callback moves the message to its final state.',
+      request: 'POST /messages',
+      requestSub: 'one contract, any channel',
+      rateLimit: 'Rate limit',
+      rateLimitSub: 'per recipient, rolling minute',
+      store: 'PostgreSQL',
+      storeSub: 'saved as QUEUED',
+      accepted: '202 Accepted returned · dispatch starts after commit',
+      event: 'Async dispatch',
+      eventSub: 'event after commit',
+      router: 'ChannelRouter',
+      routerSub: ['cheapest enabled first', 'WhatsApp → SMS → Email'],
+      providers: 'Provider adapters',
+      providersSub: ['SMS · WhatsApp · Telegram', 'Email · RCS · Viber'],
+      webhook: 'provider callback → POST /webhooks/messages/{id}/status',
+      states: 'QUEUED → SENT',
+      statesSub: '→ DELIVERED · FAILED → retry',
+    },
   },
 
   experience: {
