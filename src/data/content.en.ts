@@ -38,6 +38,11 @@ export const en: Content = {
     "Right now I'm freelancing, building a native Android app for warehouse logistics end to end — requirements, architecture, and the Play Store release.",
   ],
 
+  offTheClock: {
+    label: 'Off the clock',
+    text: "I play volleyball: six people who each have to trust the other five. The rest of my free time goes to books, whatever series I'm behind on, and long walks around Dortmund.",
+  },
+
   stats: [
     { value: '2+', label: 'years professional experience' },
     { value: '56', label: 'providers on one inventory system' },

@@ -74,6 +74,8 @@ export type Content = {
   }
 
   bio: string[]
+  /** Personal aside closing the About section. */
+  offTheClock: { label: string; text: string }
   stats: { value: string; label: string }[]
   skillGroups: SkillGroup[]
   spokenLanguages: { name: string; level: string }[]

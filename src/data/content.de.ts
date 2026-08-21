@@ -38,6 +38,11 @@ export const de: Content = {
     'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst – von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
   ],
 
+  offTheClock: {
+    label: 'Nach Feierabend',
+    text: 'Ich spiele Volleyball: sechs Leute, von denen jeder den anderen fünf vertrauen muss. Die übrige freie Zeit gehört Büchern, irgendeiner Serie, bei der ich hinterherhinke, und langen Spaziergängen durch Dortmund.',
+  },
+
   stats: [
     { value: '2+', label: 'Jahre Berufserfahrung' },
     { value: '56', label: 'Provider in einem Bestandssystem' },

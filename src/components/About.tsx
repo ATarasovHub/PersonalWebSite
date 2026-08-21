@@ -1,3 +1,4 @@
+import { Volleyball } from 'lucide-react'
 import Section from './Section'
 import Reveal from './Reveal'
 import { useLanguage } from '../i18n/useLanguage'
@@ -23,6 +24,16 @@ export default function About() {
                 </span>
               ))}
             </div>
+          </Reveal>
+
+          {/* Reads as an aside rather than another paragraph of the pitch. */}
+          <Reveal delay={0.16}>
+            <p className="off-the-clock">
+              <Volleyball size={17} aria-hidden="true" />
+              <span>
+                <strong>{content.offTheClock.label}</strong> — {content.offTheClock.text}
+              </span>
+            </p>
           </Reveal>
         </div>
 
