@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Mail, Phone, Send } from 'lucide-react'
 import Section from './Section'
+import Reveal from './Reveal'
 import GradientBlobs from './GradientBlobs'
 import LinkedInIcon from './LinkedInIcon'
 import { personal } from '../data/profile'
@@ -27,13 +28,7 @@ export default function Contact() {
         <GradientBlobs />
 
         <div className="contact-grid">
-          <motion.div
-            className="contact-intro"
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-            whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
+          <Reveal className="contact-intro" from="left">
             <h3>Let's talk</h3>
             <p>
               Open to new backend roles and freelance work. The fastest way to reach me is
@@ -56,15 +51,15 @@ export default function Contact() {
                 <LinkedInIcon size={16} /> {personal.linkedinLabel}
               </a>
             </div>
-          </motion.div>
+          </Reveal>
 
           <motion.form
             className="contact-form"
             onSubmit={handleSubmit}
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-            whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
+            whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.25 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
           >
             <label>
               Name

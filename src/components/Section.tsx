@@ -1,5 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import type { ReactNode } from 'react'
+import Reveal from './Reveal'
 
 type SectionProps = {
   id: string
@@ -10,8 +10,6 @@ type SectionProps = {
 }
 
 export default function Section({ id, index, title, children, alt }: SectionProps) {
-  const shouldReduceMotion = useReducedMotion()
-
   return (
     <section
       id={id}
@@ -19,16 +17,10 @@ export default function Section({ id, index, title, children, alt }: SectionProp
       style={{ background: alt ? 'var(--color-bg-elevated)' : 'transparent' }}
     >
       <div className="container">
-        <motion.div
-          className="section-heading"
-          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-          whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-        >
+        <Reveal className="section-heading" amount={0.5}>
           <span className="index">{index}</span>
           <h2>{title}</h2>
-        </motion.div>
+        </Reveal>
         {children}
       </div>
     </section>

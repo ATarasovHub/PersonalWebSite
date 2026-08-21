@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import Section from './Section'
+import Reveal from './Reveal'
 import { skillGroups } from '../data/profile'
 
 export default function Skills() {
@@ -9,23 +10,39 @@ export default function Skills() {
     <Section id="skills" index="02" title="Skills" alt>
       <div className="skills-grid">
         {skillGroups.map((group, gi) => (
-          <motion.div
-            key={group.title}
-            className="skill-group"
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-            whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: gi * 0.06 }}
-          >
-            <h3>{group.title}</h3>
-            <div className="skill-chips">
-              {group.items.map((skill) => (
-                <span key={skill} className="skill-chip">
-                  {skill}
-                </span>
-              ))}
+          <Reveal key={group.title} delay={gi * 0.06}>
+            <div className="skill-group">
+              <h3>{group.title}</h3>
+              <motion.div
+                className="skill-chips"
+                initial="hidden"
+                whileInView="shown"
+                viewport={{ once: false, amount: 0.4 }}
+                variants={{
+                  hidden: {},
+                  shown: { transition: { staggerChildren: 0.035 } },
+                }}
+              >
+                {group.items.map((skill) => (
+                  <motion.span
+                    key={skill}
+                    className="skill-chip"
+                    variants={
+                      shouldReduceMotion
+                        ? { hidden: { opacity: 0 }, shown: { opacity: 1 } }
+                        : {
+                            hidden: { opacity: 0, y: 10, scale: 0.96 },
+                            shown: { opacity: 1, y: 0, scale: 1 },
+                          }
+                    }
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </motion.div>
             </div>
-          </motion.div>
+          </Reveal>
         ))}
       </div>
     </Section>
