@@ -98,7 +98,7 @@ export const de: Content = {
     close: 'Schließen',
     prev: 'Vorheriges Projekt',
     next: 'Nächstes Projekt',
-    slider: 'Durch die Projekte blättern',
+    dragHint: 'Ziehen oder Pfeile verwenden',
   },
 
   projects: [

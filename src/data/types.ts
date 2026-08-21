@@ -90,7 +90,7 @@ export type Content = {
     close: string
     prev: string
     next: string
-    slider: string
+    dragHint: string
   }
   projects: Project[]
 
