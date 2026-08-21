@@ -36,6 +36,7 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Andrii Tarasov",
+        "alternateName": ["Andrii Tarasov", "Andrej Tarasov", "Андрій Тарасов", "Андрей Тарасов"],
         "url": "https://atarasovhub.github.io/PersonalWebSite/",
         "image": "https://atarasovhub.github.io/PersonalWebSite/og-image.png",
         "jobTitle": "Backend Software Developer",
@@ -66,7 +67,59 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Rendered content for crawlers and for anyone without JavaScript.
+           React replaces this entire subtree on mount. -->
+      <main>
+        <h1>Andrii Tarasov — Backend Software Developer</h1>
+        <p>
+          Backend Developer · Java / Spring Boot · On-Prem AI. Based in Dortmund, Germany.
+          I build production systems that save measurable time and money.
+        </p>
+        <p lang="de">
+          Andrii Tarasov — Backend-Softwareentwickler in Dortmund. Schwerpunkte: Java,
+          Spring Boot, Kotlin, Python und On-Premises-KI. Ich baue Produktivsysteme,
+          die messbar Zeit und Geld sparen.
+        </p>
+
+        <h2>Selected work</h2>
+        <ul>
+          <li>
+            <strong>On-Prem AI Ticket Triage</strong> — a local language model reads,
+            summarizes and routes support tickets, saving €22,080 a year without customer
+            data leaving the network. Python, FastAPI, Ollama, Pydantic, MLflow.
+          </li>
+          <li>
+            <strong>MSISDN Inventory Platform</strong> — one REST API as the single source
+            of truth for phone-number allocation across 56 providers and 18,600 customers.
+            Java 21, Spring Boot 3, PostgreSQL, Flyway, Testcontainers.
+          </li>
+          <li>
+            <strong>Unified Messaging Gateway</strong> — one API contract for six messaging
+            channels, routed by price with automatic fallback. Java 25, Spring Boot 4,
+            PostgreSQL, Redis, Docker.
+          </li>
+          <li>
+            <strong>Warehouse Logistics App</strong> — an offline-first Android app owned
+            end to end, from requirements to the Play Store release. Kotlin, MVVM,
+            Coroutines, Room, SQLite.
+          </li>
+        </ul>
+
+        <h2>Experience</h2>
+        <p>
+          Freelance software developer since June 2026. Software developer at tyntec,
+          August 2024 to June 2026, building Java and Spring Boot services for a global
+          messaging platform and the team's first on-premises AI tools.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Email: <a href="mailto:tarasovandri10@gmail.com">tarasovandri10@gmail.com</a> ·
+          LinkedIn: <a href="https://linkedin.com/in/tarasovandri">linkedin.com/in/tarasovandri</a>
+        </p>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
