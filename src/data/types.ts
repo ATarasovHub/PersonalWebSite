@@ -34,6 +34,10 @@ export type EducationEntry = {
   org: string
   period: string
   description: string
+  /** Key into the photo table in Education.tsx. */
+  photo?: 'khnure' | 'rbbk'
+  /** Describes the photo for search engines and screen readers. */
+  photoAlt?: string
 }
 
 /** Everything on the page that changes with the selected language. */

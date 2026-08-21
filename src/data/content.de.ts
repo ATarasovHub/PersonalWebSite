@@ -276,6 +276,9 @@ export const de: Content = {
       period: '2024 — 2026',
       description:
         'Duale Ausbildung in der Anwendungsentwicklung – Java, Spring, Docker, Kubernetes, Jenkins und CI/CD, begleitend zur praktischen Arbeit bei tyntec.',
+      photo: 'rbbk',
+      photoAlt:
+        'Innenhof des Robert-Bosch-Berufskollegs in Dortmund, wo Andrii Tarasov seine Ausbildung zum Fachinformatiker absolvierte',
     },
     {
       title: 'B.Sc. Automatisierung und computerintegrierte Technologien',
@@ -283,6 +286,9 @@ export const de: Content = {
       period: '2021 — 2025',
       description:
         'Grundlagen in Python, Algorithmen, Datenbanken, objektorientierter Programmierung und Software-Engineering.',
+      photo: 'khnure',
+      photoAlt:
+        'Hauptgebäude der Nationalen Universität für Radioelektronik Charkiw, wo Andrii Tarasov seinen B.Sc. erwarb',
     },
   ],
 

@@ -276,6 +276,9 @@ export const en: Content = {
       period: '2024 — 2026',
       description:
         'Dual vocational training in application development — Java, Spring, Docker, Kubernetes, Jenkins and CI/CD, alongside on-the-job work at tyntec.',
+      photo: 'rbbk',
+      photoAlt:
+        'Courtyard of the Robert-Bosch-Berufskolleg vocational college in Dortmund, where Andrii Tarasov trained as an application developer',
     },
     {
       title: 'B.Sc. Automation & Computer-Integrated Technologies',
@@ -283,6 +286,9 @@ export const en: Content = {
       period: '2021 — 2025',
       description:
         'Foundations in Python, algorithms, databases, object-oriented programming and software engineering.',
+      photo: 'khnure',
+      photoAlt:
+        'Main building of Kharkiv National University of Radio Electronics, where Andrii Tarasov earned his B.Sc.',
     },
   ],
 

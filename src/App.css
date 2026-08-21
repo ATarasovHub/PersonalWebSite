@@ -1264,10 +1264,83 @@ main {
 
 .education-card {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  height: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 18px;
+  overflow: hidden;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.6s ease,
+    box-shadow 0.6s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent-dim);
+  box-shadow: 0 22px 46px -22px rgba(0, 0, 0, 0.85);
+}
+
+.education-photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-bg-elevated);
+}
+
+.education-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Full-colour photos would shout next to the dark palette. */
+  filter: saturate(0.75) brightness(0.82) contrast(1.05);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+}
+
+.education-card:hover .education-photo img {
+  transform: scale(1.05);
+  filter: saturate(0.95) brightness(0.95) contrast(1.02);
+}
+
+/* Settles the photo into the page's palette instead of sitting on top of it. */
+.education-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(6, 9, 10, 0.15) 0%, transparent 45%, rgba(16, 26, 23, 0.9) 100%);
+}
+
+.education-photo figcaption {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  z-index: 1;
+  font-size: 0.66rem;
+  color: var(--color-text-muted);
+  opacity: 0.65;
+  transition: opacity 0.4s ease;
+}
+
+.education-card:hover .education-photo figcaption {
+  opacity: 1;
+}
+
+.education-photo figcaption a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.education-photo figcaption a:hover {
+  color: var(--color-accent);
+}
+
+.education-text {
+  display: flex;
+  gap: 16px;
   padding: 24px;
 }
 
