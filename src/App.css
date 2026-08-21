@@ -627,14 +627,18 @@ main {
   align-content: start;
 }
 
-/* Staggered so the four cards read as a zigzag rather than a block.
-   Offset via margin, not transform — Framer Motion owns transform here. */
-.about-stats > *:nth-child(even) {
-  margin-top: 34px;
+/* Chessboard across the two columns: in a 2-wide grid the light squares
+   are cards 1 and 4, the dark ones 2 and 3 — not simply odd and even. */
+.about-stats > *:nth-child(4n + 1) .stat-card,
+.about-stats > *:nth-child(4n) .stat-card {
+  background: linear-gradient(150deg, #1a2822 0%, #16231e 100%);
+  border-color: #24352d;
 }
 
-.about-stats > *:nth-child(even) .stat-card {
-  border-color: var(--color-accent-dim);
+.about-stats > *:nth-child(4n + 2) .stat-card,
+.about-stats > *:nth-child(4n + 3) .stat-card {
+  background: #080d0c;
+  border-color: #141d19;
 }
 
 .stat-card {
