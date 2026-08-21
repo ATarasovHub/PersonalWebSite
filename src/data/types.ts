@@ -81,6 +81,7 @@ export type Content = {
     less: string
     stack: string
     diagramTitle: string
+    close: string
   }
   projects: Project[]
 

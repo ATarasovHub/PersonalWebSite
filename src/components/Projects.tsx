@@ -1,101 +1,60 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { useCallback, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import Section from './Section'
-import Reveal from './Reveal'
-import TriageDiagram from './diagrams/TriageDiagram'
-import StockKeeperDiagram from './diagrams/StockKeeperDiagram'
-import GatewayDiagram from './diagrams/GatewayDiagram'
+import ProjectModal from './ProjectModal'
+import { useMarquee } from '../hooks/useMarquee'
 import { useLanguage } from '../i18n/useLanguage'
+import type { Project } from '../data/types'
 
 export default function Projects() {
   const { content } = useLanguage()
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [open, setOpen] = useState<Project | null>(null)
+  const trackRef = useMarquee({ paused: open !== null })
+  // Stable, so the dialog's key handler is not re-registered every render.
+  const close = useCallback(() => setOpen(null), [])
+
+  // Duplicated once so the track can wrap at the halfway point unnoticed.
+  const looped = [...content.projects, ...content.projects]
 
   return (
     <Section id="projects" index="03" title={content.sections.projects}>
-      <div className="projects">
-        {content.projects.map((project, i) => {
-          const isOpen = openIndex === i
-          return (
-            <Reveal key={project.title} from={i % 2 === 0 ? 'left' : 'right'} amount={0.15}>
-              <article className={isOpen ? 'project-card is-open' : 'project-card'}>
-                <span className="project-index">{String(i + 1).padStart(2, '0')}</span>
+      <div className="carousel" ref={trackRef}>
+        <div className="carousel-track">
+          {looped.map((project, i) => (
+            <article className="project-card" key={`${project.title}-${i}`}>
+              <span className="project-index">
+                {String((i % content.projects.length) + 1).padStart(2, '0')}
+              </span>
 
-                <header className="project-head">
-                  <h3>{project.title}</h3>
-                  <span className="project-context">{project.context}</span>
-                </header>
+              <header className="project-head">
+                <h3>{project.title}</h3>
+                <span className="project-context">{project.context}</span>
+              </header>
 
-                <p className="project-summary">{project.summary}</p>
+              <p className="project-summary">{project.summary}</p>
 
-                <div className="project-metrics">
-                  {project.metrics.map((metric) => (
-                    <div key={metric.label} className="project-metric">
-                      <span className="project-metric-value">{metric.value}</span>
-                      <span className="project-metric-label">{metric.label}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="project-metrics">
+                {project.metrics.map((metric) => (
+                  <div key={metric.label} className="project-metric">
+                    <span className="project-metric-value">{metric.value}</span>
+                    <span className="project-metric-label">{metric.label}</span>
+                  </div>
+                ))}
+              </div>
 
-                <button
-                  className="project-more"
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                >
-                  {isOpen ? content.projectLabels.less : content.projectLabels.more}
-                  <motion.span
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ display: 'inline-flex' }}
-                  >
-                    <ChevronDown size={16} />
-                  </motion.span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      className="project-detail"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                      style={{ overflow: 'hidden' }}
-                    >
-                      <div className="project-body">
-                        <div className="project-block">
-                          <h4>{content.projectLabels.problem}</h4>
-                          <p>{project.problem}</p>
-                        </div>
-                        <div className="project-block">
-                          <h4>{content.projectLabels.approach}</h4>
-                          <p>{project.approach}</p>
-                        </div>
-                      </div>
-
-                      {project.diagram === 'triage' && <TriageDiagram />}
-                      {project.diagram === 'stock' && <StockKeeperDiagram />}
-                      {project.diagram === 'gateway' && <GatewayDiagram />}
-
-                      <div className="project-stack-wrap">
-                        <h4>{content.projectLabels.stack}</h4>
-                        <div className="project-stack">
-                          {project.stack.map((tech) => (
-                            <span key={tech} className="project-tech">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </article>
-            </Reveal>
-          )
-        })}
+              <button className="project-more" onClick={() => setOpen(project)}>
+                {content.projectLabels.more}
+                <ArrowRight size={16} />
+              </button>
+            </article>
+          ))}
+        </div>
       </div>
+
+      <AnimatePresence>
+        {open && <ProjectModal project={open} onClose={close} />}
+      </AnimatePresence>
     </Section>
   )
 }

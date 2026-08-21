@@ -90,6 +90,7 @@ export const de: Content = {
     less: 'Weniger anzeigen',
     stack: 'Technologien',
     diagramTitle: 'So greift es ineinander',
+    close: 'Schließen',
   },
 
   projects: [

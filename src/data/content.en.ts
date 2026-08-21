@@ -90,6 +90,7 @@ export const en: Content = {
     less: 'Show less',
     stack: 'Stack',
     diagramTitle: 'How it fits together',
+    close: 'Close',
   },
 
   projects: [
