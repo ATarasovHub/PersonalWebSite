@@ -2,7 +2,8 @@ import type { Content } from './types'
 
 export const en: Content = {
   role: 'Backend Software Developer',
-  tagline: 'Building reliable backend systems and putting AI to work where it actually saves time.',
+  roleLine: 'Backend Developer · Java / Spring Boot · On-Prem AI',
+  tagline: 'I build production systems that save measurable time and money.',
   location: 'Dortmund, Germany',
   status: 'Open to work',
 
@@ -27,13 +28,14 @@ export const en: Content = {
   hero: {
     primaryCta: 'Get in touch',
     secondaryCta: 'See my work',
+    cvCta: 'Download CV',
     scrollLabel: 'Scroll to About',
   },
 
   bio: [
-    "I'm a backend developer who likes systems that stay boring in production — predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging: inventory systems, routing logic, and the unglamorous plumbing that keeps millions of messages moving correctly.",
-    'The other half of my work is on-prem AI — wiring local LLMs into real workflows instead of chasing demos. I built a ticket-triage service that reads and classifies support tickets automatically, saving the team real hours every week without sending a single byte of data off-premises.',
-    "Right now I'm freelancing, building a native Android app for warehouse logistics from the ground up — requirements, architecture, and the Play Store release, end to end.",
+    "I'm a backend developer who likes systems that stay boring in production — predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging: inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly.",
+    'The other half of my work is on-prem AI — wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
+    "Right now I'm freelancing, building a native Android app for warehouse logistics end to end — requirements, architecture, and the Play Store release.",
   ],
 
   stats: [
@@ -84,30 +86,40 @@ export const en: Content = {
   projectLabels: {
     problem: 'The problem',
     approach: 'What I built',
+    more: 'Read the details',
+    less: 'Show less',
+    stack: 'Stack',
+    diagramTitle: 'How it fits together',
+    diagramCaption: 'Everything inside the dashed boundary runs on company hardware — no customer data leaves the network.',
   },
 
   projects: [
     {
       title: 'On-Prem AI Ticket Triage',
       context: 'tyntec · 2025',
+      summary:
+        'A local language model reads, summarizes and routes support tickets — saving €22,080 a year without a byte of customer data leaving the network.',
       problem:
-        'Support engineers were reading every incoming Jira ticket end to end just to work out what it was about and who should own it. The obvious fix was an LLM, but customer data could not leave the company network, which ruled out every hosted API.',
+        'Support engineers were reading every incoming Jira ticket end to end just to work out what it was about and who should own it. An LLM was the obvious fix, but customer data could not leave the company network, which ruled out every hosted API.',
       approach:
-        'I built a service that runs the model entirely on our own hardware: FastAPI pulls the ticket, hands it to a local Ollama model for a summary and a classification, and validates the response against a strict Pydantic schema — retrying when the model returns something malformed. A Rocket.Chat bot puts the result where the team already works and drafts a reply, with a `take TICKET-KEY` command to claim the ticket. To pick the model I ran a comparison tracked in MLflow and blind-scored the outputs in Label Studio, rather than going with a hunch.',
+        'FastAPI pulls the ticket and hands it to a local Ollama model for a summary and a classification, validating the response against a strict Pydantic schema and retrying when the model returns something malformed. A Rocket.Chat bot delivers the result where the team already works and drafts a reply, with a `take TICKET-KEY` command to claim the ticket. I chose the model by running a comparison tracked in MLflow and blind-scoring the outputs in Label Studio, rather than going with a hunch.',
       metrics: [
         { value: '€22,080', label: 'saved per year' },
         { value: '~6 weeks', label: 'to pay for itself' },
         { value: '7 min', label: 'saved per ticket' },
       ],
       stack: ['Python', 'FastAPI', 'Ollama', 'Pydantic', 'MLflow', 'Label Studio', 'Rocket.Chat'],
+      diagram: true,
     },
     {
       title: 'MSISDN Inventory Platform',
       context: 'tyntec · 2024—2026',
+      summary:
+        'One REST API became the single source of truth for phone-number allocation across 56 providers and 18,600 customers.',
       problem:
-        'Phone number allocation was spread across a legacy Java EE tool and manual process. With 56 upstream providers feeding numbers to thousands of customers, there was no single source of truth for what was allocated, free, or reserved.',
+        'Number allocation was split between a legacy Java EE tool and manual process. With 56 upstream providers feeding numbers to thousands of customers, nothing authoritative said what was allocated, free, or reserved.',
       approach:
-        'I designed and built a REST API that owns the whole inventory: allocation, reservation and release, with Flyway-managed schema evolution and a Caffeine cache in front of the hot lookups. Every endpoint is documented through OpenAPI, and the integration suite runs against a real PostgreSQL in Testcontainers on Jenkins — so the tests exercise actual SQL rather than a mock. I also migrated the old Java EE/EJB tool onto this platform with a React frontend.',
+        'I designed and built a REST API owning the whole inventory — allocation, reservation and release — with Flyway-managed schema evolution and a Caffeine cache in front of the hot lookups. Every endpoint is documented through OpenAPI, and the integration suite runs against a real PostgreSQL in Testcontainers on Jenkins, so the tests exercise actual SQL rather than a mock. I also migrated the old Java EE/EJB tool onto this platform with a React frontend.',
       metrics: [
         { value: '56', label: 'upstream providers' },
         { value: '18,600', label: 'customers served' },
@@ -117,20 +129,24 @@ export const en: Content = {
     {
       title: 'Unified Outbound Messaging',
       context: 'tyntec · 2025—2026',
+      summary:
+        'SMS, WhatsApp, RCS, Viber and text-to-speech behind one API, with routing that picks the cheapest channel that can actually deliver.',
       problem:
         'Reaching a customer meant choosing a channel by hand, and every channel spoke a different protocol. Cost per message varied widely between routes, with nothing systematically picking the cheapest viable one.',
       approach:
-        'I contributed to a platform that puts SMS, WhatsApp, RCS, Viber and text-to-speech behind one interface, speaking SMPP and REST underneath. Messages are classified on the way in, and a routing layer picks the least-cost channel that can actually deliver to that recipient.',
+        'I contributed to a platform that puts all five channels behind one interface, speaking SMPP and REST underneath. Messages are classified on the way in, and a routing layer picks the least-cost channel that can actually reach that recipient.',
       metrics: [{ value: '5', label: 'channels behind one API' }],
       stack: ['Java', 'Spring Boot', 'SMPP', 'REST', 'Least-cost routing'],
     },
     {
       title: 'Warehouse Logistics App',
       context: 'Freelance · 2026—present',
+      summary:
+        'An offline-first Android app for warehouse staff, owned end to end from requirements to the Play Store release.',
       problem:
-        'A logistics client needed their warehouse staff to record stock movements on the floor, where the network is unreliable and a web app simply stops working.',
+        'A logistics client needed warehouse staff to record stock movements on the floor, where the network is unreliable and a web app simply stops working.',
       approach:
-        'A native Android app built local-first: Room/SQLite holds everything on the device with versioned migrations, so an update never costs the user their data. MVVM with Coroutines keeps the UI responsive, and the data leaves the device on demand through Excel export and local backup. I own the whole thing — requirements, architecture, implementation, testing and the Play Store release.',
+        'Room/SQLite holds everything on the device with versioned migrations, so an update never costs the user their data. MVVM with Coroutines keeps the UI responsive, and the data leaves the device on demand through Excel export and local backup. I own the whole thing — requirements, architecture, implementation, testing and release.',
       metrics: [
         { value: 'End to end', label: 'sole developer' },
         { value: 'Offline', label: 'first by design' },
@@ -139,7 +155,27 @@ export const en: Content = {
     },
   ],
 
-  experience: [
+  diagram: {
+    jira: 'Jira',
+    jiraSub: 'webhook on new ticket',
+    api: 'FastAPI service',
+    apiSub: 'fetch · orchestrate',
+    llm: 'Ollama',
+    llmSub: 'local LLM · summary + class',
+    validate: 'Pydantic',
+    validateSub: 'schema check',
+    chat: 'Rocket.Chat',
+    chatSub: 'drafted reply · take TICKET-KEY',
+    boundary: 'On-premises',
+    retry: 'retry on invalid output',
+  },
+
+  experience: {
+    expand: 'Show details',
+    collapse: 'Hide details',
+  },
+
+  experienceEntries: [
     {
       role: 'Freelance Software Developer',
       org: 'Self-employed',
@@ -162,12 +198,12 @@ export const en: Content = {
       summary:
         'Java/Spring Boot backend work for a global messaging platform, plus building and shipping the team’s first on-prem AI tools.',
       highlights: [
-        'Built an on-prem AI service (Python, FastAPI, Ollama) that reads, summarizes and classifies Jira tickets — saving roughly 7 minutes per ticket, about 552 hours and €22,080 a year, paid back in ~6 weeks, with all data staying on-prem and strict Pydantic schema validation with retries',
-        'Shipped a Rocket.Chat support bot that drafts replies with an LLM, detects self-assignment, and routes tickets from a Jira webhook through the AI service via a simple `take TICKET-KEY` command',
-        'Ran an LLM model-selection experiment for ticket summarization, tracked in MLflow and blind-evaluated in Label Studio',
-        'Designed and built a phone-number inventory REST API (Java 21, Spring Boot 3, PostgreSQL, JPA, Flyway, Caffeine, OpenAPI) managing MSISDN allocation for 56 providers and roughly 18,600 customers, covered by Testcontainers integration tests and Jenkins CI',
+        'Built an on-prem AI service (Python, FastAPI, Ollama) that reads, summarizes and classifies Jira tickets — saving roughly 7 minutes per ticket, about 552 hours and €22,080 a year, paid back in ~6 weeks',
+        'Shipped a Rocket.Chat support bot that drafts replies with an LLM and routes tickets from a Jira webhook through the AI service',
+        'Ran an LLM model-selection experiment tracked in MLflow and blind-evaluated in Label Studio',
+        'Designed and built a phone-number inventory REST API (Java 21, Spring Boot 3, PostgreSQL, Flyway, Caffeine, OpenAPI) for 56 providers and roughly 18,600 customers, covered by Testcontainers and Jenkins CI',
         'Migrated a legacy Java EE/EJB numbering tool to Spring Boot 3 with a React 19 + TypeScript frontend',
-        'Contributed to a new outbound messaging platform unifying SMS, WhatsApp, RCS, Viber and TTS over SMPP and REST, including message classification and least-cost channel routing',
+        'Contributed to an outbound messaging platform unifying SMS, WhatsApp, RCS, Viber and TTS over SMPP and REST, with least-cost channel routing',
       ],
     },
     {
@@ -204,16 +240,12 @@ export const en: Content = {
   contact: {
     heading: "Let's talk",
     intro:
-      "Open to new backend roles and freelance work. The fastest way to reach me is directly — pick whatever's easiest for you.",
-    nameLabel: 'Name',
-    namePlaceholder: 'Your name',
-    emailLabel: 'Email',
-    emailPlaceholder: 'you@example.com',
-    messageLabel: 'Message',
-    messagePlaceholder: 'What would you like to talk about?',
-    submit: 'Send message',
-    mailSubject: (name: string) => `Portfolio contact from ${name || 'a visitor'}`,
-    mailReplyTo: 'Reply to',
+      'Open to backend roles and freelance work. Write to me directly or reach out on LinkedIn — both land with me straight away.',
+    emailCta: 'Write me an email',
+    linkedinCta: 'Connect on LinkedIn',
+    copy: 'Copy address',
+    copied: 'Copied',
+    responseNote: 'I usually reply within a day.',
   },
 
   footer: 'Built with React & Framer Motion',
@@ -222,6 +254,6 @@ export const en: Content = {
   meta: {
     title: 'Andrii Tarasov — Backend Software Developer',
     description:
-      'Backend software developer specializing in Java, Spring Boot and on-prem AI/LLM integration. Based in Dortmund, Germany.',
+      'Backend developer in Dortmund specializing in Java, Spring Boot and on-prem AI. I build production systems that save measurable time and money.',
   },
 }

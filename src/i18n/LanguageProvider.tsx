@@ -21,9 +21,18 @@ export default function LanguageProvider({ children }: { children: ReactNode }) 
     localStorage.setItem(STORAGE_KEY, lang)
     document.documentElement.lang = lang
     document.title = meta.title
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute('content', meta.description)
+
+    // Keep the sharing metadata in step with the visible language.
+    const setMeta = (selector: string, value: string) =>
+      document.querySelector(selector)?.setAttribute('content', value)
+
+    setMeta('meta[name="description"]', meta.description)
+    setMeta('meta[property="og:title"]', meta.title)
+    setMeta('meta[property="og:description"]', meta.description)
+    setMeta('meta[property="og:locale"]', lang === 'de' ? 'de_DE' : 'en_US')
+    setMeta('meta[property="og:locale:alternate"]', lang === 'de' ? 'en_US' : 'de_DE')
+    setMeta('meta[name="twitter:title"]', meta.title)
+    setMeta('meta[name="twitter:description"]', meta.description)
   }, [lang])
 
   const toggle = useCallback(() => {

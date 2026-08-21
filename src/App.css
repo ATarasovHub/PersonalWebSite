@@ -784,11 +784,57 @@ main {
   font-family: var(--font-display);
 }
 
+/* Scannable line — the case study in a breath, before any expanding. */
+.project-summary {
+  color: var(--color-text);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  max-width: 68ch;
+  margin-bottom: 24px;
+}
+
+.project-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  padding: 9px 17px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.87rem;
+  font-weight: 500;
+  transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.project-more:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent-dim);
+  background: var(--color-bg-elevated);
+}
+
+.project-detail {
+  margin-top: 4px;
+}
+
+.project-stack-wrap {
+  margin-top: 24px;
+}
+
+.project-stack-wrap h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
 .project-body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 22px;
-  margin-bottom: 26px;
+  padding-top: 24px;
 }
 
 .project-block h4 {
@@ -811,7 +857,6 @@ main {
   padding: 20px 0;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  margin-bottom: 22px;
 }
 
 .project-metric-value {
@@ -1027,85 +1072,183 @@ main {
   position: relative;
 }
 
-.contact-grid {
+.contact-panel {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.contact-intro h3 {
-  font-size: 1.6rem;
+.contact-panel h3 {
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  color: var(--color-accent);
   margin-bottom: 14px;
+}
+
+.contact-intro-text {
+  color: var(--color-text-muted);
+  max-width: 54ch;
+  margin: 0 auto 34px;
+}
+
+/* Two large, unambiguous ways to reach a human. */
+.contact-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  text-align: left;
+}
+
+.contact-action {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s ease,
+    box-shadow 0.5s ease,
+    background 0.5s ease;
+}
+
+.contact-action:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent-dim);
+  background: var(--color-surface-hover);
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.8), 0 0 26px -14px var(--color-accent-glow);
+}
+
+.contact-action.primary {
+  border-color: var(--color-accent-dim);
+}
+
+.contact-action svg {
+  flex-shrink: 0;
   color: var(--color-accent);
 }
 
-.contact-intro p {
+.contact-action-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.contact-action-text strong {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.contact-action-text small {
   color: var(--color-text-muted);
-  max-width: 48ch;
-  margin-bottom: 24px;
+  font-size: 0.84rem;
+  overflow-wrap: anywhere;
 }
 
-.contact-links {
+.contact-secondary {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+  margin-top: 26px;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  background: var(--color-surface);
+.contact-minor {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border-radius: 999px;
   border: 1px solid var(--color-border);
-  border-radius: 20px;
-  padding: 28px;
-}
-
-.contact-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 0.85rem;
+  background: transparent;
   color: var(--color-text-muted);
-}
-
-.contact-form input,
-.contact-form textarea {
-  background: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 12px 14px;
-  color: var(--color-text);
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  resize: vertical;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.84rem;
+  transition: color 0.4s ease, border-color 0.4s ease;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px var(--color-accent-glow);
+.contact-minor:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent-dim);
 }
 
-.contact-form button {
-  align-self: flex-start;
-  border: none;
+.contact-note {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  opacity: 0.8;
 }
 
-@media (min-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr 1.1fr;
-    align-items: center;
+@media (min-width: 720px) {
+  .contact-actions {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .contact-intro {
-    padding: 8px 0 8px 8px;
-  }
+/* ---------- architecture diagram ---------- */
+
+.diagram {
+  margin: 28px 0 0;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+.diagram-title {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+/* Wide diagrams scroll inside their own box rather than the page. */
+.diagram-scroll {
+  overflow-x: auto;
+}
+
+.diagram-scroll svg {
+  display: block;
+  min-width: 660px;
+  width: 100%;
+  height: auto;
+}
+
+.diagram-label {
+  fill: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.diagram-sub {
+  fill: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+
+.diagram-boundary-label {
+  fill: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.diagram-caption {
+  color: var(--color-text-muted);
+  font-size: 0.84rem;
+  margin-top: 14px;
+  max-width: 70ch;
 }
 
 /* ---------- footer ---------- */

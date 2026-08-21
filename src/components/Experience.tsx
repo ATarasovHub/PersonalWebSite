@@ -28,7 +28,7 @@ export default function Experience() {
         <div className="timeline-track" />
         <motion.div className="timeline-line" style={{ scaleY: lineScale }} />
 
-        {content.experience.map((entry, i) => {
+        {content.experienceEntries.map((entry, i) => {
           const isOpen = openIndex === i
           return (
             <Reveal key={entry.role + entry.period} from="left" delay={i * 0.08}>

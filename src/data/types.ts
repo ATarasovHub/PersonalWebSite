@@ -8,10 +8,14 @@ export type SkillGroup = {
 export type Project = {
   title: string
   context: string
+  /** One scannable line — the whole case study in a breath. */
+  summary: string
   problem: string
   approach: string
   metrics: { value: string; label: string }[]
   stack: string[]
+  /** Renders the AI triage architecture diagram inside this card. */
+  diagram?: boolean
 }
 
 export type ExperienceEntry = {
@@ -33,6 +37,7 @@ export type EducationEntry = {
 /** Everything on the page that changes with the selected language. */
 export type Content = {
   role: string
+  roleLine: string
   tagline: string
   location: string
   status: string
@@ -58,6 +63,7 @@ export type Content = {
   hero: {
     primaryCta: string
     secondaryCta: string
+    cvCta: string
     scrollLabel: string
   }
 
@@ -69,24 +75,41 @@ export type Content = {
   projectLabels: {
     problem: string
     approach: string
+    more: string
+    less: string
+    stack: string
+    diagramTitle: string
+    diagramCaption: string
   }
   projects: Project[]
 
-  experience: ExperienceEntry[]
+  diagram: {
+    jira: string
+    jiraSub: string
+    api: string
+    apiSub: string
+    llm: string
+    llmSub: string
+    validate: string
+    validateSub: string
+    chat: string
+    chatSub: string
+    boundary: string
+    retry: string
+  }
+
+  experience: EducationExperienceLabels
+  experienceEntries: ExperienceEntry[]
   education: EducationEntry[]
 
   contact: {
     heading: string
     intro: string
-    nameLabel: string
-    namePlaceholder: string
-    emailLabel: string
-    emailPlaceholder: string
-    messageLabel: string
-    messagePlaceholder: string
-    submit: string
-    mailSubject: (name: string) => string
-    mailReplyTo: string
+    emailCta: string
+    linkedinCta: string
+    copy: string
+    copied: string
+    responseNote: string
   }
 
   footer: string
@@ -97,4 +120,9 @@ export type Content = {
     title: string
     description: string
   }
+}
+
+type EducationExperienceLabels = {
+  expand: string
+  collapse: string
 }

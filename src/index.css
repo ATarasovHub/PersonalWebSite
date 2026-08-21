@@ -138,6 +138,15 @@ img {
   background: var(--color-accent);
 }
 
+.pill-button.ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+.pill-button.ghost:hover {
+  color: var(--color-text);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { ArrowDown, MapPin } from 'lucide-react'
+import { ArrowDown, Download, MapPin } from 'lucide-react'
 import GradientBlobs from './GradientBlobs'
 import TiltCard from './TiltCard'
 import { personal } from '../data/profile'
@@ -42,7 +42,7 @@ export default function Hero() {
             {personal.name}
           </motion.h1>
           <motion.p className="hero-role" variants={item}>
-            {content.role}
+            {content.roleLine}
           </motion.p>
           <motion.p className="hero-tagline" variants={item}>
             {content.tagline}
@@ -60,6 +60,13 @@ export default function Hero() {
             </a>
             <a
               className="pill-button"
+              href={personal.cv}
+              download={personal.cvFileName}
+            >
+              <Download size={16} /> {content.hero.cvCta}
+            </a>
+            <a
+              className="pill-button ghost"
               href="#projects"
               onClick={(e) => {
                 e.preventDefault()
