@@ -3,9 +3,10 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import Section from './Section'
 import Reveal from './Reveal'
-import { experience } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 export default function Experience() {
+  const { content } = useLanguage()
   const [openIndex, setOpenIndex] = useState<number | null>(0)
   const timelineRef = useRef<HTMLDivElement>(null)
 
@@ -22,12 +23,12 @@ export default function Experience() {
   })
 
   return (
-    <Section id="experience" index="04" title="Experience" alt>
+    <Section id="experience" index="04" title={content.sections.experience} alt>
       <div className="timeline" ref={timelineRef}>
         <div className="timeline-track" />
         <motion.div className="timeline-line" style={{ scaleY: lineScale }} />
 
-        {experience.map((entry, i) => {
+        {content.experience.map((entry, i) => {
           const isOpen = openIndex === i
           return (
             <Reveal key={entry.role + entry.period} from="left" delay={i * 0.08}>

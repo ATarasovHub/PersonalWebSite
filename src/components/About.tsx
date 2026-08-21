@@ -1,13 +1,15 @@
 import Section from './Section'
 import Reveal from './Reveal'
-import { bio, stats, languages } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 export default function About() {
+  const { content } = useLanguage()
+
   return (
-    <Section id="about" index="01" title="About">
+    <Section id="about" index="01" title={content.sections.about}>
       <div className="about-grid">
         <div className="about-bio">
-          {bio.map((paragraph, i) => (
+          {content.bio.map((paragraph, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <p>{paragraph}</p>
             </Reveal>
@@ -15,7 +17,7 @@ export default function About() {
 
           <Reveal delay={0.1}>
             <div className="languages">
-              {languages.map((lang) => (
+              {content.spokenLanguages.map((lang) => (
                 <span key={lang.name} className="language-chip">
                   {lang.name} <em>{lang.level}</em>
                 </span>
@@ -25,7 +27,7 @@ export default function About() {
         </div>
 
         <div className="about-stats">
-          {stats.map((stat, i) => (
+          {content.stats.map((stat, i) => (
             <Reveal key={stat.label} from="scale" delay={i * 0.08}>
               <div className="stat-card">
                 <span className="stat-value">{stat.value}</span>

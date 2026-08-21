@@ -1,23 +1,21 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useLanguage } from '../i18n/useLanguage'
+import LangToggle from './LangToggle'
 
-const links = [
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Work' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
-  { id: 'contact', label: 'Contact' },
-]
+const ids = ['about', 'skills', 'projects', 'experience', 'education', 'contact'] as const
 
 export default function Nav() {
-  const [active, setActive] = useState('about')
+  const { content } = useLanguage()
+  const [active, setActive] = useState<string>('about')
   const [open, setOpen] = useState(false)
 
+  const links = ids.map((id) => ({ id, label: content.nav[id] }))
+
   useEffect(() => {
-    const sections = links
-      .map((l) => document.getElementById(l.id))
+    const sections = ids
+      .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null)
 
     const observer = new IntersectionObserver(
@@ -47,7 +45,14 @@ export default function Nav() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="container nav-inner">
-        <a href="#top" className="nav-logo" onClick={(e) => { e.preventDefault(); handleClick('top') }}>
+        <a
+          href="#top"
+          className="nav-logo"
+          onClick={(e) => {
+            e.preventDefault()
+            handleClick('top')
+          }}
+        >
           AT<span>.</span>
         </a>
 
@@ -66,9 +71,12 @@ export default function Nav() {
           ))}
         </nav>
 
-        <button className="nav-toggle" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="nav-actions">
+          <LangToggle />
+          <button className="nav-toggle" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>

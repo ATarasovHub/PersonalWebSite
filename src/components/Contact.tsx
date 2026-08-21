@@ -6,34 +6,33 @@ import Reveal from './Reveal'
 import GradientBlobs from './GradientBlobs'
 import LinkedInIcon from './LinkedInIcon'
 import { personal } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 export default function Contact() {
   const shouldReduceMotion = useReducedMotion()
+  const { content } = useLanguage()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Portfolio contact from ${name || 'a visitor'}`)
+    const subject = encodeURIComponent(content.contact.mailSubject(name))
     const body = encodeURIComponent(
-      `${message}\n\n—\n${name}${email ? `\nReply to: ${email}` : ''}`,
+      `${message}\n\n—\n${name}${email ? `\n${content.contact.mailReplyTo}: ${email}` : ''}`,
     )
     window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`
   }
 
   return (
-    <Section id="contact" index="06" title="Contact" alt>
+    <Section id="contact" index="06" title={content.sections.contact} alt>
       <div className="contact-wrap">
         <GradientBlobs />
 
         <div className="contact-grid">
           <Reveal className="contact-intro" from="left">
-            <h3>Let's talk</h3>
-            <p>
-              Open to new backend roles and freelance work. The fastest way to reach me is
-              directly — pick whatever's easiest for you.
-            </p>
+            <h3>{content.contact.heading}</h3>
+            <p>{content.contact.intro}</p>
 
             <div className="contact-links">
               <a className="pill-button" href={personal.phoneHref}>
@@ -62,37 +61,37 @@ export default function Contact() {
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
           >
             <label>
-              Name
+              {content.contact.nameLabel}
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
+                placeholder={content.contact.namePlaceholder}
                 required
               />
             </label>
             <label>
-              Email
+              {content.contact.emailLabel}
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
+                placeholder={content.contact.emailPlaceholder}
                 required
               />
             </label>
             <label>
-              Message
+              {content.contact.messageLabel}
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="What would you like to talk about?"
+                placeholder={content.contact.messagePlaceholder}
                 rows={5}
                 required
               />
             </label>
             <button type="submit" className="pill-button primary">
-              <Send size={16} /> Send message
+              <Send size={16} /> {content.contact.submit}
             </button>
           </motion.form>
         </div>

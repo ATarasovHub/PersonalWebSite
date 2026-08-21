@@ -2,9 +2,11 @@ import { motion } from 'framer-motion'
 import { useTilt } from '../hooks/useTilt'
 import photo from '../assets/photo.jpg'
 import { personal } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 export default function TiltCard() {
   const { wrapRef, cardRef } = useTilt()
+  const { content } = useLanguage()
 
   return (
     <motion.div
@@ -28,9 +30,9 @@ export default function TiltCard() {
 
         <div className="tilt-caption">
           <span className="tilt-status">
-            <span className="tilt-dot" /> Open to work
+            <span className="tilt-dot" /> {content.status}
           </span>
-          <span className="tilt-place">{personal.location}</span>
+          <span className="tilt-place">{content.location}</span>
         </div>
       </div>
     </motion.div>

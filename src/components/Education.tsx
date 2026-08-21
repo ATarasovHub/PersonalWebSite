@@ -1,13 +1,15 @@
 import { GraduationCap } from 'lucide-react'
 import Section from './Section'
 import Reveal from './Reveal'
-import { education } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 export default function Education() {
+  const { content } = useLanguage()
+
   return (
-    <Section id="education" index="05" title="Education">
+    <Section id="education" index="05" title={content.sections.education}>
       <div className="education-grid">
-        {education.map((entry, i) => (
+        {content.education.map((entry, i) => (
           <Reveal key={entry.title} from={i % 2 === 0 ? 'left' : 'right'} delay={i * 0.08}>
             <div className="education-card">
               <span className="education-icon">

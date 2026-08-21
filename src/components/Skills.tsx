@@ -1,15 +1,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import Section from './Section'
 import Reveal from './Reveal'
-import { skillGroups } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 export default function Skills() {
   const shouldReduceMotion = useReducedMotion()
+  const { content } = useLanguage()
 
   return (
-    <Section id="skills" index="02" title="Skills" alt>
+    <Section id="skills" index="02" title={content.sections.skills} alt>
       <div className="skills-grid">
-        {skillGroups.map((group, gi) => (
+        {content.skillGroups.map((group, gi) => (
           <Reveal key={group.title} delay={gi * 0.06}>
             <div className="skill-group">
               <h3>{group.title}</h3>

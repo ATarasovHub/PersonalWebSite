@@ -1,12 +1,14 @@
 import Section from './Section'
 import Reveal from './Reveal'
-import { projects } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 export default function Projects() {
+  const { content } = useLanguage()
+
   return (
-    <Section id="projects" index="03" title="Selected Work">
+    <Section id="projects" index="03" title={content.sections.projects}>
       <div className="projects">
-        {projects.map((project, i) => (
+        {content.projects.map((project, i) => (
           <Reveal key={project.title} from={i % 2 === 0 ? 'left' : 'right'} amount={0.15}>
             <article className="project-card">
               <span className="project-index">{String(i + 1).padStart(2, '0')}</span>
@@ -18,11 +20,11 @@ export default function Projects() {
 
               <div className="project-body">
                 <div className="project-block">
-                  <h4>The problem</h4>
+                  <h4>{content.projectLabels.problem}</h4>
                   <p>{project.problem}</p>
                 </div>
                 <div className="project-block">
-                  <h4>What I built</h4>
+                  <h4>{content.projectLabels.approach}</h4>
                   <p>{project.approach}</p>
                 </div>
               </div>

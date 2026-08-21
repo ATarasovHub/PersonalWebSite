@@ -3,6 +3,7 @@ import { ArrowDown, MapPin } from 'lucide-react'
 import GradientBlobs from './GradientBlobs'
 import TiltCard from './TiltCard'
 import { personal } from '../data/profile'
+import { useLanguage } from '../i18n/useLanguage'
 
 const container: Variants = {
   hidden: {},
@@ -18,28 +19,33 @@ const item: Variants = {
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion()
+  const { lang, content } = useLanguage()
+
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
   return (
     <section id="top" className="hero">
       <GradientBlobs />
       <div className="container hero-inner">
         <motion.div
+          /* Re-run the intro when the language changes so the new copy animates in. */
+          key={lang}
           className="hero-text"
           variants={shouldReduceMotion ? undefined : container}
           initial={shouldReduceMotion ? { opacity: 0 } : 'hidden'}
           animate={shouldReduceMotion ? { opacity: 1 } : 'show'}
         >
           <motion.span className="hero-eyebrow" variants={item}>
-            <MapPin size={14} /> {personal.location}
+            <MapPin size={14} /> {content.location}
           </motion.span>
           <motion.h1 className="hero-name" variants={item}>
             {personal.name}
           </motion.h1>
           <motion.p className="hero-role" variants={item}>
-            {personal.role}
+            {content.role}
           </motion.p>
           <motion.p className="hero-tagline" variants={item}>
-            {personal.tagline}
+            {content.tagline}
           </motion.p>
           <motion.div className="hero-cta" variants={item}>
             <a
@@ -47,32 +53,27 @@ export default function Hero() {
               href="#contact"
               onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                scrollTo('contact')
               }}
             >
-              Get in touch
+              {content.hero.primaryCta}
             </a>
             <a
               className="pill-button"
               href="#projects"
               onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                scrollTo('projects')
               }}
             >
-              See my work
+              {content.hero.secondaryCta}
             </a>
           </motion.div>
         </motion.div>
 
-        <motion.div
-          className="hero-visual"
-          variants={shouldReduceMotion ? undefined : container}
-          initial={shouldReduceMotion ? { opacity: 0 } : 'hidden'}
-          animate={shouldReduceMotion ? { opacity: 1 } : 'show'}
-        >
+        <div className="hero-visual">
           <TiltCard />
-        </motion.div>
+        </div>
       </div>
 
       <motion.a
@@ -80,11 +81,11 @@ export default function Hero() {
         href="#about"
         onClick={(e) => {
           e.preventDefault()
-          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+          scrollTo('about')
         }}
         animate={shouldReduceMotion ? {} : { y: [0, 8, 0] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        aria-label="Scroll to About"
+        aria-label={content.hero.scrollLabel}
       >
         <ArrowDown size={18} />
       </motion.a>

@@ -1,4 +1,5 @@
 import './App.css'
+import LanguageProvider from './i18n/LanguageProvider'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -13,7 +14,7 @@ import CursorCloud from './components/CursorCloud'
 
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <CursorCloud />
       <div className="grain-overlay" aria-hidden="true" />
       <BottomFade />
@@ -28,7 +29,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </LanguageProvider>
   )
 }
 
