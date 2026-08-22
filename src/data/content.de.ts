@@ -1,8 +1,8 @@
 import type { Content } from './types'
 
 export const de: Content = {
-  role: 'Backend-Softwareentwickler',
-  roleLine: 'Backend-Entwickler · Java / Spring Boot · On-Premises-KI',
+  role: 'Fullstack-Softwareentwickler',
+  roleLine: 'Fullstack-Entwickler · Java / Spring Boot · React',
   tagline: 'Ich baue Produktivsysteme, die messbar Zeit und Geld sparen.',
   location: 'Dortmund, Deutschland',
   status: 'Offen für Angebote',
@@ -33,7 +33,7 @@ export const de: Content = {
   },
 
   bio: [
-    'Ich bin Backend-Entwickler und mag Systeme, die im Produktivbetrieb langweilig bleiben – vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit der letzten Jahre bestand vor allem aus Java- und Spring-Boot-Microservices für Telekommunikations-Messaging: Bestandssysteme, Routing-Logik und die Infrastruktur, die dafür sorgt, dass Millionen Nachrichten korrekt ankommen.',
+    'Ich bin Fullstack-Entwickler und mag Systeme, die im Produktivbetrieb langweilig bleiben – vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit der letzten Jahre bestand vor allem aus Java- und Spring-Boot-Microservices für Telekommunikations-Messaging – Bestandssysteme, Routing-Logik und die Infrastruktur, die dafür sorgt, dass Millionen Nachrichten korrekt ankommen – dazu React und TypeScript im Frontend.',
     'Die andere Hälfte meiner Arbeit ist On-Premises-KI – lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
     'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst – von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
   ],
@@ -312,8 +312,8 @@ export const de: Content = {
   langToggleLabel: 'Zu Englisch wechseln',
 
   meta: {
-    title: 'Andrii Tarasov — Backend-Softwareentwickler',
+    title: 'Andrii Tarasov — Fullstack-Softwareentwickler',
     description:
-      'Backend-Entwickler in Dortmund mit Schwerpunkt auf Java, Spring Boot und On-Premises-KI. Ich baue Produktivsysteme, die messbar Zeit und Geld sparen.',
+      'Fullstack-Entwickler in Dortmund mit Schwerpunkt auf Java, Spring Boot, React und On-Premises-KI. Ich baue Produktivsysteme, die messbar Zeit und Geld sparen.',
   },
 }

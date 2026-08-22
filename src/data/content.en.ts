@@ -1,8 +1,8 @@
 import type { Content } from './types'
 
 export const en: Content = {
-  role: 'Backend Software Developer',
-  roleLine: 'Backend Developer · Java / Spring Boot · On-Prem AI',
+  role: 'Fullstack Software Developer',
+  roleLine: 'Fullstack Developer · Java / Spring Boot · React',
   tagline: 'I build production systems that save measurable time and money.',
   location: 'Dortmund, Germany',
   status: 'Open to work',
@@ -33,7 +33,7 @@ export const en: Content = {
   },
 
   bio: [
-    "I'm a backend developer who likes systems that stay boring in production — predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging: inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly.",
+    "I'm a fullstack developer who likes systems that stay boring in production — predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging — inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly — with React and TypeScript on the frontend.",
     'The other half of my work is on-prem AI — wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
     "Right now I'm freelancing, building a native Android app for warehouse logistics end to end — requirements, architecture, and the Play Store release.",
   ],
@@ -312,8 +312,8 @@ export const en: Content = {
   langToggleLabel: 'Switch to German',
 
   meta: {
-    title: 'Andrii Tarasov — Backend Software Developer',
+    title: 'Andrii Tarasov — Fullstack Software Developer',
     description:
-      'Backend developer in Dortmund specializing in Java, Spring Boot and on-prem AI. I build production systems that save measurable time and money.',
+      'Fullstack developer in Dortmund specializing in Java, Spring Boot, React and on-prem AI. I build production systems that save measurable time and money.',
   },
 }
