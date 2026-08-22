@@ -3,6 +3,7 @@
 .section {
   padding: 120px 0;
   position: relative;
+  scroll-margin-top: 72px; /* clears the sticky nav */
 }
 
 main {

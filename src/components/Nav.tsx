@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useLanguage } from '../i18n/useLanguage'
@@ -10,6 +10,7 @@ export default function Nav() {
   const { content } = useLanguage()
   const [active, setActive] = useState<string>('about')
   const [open, setOpen] = useState(false)
+  const pendingScroll = useRef<string | null>(null)
 
   const links = ids.map((id) => ({ id, label: content.nav[id] }))
 
@@ -32,9 +33,19 @@ export default function Nav() {
     return () => observer.disconnect()
   }, [])
 
-  const handleClick = (id: string) => {
-    setOpen(false)
+  const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Collapsing the mobile menu shifts the layout, which cancels an in-flight
+  // smooth scroll on mobile browsers. Wait for the collapse to finish instead.
+  const handleClick = (id: string) => {
+    if (open) {
+      pendingScroll.current = id
+      setOpen(false)
+      return
+    }
+    scrollTo(id)
   }
 
   return (
@@ -79,7 +90,13 @@ export default function Nav() {
         </div>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence
+        onExitComplete={() => {
+          const id = pendingScroll.current
+          pendingScroll.current = null
+          if (id) scrollTo(id)
+        }}
+      >
         {open && (
           <motion.nav
             className="nav-mobile"
