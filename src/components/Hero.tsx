@@ -1,6 +1,5 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ArrowDown, Download, MapPin } from 'lucide-react'
-import GradientBlobs from './GradientBlobs'
 import TiltCard from './TiltCard'
 import { personal } from '../data/profile'
 import { useLanguage } from '../i18n/useLanguage'
@@ -25,7 +24,6 @@ export default function Hero() {
 
   return (
     <section id="top" className="hero">
-      <GradientBlobs />
       <div className="container hero-inner">
         <motion.div
           /* Re-run the intro when the language changes so the new copy animates in. */

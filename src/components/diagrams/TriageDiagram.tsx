@@ -26,9 +26,9 @@ export default function TriageDiagram() {
   ]
 
   return (
-    <DiagramFrame title={content.projectLabels.diagramTitle} caption={d.caption} minWidth={680} viewBox="0 0 800 226">
+    <DiagramFrame title={content.projectLabels.diagramTitle} caption={d.caption} minWidth={680} viewBox="0 0 800 232">
       <rect
-        x="196" y="18" width="596" height="160"
+        x="196" y="18" width="596" height="174"
         rx="14"
         fill="none"
         stroke="var(--color-accent-dim)"
@@ -36,7 +36,7 @@ export default function TriageDiagram() {
         strokeDasharray="7 6"
         opacity="0.75"
       />
-      <text x="206" y="198" className="diagram-boundary-label">{d.boundary}</text>
+      <text x="206" y="212" className="diagram-boundary-label">{d.boundary}</text>
 
       {nodes.map((n, i) => (
         <g key={n.label}>

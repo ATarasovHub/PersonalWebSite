@@ -10,12 +10,10 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BottomFade from './components/BottomFade'
-import CursorCloud from './components/CursorCloud'
 
 function App() {
   return (
     <LanguageProvider>
-      <CursorCloud />
       <div className="grain-overlay" aria-hidden="true" />
       <BottomFade />
       <Nav />

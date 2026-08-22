@@ -1,21 +1,25 @@
 :root {
-  --color-bg: #06090a;
-  --color-bg-elevated: #0c1412;
-  --color-surface: #101a17;
-  --color-surface-hover: #142019;
-  --color-border: #1e2b26;
-  --color-text: #eef5f1;
-  --color-text-muted: #93a8a0;
-  --color-accent: #14e0a0;
-  --color-accent-dim: #0a8f66;
-  --color-accent-glow: rgba(20, 224, 160, 0.35);
+  --color-bg: #f7f5f1;
+  --color-bg-elevated: #efece4;
+  --color-surface: #fffefb;
+  --color-surface-hover: #f3f0e9;
+  --color-border: #ddd7c9;
+  --color-text: #17181a;
+  --color-text-muted: #61656a;
+  --color-accent: #1f4b8f;
+  --color-accent-dim: #17386b;
+  --color-accent-glow: rgba(31, 75, 143, 0.18);
+  /* Text sitting on an accent-filled surface. */
+  --color-on-accent: #f7f5f1;
+  /* Page background as components, so overlays can fade into it. */
+  --color-bg-rgb: 247, 245, 241;
 
-  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
 
   --max-width: 1120px;
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -35,11 +39,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Instrument Serif ships a single weight, so headings stay at 400 rather
+   than asking the browser to synthesise a bold. */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   margin: 0;
+  font-weight: 400;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
 }
 
 p {
@@ -87,15 +94,15 @@ img {
 }
 
 .section-heading .index {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   color: var(--color-accent);
   font-size: 0.9rem;
   font-weight: 600;
 }
 
 .section-heading h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 600;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 400;
 }
 
 .section-heading::after {
@@ -129,7 +136,7 @@ img {
 .pill-button.primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: #04120c;
+  color: var(--color-on-accent);
   font-weight: 600;
 }
 
