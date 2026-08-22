@@ -33,9 +33,9 @@ export const en: Content = {
   },
 
   bio: [
-    "I'm a fullstack developer who likes systems that stay boring in production — predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging — inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly — with React and TypeScript on the frontend.",
-    'The other half of my work is on-prem AI — wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
-    "Right now I'm freelancing, building a native Android app for warehouse logistics end to end — requirements, architecture, and the Play Store release.",
+    "I'm a fullstack developer who likes systems that stay boring in production: predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging (inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly), with React and TypeScript on the frontend.",
+    'The other half of my work is on-prem AI: wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
+    "Right now I'm freelancing, building a native Android app for warehouse logistics end to end, from requirements through architecture to the Play Store release.",
   ],
 
   offTheClock: {
@@ -106,7 +106,7 @@ export const en: Content = {
       title: 'On-Prem AI Ticket Triage',
       context: 'tyntec · 2025',
       summary:
-        'A local language model reads, summarizes and routes support tickets — saving €22,080 a year without a byte of customer data leaving the network.',
+        'A local language model reads, summarizes and routes support tickets, saving €22,080 a year without a byte of customer data leaving the network.',
       problem:
         'Support engineers were reading every incoming Jira ticket end to end just to work out what it was about and who should own it. An LLM was the obvious fix, but customer data could not leave the company network, which ruled out every hosted API.',
       approach:
@@ -121,13 +121,13 @@ export const en: Content = {
     },
     {
       title: 'MSISDN Inventory Platform',
-      context: 'tyntec · 2024—2026',
+      context: 'tyntec · 2024-2026',
       summary:
         'One REST API became the single source of truth for phone-number allocation across 56 providers and 18,600 customers.',
       problem:
         'Number allocation was split between a legacy Java EE tool and manual process. With 56 upstream providers feeding numbers to thousands of customers, nothing authoritative said what was allocated, free, or reserved.',
       approach:
-        'I designed and built a REST API owning the whole inventory — allocation, reservation and release — with Flyway-managed schema evolution and a Caffeine cache in front of the hot lookups. Every endpoint is documented through OpenAPI, and the integration suite runs against a real PostgreSQL in Testcontainers on Jenkins, so the tests exercise actual SQL rather than a mock. I also migrated the old Java EE/EJB tool onto this platform with a React frontend.',
+        'I designed and built a REST API owning the whole inventory (allocation, reservation and release) with Flyway-managed schema evolution and a Caffeine cache in front of the hot lookups. Every endpoint is documented through OpenAPI, and the integration suite runs against a real PostgreSQL in Testcontainers on Jenkins, so the tests exercise actual SQL rather than a mock. I also migrated the old Java EE/EJB tool onto this platform with a React frontend.',
       metrics: [
         { value: '56', label: 'upstream providers' },
         { value: '18,600', label: 'customers served' },
@@ -138,7 +138,7 @@ export const en: Content = {
       title: 'Unified Messaging Gateway',
       context: 'Personal project · 2026',
       summary:
-        'One API contract for six messaging channels, routed by price with automatic fallback — built to answer in milliseconds while delivery happens in the background.',
+        'One API contract for six messaging channels, routed by price with automatic fallback, built to answer in milliseconds while delivery happens in the background.',
       problem:
         'Reaching a customer through SMS, WhatsApp or any other channel means a different protocol, a different failure mode and a different price for each one. Calling providers inline also makes the API only as fast as the slowest one, and a burst of traffic can hammer a single recipient.',
       approach:
@@ -153,13 +153,13 @@ export const en: Content = {
     },
     {
       title: 'Warehouse Logistics App',
-      context: 'Freelance · 2026—present',
+      context: 'Freelance · 2026-present',
       summary:
         'An offline-first Android app for warehouse staff, owned end to end from requirements to the Play Store release.',
       problem:
         'A logistics client needed warehouse staff to record stock movements on the floor, where the network is unreliable and a web app simply stops working.',
       approach:
-        'Room/SQLite holds everything on the device with versioned migrations, so an update never costs the user their data. MVVM with Coroutines keeps the UI responsive, and the data leaves the device on demand through Excel export and local backup. I own the whole thing — requirements, architecture, implementation, testing and release.',
+        'Room/SQLite holds everything on the device with versioned migrations, so an update never costs the user their data. MVVM with Coroutines keeps the UI responsive, and the data leaves the device on demand through Excel export and local backup. I own the whole thing: requirements, architecture, implementation, testing and release.',
       metrics: [
         { value: 'End to end', label: 'sole developer' },
         { value: 'Offline', label: 'first by design' },
@@ -172,7 +172,7 @@ export const en: Content = {
   diagrams: {
     triage: {
       caption:
-        'Everything inside the dashed boundary runs on company hardware — no customer data leaves the network.',
+        'Everything inside the dashed boundary runs on company hardware, so no customer data leaves the network.',
       boundary: 'On-premises',
       jira: 'Jira',
       jiraSub: 'webhook on new ticket',
@@ -187,7 +187,7 @@ export const en: Content = {
     },
     stock: {
       caption:
-        'Every write is validated before it reaches the database, and reads flow back as observable streams so the screen updates itself. Nothing needs the network — data only leaves the device when the user exports it.',
+        'Every write is validated before it reaches the database, and reads flow back as observable streams so the screen updates itself. Nothing needs the network, and data only leaves the device when the user exports it.',
       boundary: 'On the device',
       ui: 'Fragments + ViewModels',
       uiSub: 'warehouse · product · history · archive',
@@ -204,7 +204,7 @@ export const en: Content = {
     },
     gateway: {
       caption:
-        'The caller gets an answer as soon as the message is stored. Delivery starts only after that transaction commits, so a slow provider never blocks the request — and a provider callback moves the message to its final state.',
+        'The caller gets an answer as soon as the message is stored. Delivery starts only after that transaction commits, so a slow provider never blocks the request. A provider callback then moves the message to its final state.',
       request: 'POST /messages',
       requestSub: 'one contract, any channel',
       rateLimit: 'Rate limit',
@@ -233,7 +233,7 @@ export const en: Content = {
     {
       role: 'Freelance Software Developer',
       org: 'Self-employed',
-      period: 'Jun 2026 — present',
+      period: 'Jun 2026 - present',
       location: 'Dortmund (remote)',
       summary:
         'Building a native Android app for a logistics client from scratch, owning everything from requirements to the Play Store release.',
@@ -247,12 +247,12 @@ export const en: Content = {
     {
       role: 'Software Developer',
       org: 'tyntec',
-      period: 'Aug 2024 — Jun 2026',
+      period: 'Aug 2024 - Jun 2026',
       location: 'Germany',
       summary:
         'Java/Spring Boot backend work for a global messaging platform, plus building and shipping the team’s first on-prem AI tools.',
       highlights: [
-        'Built an on-prem AI service (Python, FastAPI, Ollama) that reads, summarizes and classifies Jira tickets — saving roughly 7 minutes per ticket, about 552 hours and €22,080 a year, paid back in ~6 weeks',
+        'Built an on-prem AI service (Python, FastAPI, Ollama) that reads, summarizes and classifies Jira tickets, saving roughly 7 minutes per ticket, about 552 hours and €22,080 a year, paid back in ~6 weeks',
         'Shipped a Rocket.Chat support bot that drafts replies with an LLM and routes tickets from a Jira webhook through the AI service',
         'Ran an LLM model-selection experiment tracked in MLflow and blind-evaluated in Label Studio',
         'Designed and built a phone-number inventory REST API (Java 21, Spring Boot 3, PostgreSQL, Flyway, Caffeine, OpenAPI) for 56 providers and roughly 18,600 customers, covered by Testcontainers and Jenkins CI',
@@ -263,7 +263,7 @@ export const en: Content = {
     {
       role: 'University Project',
       org: 'Kharkiv National University of Radio Electronics',
-      period: '2024 — 2025',
+      period: '2024 - 2025',
       location: 'Kharkiv, Ukraine',
       summary:
         'Designed an automated electropneumatic control system for a production line as part of my degree.',
@@ -278,9 +278,9 @@ export const en: Content = {
     {
       title: 'Fachinformatiker für Anwendungsentwicklung',
       org: 'Robert-Bosch-Berufskolleg der Stadt Dortmund',
-      period: '2024 — 2026',
+      period: '2024 - 2026',
       description:
-        'Dual vocational training in application development — Java, Spring, Docker, Kubernetes, Jenkins and CI/CD, alongside on-the-job work at tyntec.',
+        'Dual vocational training in application development: Java, Spring, Docker, Kubernetes, Jenkins and CI/CD, alongside on-the-job work at tyntec.',
       photo: 'rbbk',
       photoAlt:
         'Courtyard of the Robert-Bosch-Berufskolleg vocational college in Dortmund, where Andrii Tarasov trained as an application developer',
@@ -288,7 +288,7 @@ export const en: Content = {
     {
       title: 'B.Sc. Automation & Computer-Integrated Technologies',
       org: 'Kharkiv National University of Radio Electronics',
-      period: '2021 — 2025',
+      period: '2021 - 2025',
       description:
         'Foundations in Python, algorithms, databases, object-oriented programming and software engineering.',
       photo: 'khnure',
@@ -300,7 +300,7 @@ export const en: Content = {
   contact: {
     heading: "Let's talk",
     intro:
-      'Open to backend roles and freelance work. Write to me directly or reach out on LinkedIn — both land with me straight away.',
+      'Open to backend roles and freelance work. Write to me directly or reach out on LinkedIn; both land with me straight away.',
     emailCta: 'Write me an email',
     linkedinCta: 'Connect on LinkedIn',
     copy: 'Copy address',
@@ -312,7 +312,7 @@ export const en: Content = {
   langToggleLabel: 'Switch to German',
 
   meta: {
-    title: 'Andrii Tarasov — Fullstack Software Developer',
+    title: 'Andrii Tarasov | Fullstack Software Developer',
     description:
       'Fullstack developer in Dortmund specializing in Java, Spring Boot, React and on-prem AI. I build production systems that save measurable time and money.',
   },

@@ -10,7 +10,7 @@ export type SkillGroup = {
 export type Project = {
   title: string
   context: string
-  /** One scannable line — the whole case study in a breath. */
+  /** One scannable line: the whole case study in a breath. */
   summary: string
   problem: string
   approach: string

@@ -33,9 +33,9 @@ export const de: Content = {
   },
 
   bio: [
-    'Ich bin Fullstack-Entwickler und mag Systeme, die im Produktivbetrieb langweilig bleiben – vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit der letzten Jahre bestand vor allem aus Java- und Spring-Boot-Microservices für Telekommunikations-Messaging – Bestandssysteme, Routing-Logik und die Infrastruktur, die dafür sorgt, dass Millionen Nachrichten korrekt ankommen – dazu React und TypeScript im Frontend.',
-    'Die andere Hälfte meiner Arbeit ist On-Premises-KI – lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
-    'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst – von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
+    'Ich bin Fullstack-Entwickler und mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit der letzten Jahre bestand vor allem aus Java- und Spring-Boot-Microservices für Telekommunikations-Messaging (Bestandssysteme, Routing-Logik und die Infrastruktur, die dafür sorgt, dass Millionen Nachrichten korrekt ankommen), dazu React und TypeScript im Frontend.',
+    'Die andere Hälfte meiner Arbeit ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
+    'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst, von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
   ],
 
   offTheClock: {
@@ -106,9 +106,9 @@ export const de: Content = {
       title: 'On-Premises-KI zur Ticket-Triage',
       context: 'tyntec · 2025',
       summary:
-        'Ein lokales Sprachmodell liest, fasst zusammen und verteilt Support-Tickets – 22.080 € Ersparnis im Jahr, ohne dass ein Byte Kundendaten das Netz verlässt.',
+        'Ein lokales Sprachmodell liest, fasst zusammen und verteilt Support-Tickets und spart so 22.080 € im Jahr, ohne dass ein Byte Kundendaten das Netz verlässt.',
       problem:
-        'Die Support-Kollegen lasen jedes eingehende Jira-Ticket vollständig durch, nur um herauszufinden, worum es ging und wer zuständig war. Ein Sprachmodell lag als Lösung nahe, doch Kundendaten durften das Firmennetz nicht verlassen – womit jede gehostete API ausschied.',
+        'Die Support-Kollegen lasen jedes eingehende Jira-Ticket vollständig durch, nur um herauszufinden, worum es ging und wer zuständig war. Ein Sprachmodell lag als Lösung nahe, doch Kundendaten durften das Firmennetz nicht verlassen, womit jede gehostete API ausschied.',
       approach:
         'FastAPI holt das Ticket und übergibt es einem lokalen Ollama-Modell für Zusammenfassung und Klassifizierung, prüft die Antwort gegen ein striktes Pydantic-Schema und wiederholt die Anfrage, wenn das Modell etwas Fehlerhaftes liefert. Ein Rocket.Chat-Bot bringt das Ergebnis dorthin, wo das Team ohnehin arbeitet, und entwirft eine Antwort; mit dem Befehl `take TICKET-KEY` übernimmt man das Ticket. Das Modell habe ich über einen in MLflow protokollierten Vergleich mit blinder Bewertung in Label Studio ausgewählt, statt nach Bauchgefühl zu entscheiden.',
       metrics: [
@@ -121,13 +121,13 @@ export const de: Content = {
     },
     {
       title: 'MSISDN-Bestandsplattform',
-      context: 'tyntec · 2024—2026',
+      context: 'tyntec · 2024-2026',
       summary:
         'Eine REST-API wurde zur verlässlichen Quelle für die Rufnummernvergabe über 56 Provider und 18.600 Kunden hinweg.',
       problem:
         'Die Vergabe von Rufnummern verteilte sich auf ein veraltetes Java-EE-Werkzeug und manuelle Abläufe. Bei 56 vorgelagerten Providern, die Nummern für Tausende Kunden lieferten, gab es keine verlässliche Quelle dafür, was vergeben, frei oder reserviert war.',
       approach:
-        'Ich habe eine REST-API entworfen und gebaut, die den gesamten Bestand verwaltet – Vergabe, Reservierung und Freigabe – mit Flyway für die Schema-Evolution und einem Caffeine-Cache vor den häufigen Abfragen. Jeder Endpunkt ist über OpenAPI dokumentiert, und die Integrationstests laufen auf Jenkins gegen eine echte PostgreSQL in Testcontainers, prüfen also tatsächliches SQL statt eines Mocks. Zusätzlich habe ich das alte Java-EE/EJB-Werkzeug auf diese Plattform migriert und ein React-Frontend dafür gebaut.',
+        'Ich habe eine REST-API entworfen und gebaut, die den gesamten Bestand verwaltet (Vergabe, Reservierung und Freigabe), mit Flyway für die Schema-Evolution und einem Caffeine-Cache vor den häufigen Abfragen. Jeder Endpunkt ist über OpenAPI dokumentiert, und die Integrationstests laufen auf Jenkins gegen eine echte PostgreSQL in Testcontainers, prüfen also tatsächliches SQL statt eines Mocks. Zusätzlich habe ich das alte Java-EE/EJB-Werkzeug auf diese Plattform migriert und ein React-Frontend dafür gebaut.',
       metrics: [
         { value: '56', label: 'vorgelagerte Provider' },
         { value: '18.600', label: 'versorgte Kunden' },
@@ -138,11 +138,11 @@ export const de: Content = {
       title: 'Einheitliches Messaging-Gateway',
       context: 'Eigenes Projekt · 2026',
       summary:
-        'Ein API-Vertrag für sechs Kanäle, nach Preis geroutet mit automatischem Ausweichen – die Antwort kommt in Millisekunden, zugestellt wird im Hintergrund.',
+        'Ein API-Vertrag für sechs Kanäle, nach Preis geroutet mit automatischem Ausweichen: Die Antwort kommt in Millisekunden, zugestellt wird im Hintergrund.',
       problem:
         'Einen Kunden über SMS, WhatsApp oder einen anderen Kanal zu erreichen bedeutet für jeden Kanal ein eigenes Protokoll, ein eigenes Fehlerverhalten und einen eigenen Preis. Ruft man die Anbieter direkt im Request auf, ist die API zudem nur so schnell wie der langsamste von ihnen, und eine Lastspitze trifft ungebremst denselben Empfänger.',
       approach:
-        'Die Anfrage wird pro Empfänger begrenzt, als QUEUED gespeichert und sofort mit 202 beantwortet. Die Zustellung startet über ein Ereignis, das erst nach dem Commit der Transaktion veröffentlicht wird – ein langsamer Anbieter kann den Aufrufer damit weder blockieren noch zurückrollen. Der Router sortiert die aktiven Kanäle nach Preis und arbeitet sie ab, bis einer annimmt, mit einer ausdrücklichen Kette WhatsApp → SMS → E-Mail und einer Obergrenze für Versuche. Rückmeldungen der Anbieter kommen über einen per Secret geschützten Webhook und setzen den Endzustand. Alle Anbieter liegen hinter einer Schnittstelle, sodass ein echtes SDK ein Mock ersetzen kann, ohne das Routing anzufassen.',
+        'Die Anfrage wird pro Empfänger begrenzt, als QUEUED gespeichert und sofort mit 202 beantwortet. Die Zustellung startet über ein Ereignis, das erst nach dem Commit der Transaktion veröffentlicht wird. Ein langsamer Anbieter kann den Aufrufer damit weder blockieren noch zurückrollen. Der Router sortiert die aktiven Kanäle nach Preis und arbeitet sie ab, bis einer annimmt, mit einer ausdrücklichen Kette WhatsApp → SMS → E-Mail und einer Obergrenze für Versuche. Rückmeldungen der Anbieter kommen über einen per Secret geschützten Webhook und setzen den Endzustand. Alle Anbieter liegen hinter einer Schnittstelle, sodass ein echtes SDK ein Mock ersetzen kann, ohne das Routing anzufassen.',
       metrics: [
         { value: '6', label: 'Kanäle, ein Vertrag' },
         { value: '202', label: 'Antwort vor der Zustellung' },
@@ -157,9 +157,9 @@ export const de: Content = {
       summary:
         'Eine offline-taugliche Android-App für Lagerpersonal, durchgängig in Eigenregie von den Anforderungen bis zum Play-Store-Release.',
       problem:
-        'Ein Logistikkunde brauchte eine Lösung, mit der das Lagerpersonal Warenbewegungen direkt vor Ort erfassen kann – dort, wo das Netz unzuverlässig ist und eine Web-Anwendung schlicht stehen bleibt.',
+        'Ein Logistikkunde brauchte eine Lösung, mit der das Lagerpersonal Warenbewegungen direkt vor Ort erfassen kann, also dort, wo das Netz unzuverlässig ist und eine Web-Anwendung schlicht stehen bleibt.',
       approach:
-        'Room/SQLite hält alle Daten mit versionierten Migrationen auf dem Gerät, sodass ein Update den Nutzer nie seine Daten kostet. MVVM mit Coroutines hält die Oberfläche flüssig, und die Daten verlassen das Gerät bei Bedarf über Excel-Export und lokale Sicherung. Das Projekt liegt vollständig in meiner Hand – Anforderungen, Architektur, Umsetzung, Tests und Veröffentlichung.',
+        'Room/SQLite hält alle Daten mit versionierten Migrationen auf dem Gerät, sodass ein Update den Nutzer nie seine Daten kostet. MVVM mit Coroutines hält die Oberfläche flüssig, und die Daten verlassen das Gerät bei Bedarf über Excel-Export und lokale Sicherung. Das Projekt liegt vollständig in meiner Hand: Anforderungen, Architektur, Umsetzung, Tests und Veröffentlichung.',
       metrics: [
         { value: 'Durchgängig', label: 'alleinverantwortlich' },
         { value: 'Offline', label: 'von Grund auf ausgelegt' },
@@ -172,7 +172,7 @@ export const de: Content = {
   diagrams: {
     triage: {
       caption:
-        'Alles innerhalb der gestrichelten Grenze läuft auf firmeneigener Hardware – keine Kundendaten verlassen das Netz.',
+        'Alles innerhalb der gestrichelten Grenze läuft auf firmeneigener Hardware, keine Kundendaten verlassen das Netz.',
       boundary: 'On-Premises',
       jira: 'Jira',
       jiraSub: 'Webhook bei neuem Ticket',
@@ -187,7 +187,7 @@ export const de: Content = {
     },
     stock: {
       caption:
-        'Jeder Schreibvorgang wird geprüft, bevor er die Datenbank erreicht; Lesevorgänge kommen als beobachtbare Ströme zurück, sodass sich die Oberfläche selbst aktualisiert. Nichts davon braucht Netz – die Daten verlassen das Gerät nur, wenn der Nutzer sie exportiert.',
+        'Jeder Schreibvorgang wird geprüft, bevor er die Datenbank erreicht; Lesevorgänge kommen als beobachtbare Ströme zurück, sodass sich die Oberfläche selbst aktualisiert. Nichts davon braucht Netz, die Daten verlassen das Gerät nur, wenn der Nutzer sie exportiert.',
       boundary: 'Auf dem Gerät',
       ui: 'Fragments + ViewModels',
       uiSub: 'Lager · Artikel · Historie · Archiv',
@@ -204,7 +204,7 @@ export const de: Content = {
     },
     gateway: {
       caption:
-        'Der Aufrufer erhält eine Antwort, sobald die Nachricht gespeichert ist. Die Zustellung beginnt erst nach dem Commit dieser Transaktion, sodass ein langsamer Anbieter den Request nie blockiert – ein Rückruf des Anbieters setzt anschließend den Endzustand.',
+        'Der Aufrufer erhält eine Antwort, sobald die Nachricht gespeichert ist. Die Zustellung beginnt erst nach dem Commit dieser Transaktion, sodass ein langsamer Anbieter den Request nie blockiert. Ein Rückruf des Anbieters setzt anschließend den Endzustand.',
       request: 'POST /messages',
       requestSub: 'ein Vertrag, jeder Kanal',
       rateLimit: 'Ratenbegrenzung',
@@ -236,7 +236,7 @@ export const de: Content = {
       period: 'seit Juni 2026',
       location: 'Dortmund (remote)',
       summary:
-        'Entwicklung einer nativen Android-App für einen Logistikkunden von Grund auf – von den Anforderungen bis zum Release im Play Store in eigener Verantwortung.',
+        'Entwicklung einer nativen Android-App für einen Logistikkunden von Grund auf, von den Anforderungen bis zum Release im Play Store in eigener Verantwortung.',
       highlights: [
         'Kotlin-App mit MVVM-Architektur, durchgängig mit ViewModels und Coroutines',
         'Local-First-Datenschicht auf Room/SQLite mit versionierten Migrationen',
@@ -247,12 +247,12 @@ export const de: Content = {
     {
       role: 'Softwareentwickler',
       org: 'tyntec',
-      period: 'Aug. 2024 — Juni 2026',
+      period: 'Aug. 2024 - Juni 2026',
       location: 'Deutschland',
       summary:
         'Backend-Entwicklung mit Java und Spring Boot für eine weltweite Messaging-Plattform, dazu Aufbau und Einführung der ersten On-Premises-KI-Werkzeuge im Team.',
       highlights: [
-        'Aufbau eines On-Premises-KI-Dienstes (Python, FastAPI, Ollama), der Jira-Tickets liest, zusammenfasst und klassifiziert – rund 7 Minuten Ersparnis pro Ticket, etwa 552 Stunden und 22.080 € pro Jahr, amortisiert in rund 6 Wochen',
+        'Aufbau eines On-Premises-KI-Dienstes (Python, FastAPI, Ollama), der Jira-Tickets liest, zusammenfasst und klassifiziert, rund 7 Minuten Ersparnis pro Ticket, etwa 552 Stunden und 22.080 € pro Jahr, amortisiert in rund 6 Wochen',
         'Entwicklung eines Rocket.Chat-Support-Bots, der Antworten per Sprachmodell entwirft und Tickets über einen Jira-Webhook durch den KI-Dienst leitet',
         'Durchführung eines Modellvergleichs, protokolliert in MLflow und blind bewertet in Label Studio',
         'Entwurf und Umsetzung einer REST-API zur Rufnummernverwaltung (Java 21, Spring Boot 3, PostgreSQL, Flyway, Caffeine, OpenAPI) für 56 Provider und rund 18.600 Kunden, abgesichert durch Testcontainers und Jenkins CI',
@@ -263,7 +263,7 @@ export const de: Content = {
     {
       role: 'Studienprojekt',
       org: 'Nationale Universität für Radioelektronik Charkiw',
-      period: '2024 — 2025',
+      period: '2024 - 2025',
       location: 'Charkiw, Ukraine',
       summary:
         'Entwurf einer automatisierten elektropneumatischen Steuerung für eine Fertigungslinie im Rahmen des Studiums.',
@@ -278,9 +278,9 @@ export const de: Content = {
     {
       title: 'Fachinformatiker für Anwendungsentwicklung',
       org: 'Robert-Bosch-Berufskolleg der Stadt Dortmund',
-      period: '2024 — 2026',
+      period: '2024 - 2026',
       description:
-        'Duale Ausbildung in der Anwendungsentwicklung – Java, Spring, Docker, Kubernetes, Jenkins und CI/CD, begleitend zur praktischen Arbeit bei tyntec.',
+        'Duale Ausbildung in der Anwendungsentwicklung: Java, Spring, Docker, Kubernetes, Jenkins und CI/CD, begleitend zur praktischen Arbeit bei tyntec.',
       photo: 'rbbk',
       photoAlt:
         'Innenhof des Robert-Bosch-Berufskollegs in Dortmund, wo Andrii Tarasov seine Ausbildung zum Fachinformatiker absolvierte',
@@ -288,7 +288,7 @@ export const de: Content = {
     {
       title: 'B.Sc. Automatisierung und computerintegrierte Technologien',
       org: 'Nationale Universität für Radioelektronik Charkiw',
-      period: '2021 — 2025',
+      period: '2021 - 2025',
       description:
         'Grundlagen in Python, Algorithmen, Datenbanken, objektorientierter Programmierung und Software-Engineering.',
       photo: 'khnure',
@@ -300,7 +300,7 @@ export const de: Content = {
   contact: {
     heading: 'Sprechen wir',
     intro:
-      'Ich bin offen für Backend-Positionen und freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn – beides erreicht mich sofort.',
+      'Ich bin offen für Backend-Positionen und freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
     emailCta: 'E-Mail schreiben',
     linkedinCta: 'Auf LinkedIn vernetzen',
     copy: 'Adresse kopieren',
@@ -312,7 +312,7 @@ export const de: Content = {
   langToggleLabel: 'Zu Englisch wechseln',
 
   meta: {
-    title: 'Andrii Tarasov — Fullstack-Softwareentwickler',
+    title: 'Andrii Tarasov | Fullstack-Softwareentwickler',
     description:
       'Fullstack-Entwickler in Dortmund mit Schwerpunkt auf Java, Spring Boot, React und On-Premises-KI. Ich baue Produktivsysteme, die messbar Zeit und Geld sparen.',
   },

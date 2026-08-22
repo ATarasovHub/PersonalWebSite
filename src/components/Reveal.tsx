@@ -23,7 +23,7 @@ const offsets: Record<Direction, { x?: number; y?: number; scale?: number }> = {
 
 /**
  * Scroll-triggered reveal. Replays whenever the element re-enters the
- * viewport — scrolling back up plays it again rather than leaving the
+ * viewport, so scrolling back up plays it again rather than leaving the
  * page visually static.
  */
 export default function Reveal({

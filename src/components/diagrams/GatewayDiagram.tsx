@@ -29,7 +29,7 @@ export default function GatewayDiagram() {
 
   return (
     <DiagramFrame title={content.projectLabels.diagramTitle} caption={d.caption} minWidth={720} viewBox="0 0 840 320">
-      {/* synchronous leg — returns 202 without waiting for a provider */}
+      {/* synchronous leg: returns 202 without waiting for a provider */}
       <DiagramNode x={10} y={40} label={d.request} sub={d.requestSub} />
       {arrow(186, 77, 218, 77)}
       <DiagramNode x={220} y={40} label={d.rateLimit} sub={d.rateLimitSub} accent />

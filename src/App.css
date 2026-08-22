@@ -11,7 +11,7 @@ main {
 
 /* ---------- full-page film effects ---------- */
 
-/* Fine film grain over everything — cheap texture, no images loaded. */
+/* Fine film grain over everything: cheap texture, no images loaded. */
 .grain-overlay {
   position: fixed;
   inset: 0;
@@ -156,7 +156,7 @@ main {
   color: var(--color-text);
 }
 
-/* EN / DE switch — the pill slides between the two options. */
+/* EN / DE switch: the pill slides between the two options. */
 .lang-toggle {
   display: inline-flex;
   align-items: center;
@@ -590,7 +590,7 @@ main {
   margin-left: 6px;
 }
 
-/* Personal aside at the end of the bio — warmer than the paragraphs above
+/* Personal aside at the end of the bio, warmer than the paragraphs above
    it, so it gets its own tint rather than reading as more of the pitch. */
 .off-the-clock {
   display: flex;

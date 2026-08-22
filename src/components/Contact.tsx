@@ -16,7 +16,7 @@ export default function Contact() {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      /* Clipboard blocked — the address is visible on the button anyway. */
+      /* Clipboard blocked, the address is visible on the button anyway. */
     }
   }
 

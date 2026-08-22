@@ -4,7 +4,7 @@ export const personal = {
   email: 'tarasovandri10@gmail.com',
   linkedin: 'https://linkedin.com/in/tarasovandri',
   linkedinLabel: 'linkedin.com/in/tarasovandri',
-  /** Served from public/ — the path picks up Vite's base at build time. */
+  /** Served from public/, so the path picks up Vite's base at build time. */
   cv: `${import.meta.env.BASE_URL}Andrii-Tarasov-CV.pdf`,
   cvFileName: 'Andrii-Tarasov-CV.pdf',
   siteUrl: 'https://andriitarasov.de/',

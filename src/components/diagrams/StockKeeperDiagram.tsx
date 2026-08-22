@@ -20,7 +20,7 @@ export default function StockKeeperDiagram() {
 
   return (
     <DiagramFrame title={content.projectLabels.diagramTitle} caption={d.caption} minWidth={700} viewBox="0 0 820 330">
-      {/* device boundary — nothing leaves it unless exported */}
+      {/* device boundary: nothing leaves it unless exported */}
       <rect
         x="14" y="14" width="560" height="302"
         rx="14" fill="none"

@@ -31,7 +31,7 @@ export default function About() {
             <p className="off-the-clock">
               <Volleyball size={17} aria-hidden="true" />
               <span>
-                <strong>{content.offTheClock.label}</strong> — {content.offTheClock.text}
+                <strong>{content.offTheClock.label}</strong>: {content.offTheClock.text}
               </span>
             </p>
           </Reveal>

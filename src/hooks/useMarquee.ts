@@ -22,7 +22,7 @@ type Options = {
  * the halfway point wraps back to the start without a visible seam.
  *
  * The mouse can drag the track, which costs the page nothing. The wheel
- * is deliberately left alone — that belongs to the page's own scrolling.
+ * is deliberately left alone, since that belongs to the page's own scrolling.
  */
 export function useMarquee({ paused = false, step = 444 }: Options = {}) {
   const ref = useRef<HTMLDivElement>(null)
@@ -56,7 +56,7 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     el.scrollTo({ left: target, behavior: 'smooth' })
   }, [hold, step])
 
-  /** Jump to a fraction (0–1) of the way through one copy of the list. */
+  /** Jump to a fraction (0-1) of the way through one copy of the list. */
   const seek = useCallback((fraction: number) => {
     const el = ref.current
     if (!el) return
