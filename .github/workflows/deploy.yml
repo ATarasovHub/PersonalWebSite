@@ -30,6 +30,8 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+        env:
+          BASE_PATH: /
 
       - uses: actions/configure-pages@v5
 

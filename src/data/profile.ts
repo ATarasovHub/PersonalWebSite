@@ -7,5 +7,5 @@ export const personal = {
   /** Served from public/ — the path picks up Vite's base at build time. */
   cv: `${import.meta.env.BASE_URL}Andrii-Tarasov-CV.pdf`,
   cvFileName: 'Andrii-Tarasov-CV.pdf',
-  siteUrl: 'https://atarasovhub.github.io/PersonalWebSite/',
+  siteUrl: 'https://andriitarasov.de/',
 }

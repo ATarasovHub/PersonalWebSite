@@ -4,11 +4,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
   <url>
-    <loc>https://atarasovhub.github.io/PersonalWebSite/</loc>
+    <loc>https://andriitarasov.de/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://atarasovhub.github.io/PersonalWebSite/" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://atarasovhub.github.io/PersonalWebSite/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://atarasovhub.github.io/PersonalWebSite/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://andriitarasov.de/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://andriitarasov.de/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://andriitarasov.de/" />
   </url>
 </urlset>
