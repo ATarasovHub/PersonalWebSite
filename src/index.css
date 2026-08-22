@@ -11,8 +11,23 @@
   --color-accent-glow: rgba(31, 75, 143, 0.18);
   /* Text sitting on an accent-filled surface. */
   --color-on-accent: #f7f5f1;
-  /* Page background as components, so overlays can fade into it. */
+
+  /* Components, so overlays and shadows can be mixed at any alpha. */
   --color-bg-rgb: 247, 245, 241;
+  --color-accent-rgb: 31, 75, 143;
+  /* Hairlines and scrims drawn over photos and diagrams. */
+  --color-ink-rgb: 23, 24, 26;
+  /* Paper casts a soft grey shadow; the dark theme casts a black one, so
+     both the colour and the alphas move with the theme. */
+  --color-shadow-rgb: 23, 24, 26;
+  --shadow-alpha-card: 0.18;
+  --shadow-alpha-soft: 0.22;
+  --shadow-alpha-lift: 0.24;
+  --shadow-alpha-panel: 0.28;
+  --color-scrim: rgba(23, 24, 26, 0.42);
+
+  --grain-blend: multiply;
+  --grain-opacity: 0.05;
 
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   --font-body: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
@@ -20,6 +35,38 @@
   --max-width: 1120px;
 
   color-scheme: light;
+}
+
+/* The original neon scheme, kept as an opt-in. Only the palette changes:
+   the type and the layout are the same in both. */
+:root[data-theme='dark'] {
+  --color-bg: #06090a;
+  --color-bg-elevated: #0c1412;
+  --color-surface: #101a17;
+  --color-surface-hover: #142019;
+  --color-border: #1e2b26;
+  --color-text: #eef5f1;
+  --color-text-muted: #93a8a0;
+  --color-accent: #14e0a0;
+  --color-accent-dim: #0a8f66;
+  --color-accent-glow: rgba(20, 224, 160, 0.35);
+  --color-on-accent: #04120c;
+
+  --color-bg-rgb: 6, 9, 10;
+  --color-accent-rgb: 20, 224, 160;
+  --color-ink-rgb: 255, 255, 255;
+  --color-shadow-rgb: 0, 0, 0;
+  --shadow-alpha-card: 0.7;
+  --shadow-alpha-soft: 0.8;
+  --shadow-alpha-lift: 0.85;
+  --shadow-alpha-panel: 0.95;
+  --color-scrim: rgba(3, 6, 6, 0.78);
+
+  /* Multiplying grain would be invisible on a dark ground. */
+  --grain-blend: normal;
+  --grain-opacity: 0.035;
+
+  color-scheme: dark;
 }
 
 * {

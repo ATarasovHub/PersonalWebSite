@@ -310,6 +310,10 @@ export const en: Content = {
 
   footer: 'Built with React & Framer Motion',
   langToggleLabel: 'Switch to German',
+  themeToggle: {
+    toDark: 'Switch to the dark theme',
+    toLight: 'Switch to the light theme',
+  },
 
   meta: {
     title: 'Andrii Tarasov | Fullstack Software Developer',

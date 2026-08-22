@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useLanguage } from '../i18n/useLanguage'
 import LangToggle from './LangToggle'
+import ThemeToggle from './ThemeToggle'
 
 const ids = ['about', 'skills', 'projects', 'experience', 'education', 'contact'] as const
 
@@ -83,6 +84,7 @@ export default function Nav() {
         </nav>
 
         <div className="nav-actions">
+          <ThemeToggle />
           <LangToggle />
           <button className="nav-toggle" onClick={() => setOpen((v) => !v)} aria-label="Menu">
             {open ? <X size={22} /> : <Menu size={22} />}

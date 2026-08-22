@@ -162,6 +162,10 @@ export type Content = {
 
   footer: string
   langToggleLabel: string
+  themeToggle: {
+    toDark: string
+    toLight: string
+  }
 
   /** Browser tab title and meta description. */
   meta: {

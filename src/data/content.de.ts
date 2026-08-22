@@ -310,6 +310,10 @@ export const de: Content = {
 
   footer: 'Erstellt mit React & Framer Motion',
   langToggleLabel: 'Zu Englisch wechseln',
+  themeToggle: {
+    toDark: 'Zum dunklen Design wechseln',
+    toLight: 'Zum hellen Design wechseln',
+  },
 
   meta: {
     title: 'Andrii Tarasov | Fullstack-Softwareentwickler',

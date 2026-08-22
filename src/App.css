@@ -18,8 +18,8 @@ main {
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
   contain: strict;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -121,6 +121,31 @@ main {
   background: none;
   border: none;
   color: var(--color-text);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  transition: color 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent-dim);
+  background: var(--color-surface-hover);
+}
+
+/* The icon is keyed on the theme, so it spins in on each swap. */
+.theme-toggle-icon {
+  display: inline-flex;
 }
 
 /* EN / DE switch: the pill slides between the two options. */
@@ -347,7 +372,7 @@ main {
   box-shadow:
     calc((var(--pointer-from-left) * -24px) + 12px)
     calc((var(--pointer-from-top) * -24px) + 24px)
-    48px -12px rgba(23, 24, 26, 0.18);
+    48px -12px rgba(var(--color-shadow-rgb), var(--shadow-alpha-card));
 }
 
 .tilt-card > * {
@@ -361,8 +386,8 @@ main {
   z-index: 1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(23, 24, 26, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23, 24, 26, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(var(--color-ink-rgb), 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-ink-rgb), 0.06) 1px, transparent 1px);
   background-size: 26px 26px, 26px 26px;
   background-position: var(--background-x) var(--background-y);
 }
@@ -410,7 +435,7 @@ main {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(31, 75, 143, 0.12) 0%,
+    rgba(var(--color-accent-rgb), 0.12) 0%,
     transparent 28%,
     transparent 58%,
     rgba(var(--color-bg-rgb), 0.94) 100%
@@ -429,7 +454,7 @@ main {
   gap: 10px;
   padding: 10px 14px;
   border-radius: 14px;
-  border: 1px solid rgba(23, 24, 26, 0.08);
+  border: 1px solid rgba(var(--color-ink-rgb), 0.12);
   background: rgba(var(--color-bg-rgb), 0.78);
   backdrop-filter: blur(16px);
   font-size: 0.78rem;
@@ -454,9 +479,9 @@ main {
 }
 
 @keyframes pulse-dot {
-  0% { box-shadow: 0 0 0 0 rgba(31, 75, 143, 0.45); }
-  70% { box-shadow: 0 0 0 8px rgba(31, 75, 143, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(31, 75, 143, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0.45); }
+  70% { box-shadow: 0 0 0 8px rgba(var(--color-accent-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--color-accent-rgb), 0); }
 }
 
 .tilt-place {
@@ -595,7 +620,7 @@ main {
   border-color: var(--color-accent-dim);
   background: var(--color-surface-hover);
   box-shadow:
-    0 18px 40px -18px rgba(23, 24, 26, 0.22),
+    0 18px 40px -18px rgba(var(--color-shadow-rgb), var(--shadow-alpha-soft)),
     0 0 28px -12px var(--color-accent-glow);
 }
 
@@ -612,7 +637,7 @@ main {
 
 /* Chips brighten together with their card, then lift individually. */
 .skill-group:hover .skill-chip {
-  border-color: rgba(31, 75, 143, 0.32);
+  border-color: rgba(var(--color-accent-rgb), 0.32);
   color: var(--color-text);
 }
 
@@ -723,7 +748,7 @@ main {
 .project-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-accent-dim);
-  box-shadow: 0 24px 50px -24px rgba(23, 24, 26, 0.24);
+  box-shadow: 0 24px 50px -24px rgba(var(--color-shadow-rgb), var(--shadow-alpha-lift));
 }
 
 .project-card:hover::before {
@@ -948,7 +973,7 @@ main {
   justify-content: center;
   padding: max(20px, 4vh) 20px;
   overflow-y: auto;
-  background: rgba(23, 24, 26, 0.42);
+  background: var(--color-scrim);
   backdrop-filter: blur(10px);
 }
 
@@ -959,7 +984,7 @@ main {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 22px;
-  box-shadow: 0 40px 90px -30px rgba(23, 24, 26, 0.28), 0 0 40px -20px var(--color-accent-glow);
+  box-shadow: 0 40px 90px -30px rgba(var(--color-shadow-rgb), var(--shadow-alpha-panel)), 0 0 40px -20px var(--color-accent-glow);
 }
 
 .modal-head {
@@ -1217,7 +1242,7 @@ main {
 .education-card:hover {
   transform: translateY(-5px);
   border-color: var(--color-accent-dim);
-  box-shadow: 0 22px 46px -22px rgba(23, 24, 26, 0.24);
+  box-shadow: 0 22px 46px -22px rgba(var(--color-shadow-rgb), var(--shadow-alpha-lift));
 }
 
 .education-photo {
@@ -1248,7 +1273,7 @@ main {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(23, 24, 26, 0.06) 0%, transparent 45%, rgba(var(--color-bg-rgb), 0.94) 100%);
+  background: linear-gradient(180deg, rgba(var(--color-shadow-rgb), 0.1) 0%, transparent 45%, rgba(var(--color-bg-rgb), 0.94) 100%);
 }
 
 .education-photo figcaption {
@@ -1370,7 +1395,7 @@ main {
   transform: translateY(-3px);
   border-color: var(--color-accent-dim);
   background: var(--color-surface-hover);
-  box-shadow: 0 18px 40px -20px rgba(23, 24, 26, 0.22), 0 0 26px -14px var(--color-accent-glow);
+  box-shadow: 0 18px 40px -20px rgba(var(--color-shadow-rgb), var(--shadow-alpha-soft)), 0 0 26px -14px var(--color-accent-glow);
 }
 
 .contact-action.primary {
