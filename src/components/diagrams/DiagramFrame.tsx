@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import { useRef, type ReactNode } from 'react'
+import { gsap, useGSAP, motionQuery } from '../../animation/gsap'
 
 type DiagramFrameProps = {
   title: string
@@ -17,8 +18,48 @@ export default function DiagramFrame({
   viewBox,
   children,
 }: DiagramFrameProps) {
+  const ref = useRef<HTMLElement>(null)
+
+  // The schematic assembles itself: boundary, then boxes, then the arrows
+  // between them. Once it stands, the dashed arrows drift to show direction.
+  useGSAP(() => {
+    const media = gsap.matchMedia()
+    media.add(motionQuery, () => {
+      const svg = ref.current?.querySelector('svg')
+      if (!svg) return
+      const flows = svg.querySelectorAll('.diagram-flow')
+
+      const links = svg.querySelectorAll<SVGElement>('.diagram-link')
+      const build = gsap.timeline({ delay: 0.35, defaults: { ease: 'power2.out' } })
+        .from(svg.querySelectorAll('.diagram-boundary'), { opacity: 0, duration: 0.6 }, 0)
+        .from(svg.querySelectorAll('.diagram-node'), {
+          opacity: 0, y: 14, scale: 0.94, transformOrigin: '50% 50%',
+          stagger: 0.07, duration: 0.5,
+        }, 0.08)
+        .from(flows, { opacity: 0, duration: 0.35, stagger: 0.07 }, 0.34)
+        // Solid feedback paths draw themselves along their route. DrawSVG works
+        // through the dash pattern, so hand the stroke back once it is whole.
+        .from(links, {
+          drawSVG: 0, opacity: 0, duration: 0.65, stagger: 0.12, ease: 'power2.inOut',
+          onComplete: () => links.forEach((link) => {
+            link.style.removeProperty('stroke-dasharray')
+            link.style.removeProperty('stroke-dashoffset')
+          }),
+        }, 0.46)
+        .from(svg.querySelectorAll(':scope > text'), { opacity: 0, duration: 0.4, stagger: 0.05 }, 0.6)
+
+      const drift = gsap.fromTo(flows,
+        { strokeDashoffset: 12 },
+        { strokeDashoffset: 0, duration: 1.1, ease: 'none', repeat: -1, paused: true },
+      )
+      build.eventCallback('onComplete', () => drift.play())
+      return () => { build.kill(); drift.kill() }
+    })
+    return () => media.revert()
+  }, { scope: ref })
+
   return (
-    <figure className="diagram">
+    <figure className="diagram" ref={ref}>
       <figcaption className="diagram-title">{title}</figcaption>
 
       <div className="diagram-scroll">
@@ -56,7 +97,7 @@ export function DiagramNode({ x, y, w = 176, h = 74, label, sub, accent }: NodeP
   const subLines = sub === undefined ? [] : Array.isArray(sub) ? sub : [sub]
 
   return (
-    <g>
+    <g className="diagram-node">
       <rect
         x={x} y={y} width={w} height={h}
         rx="12"

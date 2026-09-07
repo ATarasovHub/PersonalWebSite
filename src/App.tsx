@@ -1,4 +1,5 @@
 import './App.css'
+import './gsap.css'
 import LanguageProvider from './i18n/LanguageProvider'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
@@ -10,23 +11,26 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BottomFade from './components/BottomFade'
+import MotionSurface from './components/MotionSurface'
 
 function App() {
   return (
     <LanguageProvider>
-      <div className="grain-overlay" aria-hidden="true" />
-      <BottomFade />
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
+      <MotionSurface>
+        <div className="grain-overlay" aria-hidden="true" />
+        <BottomFade />
+        <Nav />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+      </MotionSurface>
     </LanguageProvider>
   )
 }

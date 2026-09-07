@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import DiagramFrame, { DiagramNode } from './DiagramFrame'
 import { useLanguage } from '../../i18n/useLanguage'
 
@@ -10,20 +9,12 @@ import { useLanguage } from '../../i18n/useLanguage'
 export default function GatewayDiagram() {
   const { content } = useLanguage()
   const d = content.diagrams.gateway
-  const shouldReduceMotion = useReducedMotion()
-
-  const flow = shouldReduceMotion
-    ? {}
-    : {
-        strokeDashoffset: [12, 0],
-        transition: { duration: 1.1, repeat: Infinity, ease: 'linear' as const },
-      }
 
   const arrow = (x1: number, y1: number, x2: number, y2: number) => (
-    <motion.line
+    <line
       x1={x1} y1={y1} x2={x2} y2={y2}
       stroke="var(--color-accent)" strokeWidth="2" strokeDasharray="6 6"
-      markerEnd="url(#arrow)" animate={flow}
+      markerEnd="url(#arrow)" className="diagram-flow"
     />
   )
 
@@ -40,6 +31,7 @@ export default function GatewayDiagram() {
 
       {/* the commit boundary is what starts async delivery */}
       <line
+        className="diagram-boundary"
         x1={518} y1={114} x2={518} y2={150}
         stroke="var(--color-accent-dim)" strokeWidth="1.5" strokeDasharray="5 5" markerEnd="url(#arrow-dim)"
       />
@@ -52,6 +44,7 @@ export default function GatewayDiagram() {
 
       {/* provider callback closes the loop */}
       <path
+        className="diagram-link"
         d="M98 236 L98 282 L700 282 L700 112"
         fill="none" stroke="var(--color-border)" strokeWidth="1.5" markerEnd="url(#arrow-dim)"
       />

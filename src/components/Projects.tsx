@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import Section from './Section'
 import ProjectModal from './ProjectModal'
+import AnimatedStat from './AnimatedStat'
 import { useMarquee } from '../hooks/useMarquee'
 import { useLanguage } from '../i18n/useLanguage'
 import type { Project } from '../data/types'
@@ -10,9 +10,14 @@ import type { Project } from '../data/types'
 export default function Projects() {
   const { content } = useLanguage()
   const [open, setOpen] = useState<Project | null>(null)
+  // The dialog stays mounted until its own closing animation has finished.
+  const [closing, setClosing] = useState(false)
+  // The card the dialog grew out of, so it can shrink back into it.
+  const [origin, setOrigin] = useState<HTMLElement | null>(null)
   const { ref, progress, seek, nudge } = useMarquee({ paused: open !== null })
   // Stable, so the dialog's key handler is not re-registered every render.
-  const close = useCallback(() => setOpen(null), [])
+  const close = useCallback(() => setClosing(true), [])
+  const closed = useCallback(() => { setOpen(null); setClosing(false) }, [])
 
   // Duplicated once so the track can wrap at the halfway point unnoticed.
   const looped = [...content.projects, ...content.projects]
@@ -37,13 +42,20 @@ export default function Projects() {
               <div className="project-metrics">
                 {project.metrics.map((metric) => (
                   <div key={metric.label} className="project-metric">
-                    <span className="project-metric-value">{metric.value}</span>
+                    <AnimatedStat className="project-metric-value" value={metric.value} />
                     <span className="project-metric-label">{metric.label}</span>
                   </div>
                 ))}
               </div>
 
-              <button className="project-more" onClick={() => setOpen(project)}>
+              <button
+                className="project-more"
+                onClick={(event) => {
+                  event.currentTarget.focus({ preventScroll: true })
+                  setOrigin(event.currentTarget.closest('.project-card'))
+                  setOpen(project)
+                }}
+              >
                 {content.projectLabels.more}
                 <ArrowRight size={16} />
               </button>
@@ -86,9 +98,9 @@ export default function Projects() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {open && <ProjectModal project={open} onClose={close} />}
-      </AnimatePresence>
+      {open && (
+        <ProjectModal project={open} origin={origin} closing={closing} onClose={close} onClosed={closed} />
+      )}
     </Section>
   )
 }

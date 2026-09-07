@@ -53,7 +53,7 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     let target = el.scrollLeft + direction * step
     if (target < 0) target += half
     if (target >= half) target -= half
-    el.scrollTo({ left: target, behavior: 'smooth' })
+    el.scrollTo({ left: target, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
   }, [hold, step])
 
   /** Jump to a fraction (0-1) of the way through one copy of the list. */
@@ -69,7 +69,11 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     const el = ref.current
     if (!el) return
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let prefersReducedMotion = motionPreference.matches
+    let visible = false
+    let hovered = false
+    let focused = false
 
     let rafId: number | null = null
     let lastTs = 0
@@ -85,6 +89,11 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     }
 
     const step_ = (ts: number) => {
+      if (!visible || document.hidden) {
+        rafId = null
+        lastTs = 0
+        return
+      }
       if (lastTs === 0) lastTs = ts
       const dt = Math.min((ts - lastTs) / 1000, 0.1)
       lastTs = ts
@@ -94,7 +103,7 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
         // The visitor owns the position; follow it rather than fight it.
         offset.current = el.scrollLeft
       } else {
-        const drift = paused || prefersReducedMotion ? 0 : DRIFT_SPEED
+        const drift = paused || prefersReducedMotion || hovered || focused ? 0 : DRIFT_SPEED
         // Resync if anything else moved the track since the last frame.
         if (Math.abs(el.scrollLeft - offset.current) > 1.5) offset.current = el.scrollLeft
         offset.current += (drift + velocity.current) * dt
@@ -121,7 +130,24 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
 
       rafId = requestAnimationFrame(step_)
     }
-    rafId = requestAnimationFrame(step_)
+    const start = () => {
+      if (rafId === null && visible && !document.hidden) rafId = requestAnimationFrame(step_)
+    }
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; start() })
+    observer.observe(el)
+    const onEnter = () => { hovered = true }
+    const onLeave = () => { hovered = false; hold() }
+    const onFocus = () => { focused = true; velocity.current = 0 }
+    const onBlur = (event: FocusEvent) => {
+      if (!el.contains(event.relatedTarget as Node | null)) { focused = false; hold() }
+    }
+    const onMotionChange = () => { prefersReducedMotion = motionPreference.matches; velocity.current = 0 }
+    el.addEventListener('pointerenter', onEnter)
+    el.addEventListener('pointerleave', onLeave)
+    el.addEventListener('focusin', onFocus)
+    el.addEventListener('focusout', onBlur)
+    document.addEventListener('visibilitychange', start)
+    motionPreference.addEventListener('change', onMotionChange)
 
     // Drag or swipe to scrub, with a flick carrying over when released.
     let startX = 0
@@ -180,6 +206,13 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
     window.addEventListener('pointercancel', endDrag)
 
     return () => {
+      observer.disconnect()
+      el.removeEventListener('pointerenter', onEnter)
+      el.removeEventListener('pointerleave', onLeave)
+      el.removeEventListener('focusin', onFocus)
+      el.removeEventListener('focusout', onBlur)
+      document.removeEventListener('visibilitychange', start)
+      motionPreference.removeEventListener('change', onMotionChange)
       if (rafId) cancelAnimationFrame(rafId)
       el.removeEventListener('pointerdown', onPointerDown)
       window.removeEventListener('pointermove', onPointerMove)

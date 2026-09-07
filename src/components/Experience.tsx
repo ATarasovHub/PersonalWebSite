@@ -1,32 +1,50 @@
 import { useRef, useState } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { gsap, useGSAP, motionQuery } from '../animation/gsap'
 import { ChevronDown } from 'lucide-react'
 import Section from './Section'
 import Reveal from './Reveal'
 import { useLanguage } from '../i18n/useLanguage'
 
 export default function Experience() {
-  const { content } = useLanguage()
+  const { content, lang } = useLanguage()
   const [openIndex, setOpenIndex] = useState<number | null>(0)
   const timelineRef = useRef<HTMLDivElement>(null)
+  const firstRun = useRef(true)
 
-  // The timeline line fills as the section scrolls past, rather than
-  // drawing once and staying full.
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ['start 80%', 'end 60%'],
-  })
-  const lineScale = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 28,
-    restDelta: 0.001,
-  })
+  useGSAP(() => {
+    const media = gsap.matchMedia()
+    media.add(motionQuery, () => {
+      gsap.fromTo('.timeline-line', { scaleY: 0 }, {
+        scaleY: 1, ease: 'none',
+        scrollTrigger: { trigger: timelineRef.current, start: 'top 80%', end: 'bottom 65%', scrub: 0.65 },
+      })
+    })
+    return () => media.revert()
+  }, { scope: timelineRef, dependencies: [lang], revertOnUpdate: true })
+
+  // The open entry expands to its own height; the first paint just sets it.
+  useGSAP(() => {
+    const root = timelineRef.current
+    if (!root) return
+    const instant = firstRun.current || !window.matchMedia(motionQuery).matches
+    firstRun.current = false
+    root.querySelectorAll<HTMLElement>('.timeline-entry').forEach((entry, i) => {
+      const isOpen = openIndex === i
+      gsap.to(entry.querySelector('.timeline-highlights'), {
+        height: isOpen ? 'auto' : 0, autoAlpha: isOpen ? 1 : 0,
+        duration: instant ? 0 : 0.4, ease: 'power2.inOut',
+      })
+      gsap.to(entry.querySelector('.timeline-chevron'), {
+        rotation: isOpen ? 180 : 0, duration: instant ? 0 : 0.35, ease: 'power2.out',
+      })
+    })
+  }, { scope: timelineRef, dependencies: [openIndex, lang] })
 
   return (
     <Section id="experience" index="04" title={content.sections.experience} alt>
       <div className="timeline" ref={timelineRef}>
         <div className="timeline-track" />
-        <motion.div className="timeline-line" style={{ scaleY: lineScale }} />
+        <div className="timeline-line" aria-hidden="true" />
 
         {content.experienceEntries.map((entry, i) => {
           const isOpen = openIndex === i
@@ -47,28 +65,19 @@ export default function Experience() {
                   </div>
                   <div className="timeline-meta">
                     <span className="timeline-period">{entry.period}</span>
-                    <motion.span
-                      animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <span className="timeline-chevron">
                       <ChevronDown size={18} />
-                    </motion.span>
+                    </span>
                   </div>
                 </button>
 
                 <p className="timeline-summary">{entry.summary}</p>
 
-                <motion.ul
-                  className="timeline-highlights"
-                  initial={false}
-                  animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-                  transition={{ duration: 0.35, ease: 'easeInOut' }}
-                  style={{ overflow: 'hidden' }}
-                >
+                <ul className="timeline-highlights" aria-hidden={!isOpen}>
                   {entry.highlights.map((point, hi) => (
                     <li key={hi}>{point}</li>
                   ))}
-                </motion.ul>
+                </ul>
               </article>
             </Reveal>
           )

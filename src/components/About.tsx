@@ -1,6 +1,7 @@
 import { Volleyball } from 'lucide-react'
 import Section from './Section'
 import Reveal from './Reveal'
+import AnimatedStat from './AnimatedStat'
 import { useLanguage } from '../i18n/useLanguage'
 
 export default function About() {
@@ -41,7 +42,7 @@ export default function About() {
           {content.stats.map((stat, i) => (
             <Reveal key={stat.label} from="scale" delay={i * 0.08}>
               <div className="stat-card">
-                <span className="stat-value">{stat.value}</span>
+                <AnimatedStat value={stat.value} />
                 <span className="stat-label">{stat.label}</span>
               </div>
             </Reveal>

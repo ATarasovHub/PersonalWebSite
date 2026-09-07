@@ -1,56 +1,31 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import type { ReactNode } from 'react'
+import { useRef, type ReactNode } from 'react'
+import { gsap, useGSAP, motionQuery } from '../animation/gsap'
+import { useLanguage } from '../i18n/useLanguage'
 
 type Direction = 'up' | 'left' | 'right' | 'scale'
-
 type RevealProps = {
   children: ReactNode
   className?: string
-  /** Which way the element travels in from. */
   from?: Direction
   delay?: number
   duration?: number
-  /** How much of the element must be visible before it plays. */
   amount?: number
 }
+const offsets = { up: { y: 38 }, left: { x: -36 }, right: { x: 36 }, scale: { scale: 0.94, y: 24 } }
 
-const offsets: Record<Direction, { x?: number; y?: number; scale?: number }> = {
-  up: { y: 28 },
-  left: { x: -28 },
-  right: { x: 28 },
-  scale: { scale: 0.94 },
-}
+export default function Reveal({ children, className, from = 'up', delay = 0, duration = 0.9, amount = 0.2 }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { lang } = useLanguage()
+  useGSAP(() => {
+    const media = gsap.matchMedia()
+    media.add(motionQuery, () => {
+      gsap.from(ref.current, {
+        ...offsets[from], opacity: 0, duration, delay, ease: 'power3.out', clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: ref.current, start: 'top ' + (100 - Math.min(amount, 0.2) * 50) + '%', once: true },
+      })
+    })
+    return () => media.revert()
+  }, { scope: ref, dependencies: [from, delay, duration, amount, lang], revertOnUpdate: true })
 
-/**
- * Scroll-triggered reveal. Replays whenever the element re-enters the
- * viewport, so scrolling back up plays it again rather than leaving the
- * page visually static.
- */
-export default function Reveal({
-  children,
-  className,
-  from = 'up',
-  delay = 0,
-  duration = 0.55,
-  amount = 0.25,
-}: RevealProps) {
-  const shouldReduceMotion = useReducedMotion()
-  const hidden = shouldReduceMotion
-    ? { opacity: 0 }
-    : { opacity: 0, ...offsets[from] }
-  const shown = shouldReduceMotion
-    ? { opacity: 1 }
-    : { opacity: 1, x: 0, y: 0, scale: 1 }
-
-  return (
-    <motion.div
-      className={className}
-      initial={hidden}
-      whileInView={shown}
-      viewport={{ once: false, amount }}
-      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
-  )
+  return <div ref={ref} className={className}>{children}</div>
 }

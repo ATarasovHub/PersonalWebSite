@@ -1,14 +1,42 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Check, Copy, Download, Mail } from 'lucide-react'
+import { gsap, useGSAP, motionQuery } from '../animation/gsap'
 import Section from './Section'
-import Reveal from './Reveal'
 import LinkedInIcon from './LinkedInIcon'
 import { personal } from '../data/profile'
 import { useLanguage } from '../i18n/useLanguage'
 
 export default function Contact() {
-  const { content } = useLanguage()
+  const { content, lang } = useLanguage()
   const [copied, setCopied] = useState(false)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const copyIconRef = useRef<HTMLSpanElement>(null)
+
+  // The last screen of the site, so it arrives as one composed movement
+  // instead of the generic reveal every other block uses.
+  useGSAP(() => {
+    const media = gsap.matchMedia()
+    media.add(motionQuery, () => {
+      gsap.timeline({
+        defaults: { ease: 'power3.out' },
+        scrollTrigger: { trigger: panelRef.current, start: 'top 82%', once: true },
+      })
+        .from('.contact-panel .heading-word', { yPercent: 115, rotation: 3, stagger: 0.08, duration: 1 }, 0)
+        .from('.contact-intro-text', { y: 22, opacity: 0, duration: 0.75 }, 0.25)
+        .from('.contact-action', { y: 28, opacity: 0, stagger: 0.1, duration: 0.8, clearProps: 'transform,opacity' }, 0.38)
+        .from('.contact-secondary > *', { y: 14, opacity: 0, stagger: 0.07, duration: 0.6, clearProps: 'all' }, 0.55)
+    })
+    return () => media.revert()
+  }, { scope: panelRef, dependencies: [lang], revertOnUpdate: true })
+
+  // Confirming the copy is the whole feedback, so the swap gets some weight.
+  useGSAP(() => {
+    if (!window.matchMedia(motionQuery).matches) return
+    gsap.fromTo(copyIconRef.current,
+      { scale: 0.4, rotation: -40, opacity: 0 },
+      { scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: 'back.out(2.2)' },
+    )
+  }, { dependencies: [copied], revertOnUpdate: true })
 
   const copyEmail = async () => {
     try {
@@ -23,8 +51,14 @@ export default function Contact() {
   return (
     <Section id="contact" index="06" title={content.sections.contact} alt>
       <div className="contact-wrap">
-        <Reveal className="contact-panel" amount={0.2}>
-          <h3>{content.contact.heading}</h3>
+        <div className="contact-panel" ref={panelRef}>
+          <h3 aria-label={content.contact.heading}>
+            {content.contact.heading.split(' ').map((word, i) => (
+              <span className="heading-mask" key={i} aria-hidden="true">
+                <span className="heading-word">{word}</span>{' '}
+              </span>
+            ))}
+          </h3>
           <p className="contact-intro-text">{content.contact.intro}</p>
 
           <div className="contact-actions">
@@ -52,7 +86,9 @@ export default function Contact() {
 
           <div className="contact-secondary">
             <button className="contact-minor" onClick={copyEmail}>
-              {copied ? <Check size={15} /> : <Copy size={15} />}
+              <span className="contact-copy-icon" ref={copyIconRef}>
+                {copied ? <Check size={15} /> : <Copy size={15} />}
+              </span>
               {copied ? content.contact.copied : content.contact.copy}
             </button>
 
@@ -62,7 +98,7 @@ export default function Contact() {
 
             <span className="contact-note">{content.contact.responseNote}</span>
           </div>
-        </Reveal>
+        </div>
       </div>
     </Section>
   )

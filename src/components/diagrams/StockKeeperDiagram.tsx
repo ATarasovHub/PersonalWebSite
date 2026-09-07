@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import DiagramFrame, { DiagramNode } from './DiagramFrame'
 import { useLanguage } from '../../i18n/useLanguage'
 
@@ -9,19 +8,12 @@ import { useLanguage } from '../../i18n/useLanguage'
 export default function StockKeeperDiagram() {
   const { content } = useLanguage()
   const d = content.diagrams.stock
-  const shouldReduceMotion = useReducedMotion()
-
-  const flow = shouldReduceMotion
-    ? {}
-    : {
-        strokeDashoffset: [12, 0],
-        transition: { duration: 1.2, repeat: Infinity, ease: 'linear' as const },
-      }
 
   return (
     <DiagramFrame title={content.projectLabels.diagramTitle} caption={d.caption} minWidth={700} viewBox="0 0 820 330">
       {/* device boundary: nothing leaves it unless exported */}
       <rect
+        className="diagram-boundary"
         x="14" y="14" width="560" height="302"
         rx="14" fill="none"
         stroke="var(--color-accent-dim)" strokeWidth="1.5" strokeDasharray="7 6" opacity="0.7"
@@ -30,15 +22,16 @@ export default function StockKeeperDiagram() {
 
       <DiagramNode x={40} y={34} w={500} h={62} label={d.ui} sub={d.uiSub} />
 
-      <motion.line
+      <line
         x1={200} y1={96} x2={200} y2={126}
         stroke="var(--color-accent)" strokeWidth="2" strokeDasharray="6 6"
-        markerEnd="url(#arrow)" animate={flow}
+        markerEnd="url(#arrow)" className="diagram-flow"
       />
       <text x={212} y={116} className="diagram-sub">{d.writes}</text>
 
       {/* reads travel back up as reactive streams */}
       <path
+        className="diagram-link"
         d="M420 126 L420 96"
         fill="none" stroke="var(--color-border)" strokeWidth="1.5" markerEnd="url(#arrow-dim)"
       />
@@ -46,12 +39,13 @@ export default function StockKeeperDiagram() {
 
       <DiagramNode x={40} y={126} w={500} h={70} label={d.repo} sub={d.repoSub} accent />
 
-      <motion.line
+      <line
         x1={200} y1={196} x2={200} y2={226}
         stroke="var(--color-accent)" strokeWidth="2" strokeDasharray="6 6"
-        markerEnd="url(#arrow)" animate={flow}
+        markerEnd="url(#arrow)" className="diagram-flow"
       />
       <path
+        className="diagram-link"
         d="M420 226 L420 196"
         fill="none" stroke="var(--color-border)" strokeWidth="1.5" markerEnd="url(#arrow-dim)"
       />
@@ -60,6 +54,7 @@ export default function StockKeeperDiagram() {
 
       {/* exports are the only way data leaves the device */}
       <line
+        className="diagram-link"
         x1={574} y1={165} x2={606} y2={165}
         stroke="var(--color-border)" strokeWidth="1.5" markerEnd="url(#arrow-dim)"
       />

@@ -308,7 +308,7 @@ export const de: Content = {
     responseNote: 'Ich antworte in der Regel innerhalb eines Tages.',
   },
 
-  footer: 'Erstellt mit React & Framer Motion',
+  footer: 'Erstellt mit React & GSAP',
   langToggleLabel: 'Zu Englisch wechseln',
   themeToggle: {
     toDark: 'Zum dunklen Design wechseln',
