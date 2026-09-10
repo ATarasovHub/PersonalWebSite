@@ -98,7 +98,7 @@ export const de: Content = {
       type: 'Applied Skills',
       summary: 'Domänencontroller, AD-DS-Objekte, Gruppenrichtlinien und Sicherheitsverwaltung.',
       skills: ['Active Directory', 'Gruppenrichtlinien'],
-      href: 'https://learn.microsoft.com/ru-ru/credentials/applied-skills/administer-active-directory-domain-services/',
+      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/ECD676719B997C0E?sharingId=3CBCE2933DC353C5',
       action: 'Nachweis ansehen',
     },
     {

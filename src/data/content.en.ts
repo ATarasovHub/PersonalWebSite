@@ -98,7 +98,7 @@ export const en: Content = {
       type: 'Applied Skills',
       summary: 'Domain controllers, AD DS objects, Group Policy and security administration.',
       skills: ['Active Directory', 'Group Policy'],
-      href: 'https://learn.microsoft.com/ru-ru/credentials/applied-skills/administer-active-directory-domain-services/',
+      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/ECD676719B997C0E?sharingId=3CBCE2933DC353C5',
       action: 'View credential',
     },
     {
