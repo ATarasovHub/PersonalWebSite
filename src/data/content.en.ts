@@ -81,6 +81,35 @@ export const en: Content = {
     },
   ],
 
+  credentialsHeading: 'Credentials',
+  credentials: [
+    {
+      title: 'Get started with identities and access using Microsoft Entra',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'Identity and access fundamentals with Microsoft Entra.',
+      skills: ['Microsoft Entra', 'Identity & access'],
+      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/25E2D1948CDA2AD8?sharingId=3CBCE2933DC353C5',
+      action: 'View credential',
+    },
+    {
+      title: 'Administer Active Directory Domain Services',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'Domain controllers, AD DS objects, Group Policy and security administration.',
+      skills: ['Active Directory', 'Group Policy'],
+      href: 'https://learn.microsoft.com/ru-ru/credentials/applied-skills/administer-active-directory-domain-services/',
+      action: 'View credential',
+    },
+    {
+      title: 'Digitality in vocational education',
+      issuer: 'Robert-Bosch-Berufskolleg Dortmund',
+      type: 'Additional qualification · 11 Jul 2025',
+      summary: 'Digital work environments, communication, networks, data protection and information security.',
+      skills: ['Digital workflows', 'Networks', 'Information security'],
+    },
+  ],
+
   spokenLanguages: [
     { name: 'German', level: 'C1' },
     { name: 'English', level: 'B2' },

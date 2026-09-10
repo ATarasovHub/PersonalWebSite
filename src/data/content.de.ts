@@ -81,6 +81,35 @@ export const de: Content = {
     },
   ],
 
+  credentialsHeading: 'Zertifikate',
+  credentials: [
+    {
+      title: 'Erste Schritte mit Identitäten und Zugriff mit Microsoft Entra',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'Grundlagen zu Identitäten und Zugriff mit Microsoft Entra.',
+      skills: ['Microsoft Entra', 'Identität & Zugriff'],
+      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/25E2D1948CDA2AD8?sharingId=3CBCE2933DC353C5',
+      action: 'Nachweis ansehen',
+    },
+    {
+      title: 'Active Directory Domain Services administrieren',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'Domänencontroller, AD-DS-Objekte, Gruppenrichtlinien und Sicherheitsverwaltung.',
+      skills: ['Active Directory', 'Gruppenrichtlinien'],
+      href: 'https://learn.microsoft.com/ru-ru/credentials/applied-skills/administer-active-directory-domain-services/',
+      action: 'Nachweis ansehen',
+    },
+    {
+      title: 'Digitalität in der beruflichen Bildung',
+      issuer: 'Robert-Bosch-Berufskolleg Dortmund',
+      type: 'Zusatzqualifikation · 11. Juli 2025',
+      summary: 'Digitale Arbeitsumgebungen, Kommunikation, Netzwerke, Datenschutz und Informationssicherheit.',
+      skills: ['Digitale Arbeitswelt', 'Netzwerke', 'Informationssicherheit'],
+    },
+  ],
+
   spokenLanguages: [
     { name: 'Deutsch', level: 'C1' },
     { name: 'Englisch', level: 'B2' },

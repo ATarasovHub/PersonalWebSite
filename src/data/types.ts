@@ -7,6 +7,16 @@ export type SkillGroup = {
   items: string[]
 }
 
+export type Credential = {
+  title: string
+  issuer: string
+  type: string
+  summary: string
+  skills: string[]
+  href?: string
+  action?: string
+}
+
 export type Project = {
   title: string
   context: string
@@ -78,6 +88,8 @@ export type Content = {
   offTheClock: { label: string; text: string }
   stats: { value: string; label: string }[]
   skillGroups: SkillGroup[]
+  credentialsHeading: string
+  credentials: Credential[]
   spokenLanguages: { name: string; level: string }[]
 
   projectLabels: {
