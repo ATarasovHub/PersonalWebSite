@@ -86,6 +86,15 @@ export const de: Content = {
   credentialsHeading: 'Zertifikate',
   credentials: [
     {
+      title: 'Agenten mit integrierten Tools entwickeln',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'KI-Agenten mit dem Microsoft-Foundry-SDK bauen und konfigurieren, mit integrierten und eigenen Tools.',
+      skills: ['KI-Agenten', 'Microsoft Foundry', 'Tool-Integration'],
+      href: 'https://learn.microsoft.com/api/credentials/share/de-de/AndriiTarasov-8792/791317A59CA09393?sharingId=3CBCE2933DC353C5',
+      action: 'Nachweis ansehen',
+    },
+    {
       title: 'Azure-Verwaltungsaufgaben',
       issuer: 'Microsoft',
       type: 'Applied Skills',

@@ -86,6 +86,15 @@ export const en: Content = {
   credentialsHeading: 'Credentials',
   credentials: [
     {
+      title: 'Develop an agent with integrated tools',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'Building and configuring AI agents with the Microsoft Foundry SDK, built-in toolsets and custom tools.',
+      skills: ['AI agents', 'Microsoft Foundry', 'Tool integration'],
+      href: 'https://learn.microsoft.com/api/credentials/share/en-us/AndriiTarasov-8792/791317A59CA09393?sharingId=3CBCE2933DC353C5',
+      action: 'View credential',
+    },
+    {
       title: 'Get started with Azure management tasks',
       issuer: 'Microsoft',
       type: 'Applied Skills',

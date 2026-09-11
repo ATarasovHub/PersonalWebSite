@@ -917,9 +917,36 @@ main {
     padding: 26px;
   }
 
-  /* An odd last card stretches instead of leaving a hole in the row. */
+  /* An odd last card stretches instead of leaving a hole in the row, and
+     rearranges inside so the extra width carries content rather than air. */
   .credential-card:last-child:nth-child(odd) {
+    display: grid;
     grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-template-areas:
+      'head skills'
+      'summary skills'
+      'foot foot';
+    align-content: start;
+    column-gap: 32px;
+  }
+
+  .credential-card:last-child:nth-child(odd) .credential-head {
+    grid-area: head;
+  }
+
+  .credential-card:last-child:nth-child(odd) .credential-summary {
+    grid-area: summary;
+  }
+
+  .credential-card:last-child:nth-child(odd) .credential-skills {
+    grid-area: skills;
+    align-content: start;
+    margin-top: 4px;
+  }
+
+  .credential-card:last-child:nth-child(odd) .credential-foot {
+    grid-area: foot;
   }
 }
 
