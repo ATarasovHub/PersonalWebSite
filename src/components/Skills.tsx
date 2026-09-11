@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { gsap, useGSAP, motionQuery } from '../animation/gsap'
+import { gsap, ScrollTrigger, useGSAP, motionQuery } from '../animation/gsap'
 import Section from './Section'
 import Reveal from './Reveal'
 import { useLanguage } from '../i18n/useLanguage'
@@ -8,7 +8,43 @@ import LinkedInIcon from './LinkedInIcon'
 
 export default function Skills() {
   const { content, lang } = useLanguage()
+  const skillsRef = useRef<HTMLDivElement>(null)
   const credentialsRef = useRef<HTMLDivElement>(null)
+
+  /**
+   * One highlight crossing the whole grid, the way sunlight comes off a
+   * window. Each card carries its own band, and the delay comes from where
+   * the card actually sits, so the beam reads as a single pass rather than
+   * every card flashing at once. It idles while the section is off screen.
+   */
+  useGSAP(() => {
+    const grid = skillsRef.current
+    if (!grid) return
+    const media = gsap.matchMedia()
+    media.add(motionQuery, () => {
+      const sheens = [...grid.querySelectorAll<HTMLElement>('.skill-sheen')]
+      if (!sheens.length) return
+      const lefts = sheens.map((sheen) => sheen.getBoundingClientRect().left)
+      const first = Math.min(...lefts)
+      const span = Math.max(...lefts) - first || 1
+
+      const sweep = gsap.fromTo(sheens,
+        { xPercent: -170 },
+        {
+          xPercent: 170, duration: 1.45, ease: 'none',
+          repeat: -1, repeatDelay: 6.2,
+          stagger: (i: number) => 0.62 * ((lefts[i] - first) / span),
+        })
+
+      ScrollTrigger.create({
+        trigger: grid,
+        start: 'top bottom',
+        end: 'bottom top',
+        onToggle: (self) => { if (self.isActive) sweep.play(); else sweep.pause() },
+      })
+    })
+    return () => media.revert()
+  }, { scope: skillsRef, dependencies: [lang], revertOnUpdate: true })
 
   /**
    * Credentials get their own entrance instead of the shared Reveal, which is
@@ -67,10 +103,11 @@ export default function Skills() {
 
   return (
     <Section id="skills" index="02" title={content.sections.skills} alt>
-      <div className="skills-grid">
+      <div className="skills-grid" ref={skillsRef}>
         {content.skillGroups.map((group, i) => (
           <Reveal key={group.title} delay={i * 0.05}>
             <div className="skill-group">
+              <span className="skill-sheen" aria-hidden="true" />
               <h3>{group.title}</h3>
               <div className="skill-chips">
                 {group.items.map((skill) => <span key={skill} className="skill-chip">{skill}</span>)}

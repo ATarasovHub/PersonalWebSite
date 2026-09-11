@@ -12,6 +12,8 @@
   /* Corner light on the credential cards: a warm core with an accent halo. */
   --color-sun-core: rgba(255, 232, 178, 0.72);
   --color-sun-halo: rgba(31, 75, 143, 0.1);
+  /* Core of the highlight that crosses the skill cards. */
+  --color-sheen: rgba(255, 238, 201, 0.6);
   /* Text sitting on an accent-filled surface. */
   --color-on-accent: #f7f5f1;
 
@@ -56,6 +58,7 @@
   /* Amber would fight the neon palette, so the light stays in the accent. */
   --color-sun-core: rgba(20, 224, 160, 0.2);
   --color-sun-halo: rgba(20, 224, 160, 0.07);
+  --color-sheen: rgba(20, 224, 160, 0.13);
   --color-on-accent: #04120c;
 
   --color-bg-rgb: 6, 9, 10;
