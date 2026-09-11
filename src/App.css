@@ -706,16 +706,19 @@ main {
 .credentials-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 18px;
+  /* The stamp entrance tilts each card on the X axis. */
+  perspective: 1400px;
 }
 
 .credential-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   padding: 24px;
   overflow: hidden;
+  /* Keeps the corner light behind the text instead of behind the whole page. */
+  isolation: isolate;
   border: 1px solid var(--color-border);
   border-radius: 18px;
   background:
@@ -726,18 +729,51 @@ main {
     box-shadow 0.55s ease;
 }
 
-.credential-card::after {
-  content: '';
+/* Outer box owns the hover reaction, the inner core the endless breathing,
+   so the two never write the same transform. */
+.credential-sun {
+  position: absolute;
+  top: -108px;
+  right: -88px;
+  z-index: -1;
+  width: 264px;
+  height: 264px;
+  pointer-events: none;
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.credential-sun-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--color-sun-core) 0%, transparent 56%),
+    radial-gradient(circle, var(--color-sun-halo) 0%, transparent 74%);
+  filter: blur(14px);
+}
+
+.credential-card:hover .credential-sun {
+  transform: scale(1.12);
+}
+
+.credential-seal {
   position: absolute;
   top: -46px;
   right: -46px;
   width: 112px;
   height: 112px;
-  border: 1px solid rgba(var(--color-accent-rgb), 0.16);
   border-radius: 50%;
   box-shadow: 0 0 0 18px rgba(var(--color-accent-rgb), 0.035);
   pointer-events: none;
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Dashed, otherwise a spinning circle looks like a still one. */
+.credential-seal-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(var(--color-accent-rgb), 0.28);
+  border-radius: 50%;
 }
 
 .credential-card:hover {
@@ -746,19 +782,23 @@ main {
   box-shadow: 0 22px 46px -24px rgba(var(--color-shadow-rgb), var(--shadow-alpha-lift));
 }
 
-.credential-card:hover::after {
+.credential-card:hover .credential-seal {
   transform: scale(1.18);
 }
 
-.credential-topline {
+.credential-head {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 28px;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.credential-head-text {
+  min-width: 0;
 }
 
 .credential-mark {
   display: inline-flex;
+  flex: none;
   align-items: center;
   justify-content: center;
   width: 42px;
@@ -769,37 +809,22 @@ main {
   color: var(--color-accent);
 }
 
-.credential-index {
-  color: var(--color-text-muted);
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-}
-
 .credential-issuer {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   color: var(--color-accent);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .credential-card h3 {
-  max-width: 22ch;
-  min-height: 3.45em;
-  font-size: 1.18rem;
-  line-height: 1.16;
-}
-
-.credential-type {
-  margin-top: 10px;
-  color: var(--color-text-muted);
-  font-size: 0.78rem;
+  font-size: 1.1rem;
+  line-height: 1.22;
 }
 
 .credential-summary {
-  margin-top: 18px;
+  margin-top: 16px;
   color: var(--color-text-muted);
   font-size: 0.9rem;
   line-height: 1.55;
@@ -809,7 +834,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .credential-skills span {
@@ -821,15 +846,34 @@ main {
   line-height: 1.2;
 }
 
+/* The footer is pinned to the bottom so cards in a row line their rules up. */
+.credential-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.credential-type {
+  padding: 4px 9px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .credential-link {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  align-self: flex-start;
-  margin-top: auto;
-  padding-top: 24px;
   color: var(--color-accent);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 600;
   text-decoration: underline;
   text-decoration-color: transparent;
@@ -842,19 +886,18 @@ main {
   text-decoration-color: currentColor;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 860px) {
   .credentials-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .credential-card {
     padding: 26px;
   }
-}
 
-@media (max-width: 959px) {
-  .credential-card h3 {
-    min-height: 0;
+  /* An odd last card stretches instead of leaving a hole in the row. */
+  .credential-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 }
 

@@ -1,4 +1,5 @@
 import type { Content } from './types'
+import { personal } from './profile'
 
 export const en: Content = {
   role: 'Fullstack Software Developer',
@@ -84,12 +85,21 @@ export const en: Content = {
   credentialsHeading: 'Credentials',
   credentials: [
     {
+      title: 'Get started with Azure management tasks',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'Compute, network and storage tasks across an Azure subscription.',
+      skills: ['Azure', 'Virtual machines', 'Networking & storage'],
+      href: 'https://learn.microsoft.com/api/credentials/share/en-us/AndriiTarasov-8792/C9D0E1A402FEAC7?sharingId=3CBCE2933DC353C5',
+      action: 'View credential',
+    },
+    {
       title: 'Get started with identities and access using Microsoft Entra',
       issuer: 'Microsoft',
       type: 'Applied Skills',
       summary: 'Identity and access fundamentals with Microsoft Entra.',
       skills: ['Microsoft Entra', 'Identity & access'],
-      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/25E2D1948CDA2AD8?sharingId=3CBCE2933DC353C5',
+      href: 'https://learn.microsoft.com/api/credentials/share/en-us/AndriiTarasov-8792/25E2D1948CDA2AD8?sharingId=3CBCE2933DC353C5',
       action: 'View credential',
     },
     {
@@ -98,15 +108,18 @@ export const en: Content = {
       type: 'Applied Skills',
       summary: 'Domain controllers, AD DS objects, Group Policy and security administration.',
       skills: ['Active Directory', 'Group Policy'],
-      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/ECD676719B997C0E?sharingId=3CBCE2933DC353C5',
+      href: 'https://learn.microsoft.com/api/credentials/share/en-us/AndriiTarasov-8792/ECD676719B997C0E?sharingId=3CBCE2933DC353C5',
       action: 'View credential',
     },
     {
       title: 'Digitality in vocational education',
       issuer: 'Robert-Bosch-Berufskolleg Dortmund',
-      type: 'Additional qualification · 11 Jul 2025',
+      type: 'Additional qualification',
       summary: 'Digital work environments, communication, networks, data protection and information security.',
       skills: ['Digital workflows', 'Networks', 'Information security'],
+      href: personal.linkedin,
+      action: 'See it on LinkedIn',
+      linkIcon: 'linkedin',
     },
   ],
 

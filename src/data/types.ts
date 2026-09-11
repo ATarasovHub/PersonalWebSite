@@ -15,6 +15,8 @@ export type Credential = {
   skills: string[]
   href?: string
   action?: string
+  /** Which icon closes the link. Defaults to the generic external arrow. */
+  linkIcon?: 'linkedin'
 }
 
 export type Project = {

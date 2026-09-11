@@ -1,4 +1,5 @@
 import type { Content } from './types'
+import { personal } from './profile'
 
 export const de: Content = {
   role: 'Fullstack-Softwareentwickler',
@@ -84,12 +85,21 @@ export const de: Content = {
   credentialsHeading: 'Zertifikate',
   credentials: [
     {
-      title: 'Erste Schritte mit Identitäten und Zugriff mit Microsoft Entra',
+      title: 'Azure-Verwaltungsaufgaben',
+      issuer: 'Microsoft',
+      type: 'Applied Skills',
+      summary: 'Compute-, Netzwerk- und Storage-Aufgaben in einem Azure-Abonnement.',
+      skills: ['Azure', 'Virtuelle Maschinen', 'Netzwerk & Storage'],
+      href: 'https://learn.microsoft.com/api/credentials/share/de-de/AndriiTarasov-8792/C9D0E1A402FEAC7?sharingId=3CBCE2933DC353C5',
+      action: 'Nachweis ansehen',
+    },
+    {
+      title: 'Identitäten und Zugriff mit Microsoft Entra',
       issuer: 'Microsoft',
       type: 'Applied Skills',
       summary: 'Grundlagen zu Identitäten und Zugriff mit Microsoft Entra.',
       skills: ['Microsoft Entra', 'Identität & Zugriff'],
-      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/25E2D1948CDA2AD8?sharingId=3CBCE2933DC353C5',
+      href: 'https://learn.microsoft.com/api/credentials/share/de-de/AndriiTarasov-8792/25E2D1948CDA2AD8?sharingId=3CBCE2933DC353C5',
       action: 'Nachweis ansehen',
     },
     {
@@ -98,15 +108,18 @@ export const de: Content = {
       type: 'Applied Skills',
       summary: 'Domänencontroller, AD-DS-Objekte, Gruppenrichtlinien und Sicherheitsverwaltung.',
       skills: ['Active Directory', 'Gruppenrichtlinien'],
-      href: 'https://learn.microsoft.com/api/credentials/share/ru-ru/AndriiTarasov-8792/ECD676719B997C0E?sharingId=3CBCE2933DC353C5',
+      href: 'https://learn.microsoft.com/api/credentials/share/de-de/AndriiTarasov-8792/ECD676719B997C0E?sharingId=3CBCE2933DC353C5',
       action: 'Nachweis ansehen',
     },
     {
       title: 'Digitalität in der beruflichen Bildung',
       issuer: 'Robert-Bosch-Berufskolleg Dortmund',
-      type: 'Zusatzqualifikation · 11. Juli 2025',
+      type: 'Zusatzqualifikation',
       summary: 'Digitale Arbeitsumgebungen, Kommunikation, Netzwerke, Datenschutz und Informationssicherheit.',
       skills: ['Digitale Arbeitswelt', 'Netzwerke', 'Informationssicherheit'],
+      href: personal.linkedin,
+      action: 'Auf LinkedIn ansehen',
+      linkIcon: 'linkedin',
     },
   ],
 

@@ -1,10 +1,70 @@
+import { useRef } from 'react'
+import { gsap, useGSAP, motionQuery } from '../animation/gsap'
 import Section from './Section'
 import Reveal from './Reveal'
 import { useLanguage } from '../i18n/useLanguage'
 import { BadgeCheck, ExternalLink } from 'lucide-react'
+import LinkedInIcon from './LinkedInIcon'
 
 export default function Skills() {
-  const { content } = useLanguage()
+  const { content, lang } = useLanguage()
+  const credentialsRef = useRef<HTMLDivElement>(null)
+
+  /**
+   * Credentials get their own entrance instead of the shared Reveal, which is
+   * already spent on the skill cards right above. Each card is stamped: it
+   * settles out of a tilt, the seal ring opens, the badge inks its own check
+   * and the skill chips come up last. Cards in a row land left to right.
+   */
+  useGSAP(() => {
+    const media = gsap.matchMedia()
+    media.add(motionQuery, () => {
+      const cards = credentialsRef.current?.querySelectorAll<HTMLElement>('.credential-card')
+      cards?.forEach((card, i) => {
+        gsap.timeline({
+          delay: (i % 2) * 0.12,
+          defaults: { overwrite: 'auto' },
+          scrollTrigger: { trigger: card, start: 'top 88%', once: true },
+        })
+          .from(card, {
+            autoAlpha: 0, y: 36, rotateX: 11, scale: 0.97, transformOrigin: '50% 100%',
+            duration: 0.85, ease: 'power3.out',
+            clearProps: 'transform,transformOrigin,opacity,visibility',
+          })
+          .from(card.querySelector('.credential-sun'), {
+            autoAlpha: 0, scale: 0.55, duration: 1.2, ease: 'power2.out',
+            clearProps: 'transform,opacity,visibility',
+          }, 0.08)
+          .from(card.querySelector('.credential-seal'), {
+            scale: 0, autoAlpha: 0, duration: 0.95, ease: 'back.out(1.6)',
+            clearProps: 'transform,opacity,visibility',
+          }, 0.12)
+          .from(card.querySelector('.credential-mark'), {
+            scale: 0.4, rotate: -32, autoAlpha: 0, duration: 0.55, ease: 'back.out(2.4)',
+            clearProps: 'transform,opacity,visibility',
+          }, 0.2)
+          .from(card.querySelectorAll('.credential-mark path'), {
+            drawSVG: '0%', duration: 0.55, ease: 'power2.out', stagger: 0.1,
+          }, 0.34)
+          .from(card.querySelectorAll('.credential-skills span'), {
+            y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.06, ease: 'power2.out',
+            clearProps: 'transform,opacity,visibility',
+          }, 0.42)
+
+        // Ambient loops on the corner light. Offset per card so the four
+        // never pulse in lockstep, which would read as a single flicker.
+        gsap.fromTo(card.querySelector('.credential-seal-ring'),
+          { rotation: i * 43 },
+          { rotation: i * 43 + 360, duration: 52, ease: 'none', repeat: -1 })
+        gsap.to(card.querySelector('.credential-sun-core'), {
+          scale: 1.09, opacity: 0.78, duration: 5.4, delay: i * 1.3,
+          ease: 'sine.inOut', repeat: -1, yoyo: true,
+        })
+      })
+    })
+    return () => media.revert()
+  }, { scope: credentialsRef, dependencies: [lang], revertOnUpdate: true })
+
   return (
     <Section id="skills" index="02" title={content.sections.skills} alt>
       <div className="skills-grid">
@@ -20,7 +80,7 @@ export default function Skills() {
         ))}
       </div>
 
-      <div className="credentials-block">
+      <div className="credentials-block" ref={credentialsRef}>
         <Reveal>
           <div className="credentials-heading">
             <span>{content.credentialsHeading}</span>
@@ -31,27 +91,35 @@ export default function Skills() {
         </Reveal>
 
         <div className="credentials-grid">
-          {content.credentials.map((credential, i) => (
-            <Reveal key={credential.title} delay={i * 0.06}>
-              <article className="credential-card">
-                <div className="credential-topline">
-                  <span className="credential-mark" aria-hidden="true">
-                    <BadgeCheck size={20} strokeWidth={1.8} />
-                  </span>
-                  <span className="credential-index">{String(i + 1).padStart(2, '0')}</span>
+          {content.credentials.map((credential) => (
+            <article className="credential-card" key={credential.title}>
+              <span className="credential-sun" aria-hidden="true">
+                <span className="credential-sun-core" />
+              </span>
+              <span className="credential-seal" aria-hidden="true">
+                <span className="credential-seal-ring" />
+              </span>
+
+              <div className="credential-head">
+                <span className="credential-mark" aria-hidden="true">
+                  <BadgeCheck size={20} strokeWidth={1.8} />
+                </span>
+                <div className="credential-head-text">
+                  <p className="credential-issuer">{credential.issuer}</p>
+                  <h3>{credential.title}</h3>
                 </div>
+              </div>
 
-                <p className="credential-issuer">{credential.issuer}</p>
-                <h3>{credential.title}</h3>
-                <p className="credential-type">{credential.type}</p>
-                <p className="credential-summary">{credential.summary}</p>
+              <p className="credential-summary">{credential.summary}</p>
 
-                <div className="credential-skills" aria-label={credential.skills.join(', ')}>
-                  {credential.skills.map((skill) => (
-                    <span key={skill}>{skill}</span>
-                  ))}
-                </div>
+              <div className="credential-skills" aria-label={credential.skills.join(', ')}>
+                {credential.skills.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
 
+              <div className="credential-foot">
+                <span className="credential-type">{credential.type}</span>
                 {credential.href && credential.action && (
                   <a
                     className="credential-link"
@@ -60,11 +128,13 @@ export default function Skills() {
                     rel="noreferrer noopener"
                   >
                     {credential.action}
-                    <ExternalLink size={15} aria-hidden="true" />
+                    {credential.linkIcon === 'linkedin'
+                      ? <LinkedInIcon size={15} />
+                      : <ExternalLink size={15} aria-hidden="true" />}
                   </a>
                 )}
-              </article>
-            </Reveal>
+              </div>
+            </article>
           ))}
         </div>
       </div>
