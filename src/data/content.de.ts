@@ -37,11 +37,12 @@ export const de: Content = {
     'Ich bin Fullstack-Entwickler und mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit der letzten Jahre bestand vor allem aus Java- und Spring-Boot-Microservices für Telekommunikations-Messaging (Bestandssysteme, Routing-Logik und die Infrastruktur, die dafür sorgt, dass Millionen Nachrichten korrekt ankommen), dazu React und TypeScript im Frontend.',
     'Die andere Hälfte meiner Arbeit ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
     'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst, von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
+    'Dortmund ist derzeit mein Zuhause, aber ich bin sehr mobil: Für das richtige Team ziehe ich um, innerhalb Deutschlands wie auch ins Ausland.',
   ],
 
   offTheClock: {
     label: 'Nach Feierabend',
-    text: 'Ich spiele Volleyball: sechs Leute, von denen jeder den anderen fünf vertrauen muss. Die übrige freie Zeit gehört Büchern, irgendeiner Serie, bei der ich hinterherhinke, und langen Spaziergängen durch Dortmund.',
+    text: 'Ich spiele Volleyball: sechs Leute, von denen jeder den anderen fünf vertrauen muss. Die übrige freie Zeit gehört Büchern, irgendeiner Serie, bei der ich hinterherhinke, und langen Spaziergängen durch die Stadt.',
   },
 
   stats: [

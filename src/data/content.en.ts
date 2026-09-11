@@ -37,11 +37,12 @@ export const en: Content = {
     "I'm a fullstack developer who likes systems that stay boring in production: predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging (inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly), with React and TypeScript on the frontend.",
     'The other half of my work is on-prem AI: wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
     "Right now I'm freelancing, building a native Android app for warehouse logistics end to end, from requirements through architecture to the Play Store release.",
+    "Dortmund is home at the moment, but I'm very mobile: relocating for the right team is no obstacle, inside Germany or abroad.",
   ],
 
   offTheClock: {
     label: 'Off the clock',
-    text: "I play volleyball: six people who each have to trust the other five. The rest of my free time goes to books, whatever series I'm behind on, and long walks around Dortmund.",
+    text: "I play volleyball: six people who each have to trust the other five. The rest of my free time goes to books, whatever series I'm behind on, and long walks around the city.",
   },
 
   stats: [
