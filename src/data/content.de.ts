@@ -37,6 +37,7 @@ export const de: Content = {
     'Ich bin Fullstack-Entwickler und mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit der letzten Jahre bestand vor allem aus Java- und Spring-Boot-Microservices für Telekommunikations-Messaging (Bestandssysteme, Routing-Logik und die Infrastruktur, die dafür sorgt, dass Millionen Nachrichten korrekt ankommen), dazu React und TypeScript im Frontend.',
     'Die andere Hälfte meiner Arbeit ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
     'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst, von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
+    'Die Entwicklung steht auf Infrastruktur, die ich aus erster Hand kenne: Entra-Identitäten, Active Directory und Azure, jeweils mit einem Microsoft-Applied-Skills-Nachweis belegt. Diese Seite der Arbeit interessiert mich genauso wie der Code, ob sie nun Systemintegration oder Support heißt.',
     'Dortmund ist derzeit mein Zuhause, aber ich bin sehr mobil: Für das richtige Team ziehe ich um, innerhalb Deutschlands wie auch ins Ausland.',
   ],
 
@@ -352,7 +353,7 @@ export const de: Content = {
   contact: {
     heading: 'Sprechen wir',
     intro:
-      'Ich bin offen für Backend-Positionen und freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
+      'Ich bin offen für Positionen als Entwickler, in der Systemintegration oder im Support sowie für freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
     emailCta: 'E-Mail schreiben',
     linkedinCta: 'Auf LinkedIn vernetzen',
     copy: 'Adresse kopieren',
@@ -370,6 +371,6 @@ export const de: Content = {
   meta: {
     title: 'Andrii Tarasov | Fullstack-Softwareentwickler',
     description:
-      'Fullstack-Entwickler in Dortmund mit Schwerpunkt auf Java, Spring Boot, React und On-Premises-KI. Ich baue Produktivsysteme, die messbar Zeit und Geld sparen.',
+      'Fullstack-Entwickler in Dortmund mit Java, Spring Boot, React, On-Premises-KI und Microsoft-Infrastruktur. Offen für Positionen als Entwickler, in der Systemintegration und im Support.',
   },
 }

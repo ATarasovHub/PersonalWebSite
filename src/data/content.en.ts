@@ -37,6 +37,7 @@ export const en: Content = {
     "I'm a fullstack developer who likes systems that stay boring in production: predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging (inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly), with React and TypeScript on the frontend.",
     'The other half of my work is on-prem AI: wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
     "Right now I'm freelancing, building a native Android app for warehouse logistics end to end, from requirements through architecture to the Play Store release.",
+    'The development work sits on infrastructure I know first hand: Entra identity, Active Directory and Azure, each backed by a Microsoft Applied Skills credential. That side of the job holds my interest as much as the code does, whether it goes by system integration or support.',
     "Dortmund is home at the moment, but I'm very mobile: relocating for the right team is no obstacle, inside Germany or abroad.",
   ],
 
@@ -352,7 +353,7 @@ export const en: Content = {
   contact: {
     heading: "Let's talk",
     intro:
-      'Open to backend roles and freelance work. Write to me directly or reach out on LinkedIn; both land with me straight away.',
+      'Open to positions as a developer, in system integration or in support, and to freelance work. Write to me directly or reach out on LinkedIn; both land with me straight away.',
     emailCta: 'Write me an email',
     linkedinCta: 'Connect on LinkedIn',
     copy: 'Copy address',
@@ -370,6 +371,6 @@ export const en: Content = {
   meta: {
     title: 'Andrii Tarasov | Fullstack Software Developer',
     description:
-      'Fullstack developer in Dortmund specializing in Java, Spring Boot, React and on-prem AI. I build production systems that save measurable time and money.',
+      'Fullstack developer in Dortmund working across Java, Spring Boot, React, on-prem AI and Microsoft infrastructure. Open to developer, system integration and support roles.',
   },
 }
