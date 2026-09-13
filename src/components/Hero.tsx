@@ -76,7 +76,7 @@ export default function Hero() {
             <a className="pill-button primary" href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact') }}>
               {content.hero.primaryCta}<ArrowUpRight size={17} />
             </a>
-            <a className="pill-button" href={personal.cv} download={personal.cvFileName}><Download size={16} />{content.hero.cvCta}</a>
+            <a className="pill-button" href={personal.cv[lang]} download={personal.cvFileName[lang]}><Download size={16} />{content.hero.cvCta}</a>
             <a className="pill-button ghost" href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects') }}>
               {content.hero.secondaryCta}<ArrowUpRight size={16} />
             </a>

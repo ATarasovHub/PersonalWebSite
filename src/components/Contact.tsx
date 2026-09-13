@@ -92,7 +92,7 @@ export default function Contact() {
               {copied ? content.contact.copied : content.contact.copy}
             </button>
 
-            <a className="contact-minor" href={personal.cv} download={personal.cvFileName}>
+            <a className="contact-minor" href={personal.cv[lang]} download={personal.cvFileName[lang]}>
               <Download size={15} /> {content.hero.cvCta}
             </a>
 
