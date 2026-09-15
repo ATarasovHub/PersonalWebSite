@@ -6,6 +6,7 @@ import AnimatedStat from './AnimatedStat'
 import TriageDiagram from './diagrams/TriageDiagram'
 import StockKeeperDiagram from './diagrams/StockKeeperDiagram'
 import GatewayDiagram from './diagrams/GatewayDiagram'
+import ThreadlyDiagram from './diagrams/ThreadlyDiagram'
 import { useLanguage } from '../i18n/useLanguage'
 import type { Project } from '../data/types'
 
@@ -181,6 +182,7 @@ export default function ProjectModal({ project, origin, closing, onClose, onClos
           {project.diagram === 'triage' && <TriageDiagram />}
           {project.diagram === 'stock' && <StockKeeperDiagram />}
           {project.diagram === 'gateway' && <GatewayDiagram />}
+          {project.diagram === 'threadly' && <ThreadlyDiagram />}
 
           <div className="project-stack-wrap">
             <h4>{content.projectLabels.stack}</h4>

@@ -1,6 +1,6 @@
 export type Lang = 'en' | 'de'
 
-export type DiagramKey = 'triage' | 'stock' | 'gateway'
+export type DiagramKey = 'triage' | 'stock' | 'gateway' | 'threadly'
 
 export type SkillGroup = {
   title: string
@@ -157,6 +157,21 @@ export type Content = {
       webhook: string
       states: string
       statesSub: string
+    }
+    threadly: {
+      caption: string
+      boundary: string
+      client: string
+      clientSub: string[]
+      api: string
+      apiSub: string[]
+      auth: string
+      authSub: string[]
+      domain: string
+      domainSub: string[]
+      database: string
+      databaseSub: string[]
+      deployment: string
     }
   }
 

@@ -156,6 +156,23 @@ export const de: Content = {
 
   projects: [
     {
+      title: 'Threadly · Interner Unternehmens-Messenger',
+      context: 'Unternehmens-Messenger · 2026',
+      summary:
+        'Ich habe einen selbst gehosteten internen Messenger für ein Unternehmen entwickelt, der Profile, Gespräche und Teamaktivitäten in einem sicheren sozialen Arbeitsbereich bündelt.',
+      problem:
+        'Das Unternehmen brauchte einen privaten Ort, an dem Kollegen kommunizieren und Teamaktivitäten verfolgen können, ohne Gespräche über externe Plattformen zu verteilen. Die Lösung sollte echte soziale Interaktion ermöglichen und zugleich Bereitstellung, Identitäten und Daten unter der Kontrolle des Unternehmens halten.',
+      approach:
+        'Ich habe das gesamte Produkt mit einem React-/TypeScript-Client, einer Spring-Boot-REST-API und PostgreSQL umgesetzt. Die Plattform umfasst Profile, Beiträge, Antworten, Reposts, Follows, Likes, Lesezeichen, Blockierungen und Benachrichtigungen. Kurzlebige JWT-Access-Tokens werden mit gehashten, rotierenden Refresh-Tokens kombiniert; die Wiederverwendung eines alten Tokens widerruft die gesamte Sitzungsfamilie. Feeds verwenden Cursor-Paginierung, damit neue Aktivitäten weder Duplikate noch Lücken erzeugen. Client und API werden als ein Docker-Image unter einer Origin ausgeliefert und lassen sich dadurch einfach selbst hosten. Integrationstests laufen mit Testcontainers gegen eine echte PostgreSQL-Datenbank in GitHub Actions.',
+      metrics: [
+        { value: 'Eine Origin', label: 'Client und API gemeinsam' },
+        { value: 'Rotierend', label: 'sichere Refresh-Sitzungen' },
+        { value: 'Cursor-basiert', label: 'Feeds ohne Lücken' },
+      ],
+      stack: ['Java 21', 'Spring Boot 4.1', 'React 19', 'TypeScript', 'PostgreSQL 17', 'Flyway', 'TanStack Query', 'Docker', 'Testcontainers', 'GitHub Actions'],
+      diagram: 'threadly',
+    },
+    {
       title: 'On-Premises-KI zur Ticket-Triage',
       context: 'tyntec · 2025',
       summary:
@@ -274,6 +291,22 @@ export const de: Content = {
       webhook: 'Rückruf des Anbieters → POST /webhooks/messages/{id}/status',
       states: 'QUEUED → SENT',
       statesSub: '→ DELIVERED · FAILED → erneut',
+    },
+    threadly: {
+      caption:
+        'React-Client, API und Datenbank laufen als ein selbst gehostetes System. Die Authentifizierung ist von den sozialen Funktionen getrennt; beide speichern über eine kontrollierte PostgreSQL-Datenschicht.',
+      boundary: 'Unternehmensinfrastruktur',
+      client: 'React-Client',
+      clientSub: ['Feed · Profile', 'Beiträge · Benachrichtigungen'],
+      api: 'Spring-Boot-API',
+      apiSub: ['REST · Validierung', 'Security · Ratenbegrenzung'],
+      auth: 'Sitzungssicherheit',
+      authSub: ['kurzlebiges JWT', 'rotierendes Refresh-Cookie'],
+      domain: 'Messenger-Dienste',
+      domainSub: ['Beiträge · Antworten · Follows', 'Likes · Lesezeichen · Blocks'],
+      database: 'PostgreSQL 17',
+      databaseSub: ['Flyway-Migrationen', 'Cursor-paginierte Feeds'],
+      deployment: 'Ein Docker-Image · eine Origin',
     },
   },
 

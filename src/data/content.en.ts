@@ -156,6 +156,23 @@ export const en: Content = {
 
   projects: [
     {
+      title: 'Threadly · Internal Company Messenger',
+      context: 'Company messenger · 2026',
+      summary:
+        'I developed a self-hosted internal messenger for a company, bringing profiles, conversations and team activity into one secure social workspace.',
+      problem:
+        'The company needed a private place where colleagues could communicate and follow team activity without spreading conversations across external platforms. It had to support real social interaction while keeping deployment, identities and data under the company’s control.',
+      approach:
+        'I built the complete product with a React and TypeScript client, a Spring Boot REST API and PostgreSQL. The platform covers profiles, posts, replies, reposts, follows, likes, bookmarks, blocks and notifications. Short-lived JWT access tokens are paired with hashed, rotating refresh tokens; replaying an old token revokes the whole session family. Feeds use cursor pagination so new activity cannot create duplicates or gaps, and the client and API ship as one Docker image on one origin for a simple self-hosted deployment. Integration tests run against a real PostgreSQL database with Testcontainers in GitHub Actions.',
+      metrics: [
+        { value: 'One origin', label: 'client and API deployment' },
+        { value: 'Rotating', label: 'secure refresh sessions' },
+        { value: 'Cursor-based', label: 'feeds without gaps' },
+      ],
+      stack: ['Java 21', 'Spring Boot 4.1', 'React 19', 'TypeScript', 'PostgreSQL 17', 'Flyway', 'TanStack Query', 'Docker', 'Testcontainers', 'GitHub Actions'],
+      diagram: 'threadly',
+    },
+    {
       title: 'On-Prem AI Ticket Triage',
       context: 'tyntec · 2025',
       summary:
@@ -274,6 +291,22 @@ export const en: Content = {
       webhook: 'provider callback → POST /webhooks/messages/{id}/status',
       states: 'QUEUED → SENT',
       statesSub: '→ DELIVERED · FAILED → retry',
+    },
+    threadly: {
+      caption:
+        'The React client, API and database run as one self-hosted system. Authentication is isolated from the social features, while both persist through one controlled PostgreSQL data layer.',
+      boundary: 'Company infrastructure',
+      client: 'React client',
+      clientSub: ['feed · profiles', 'posts · notifications'],
+      api: 'Spring Boot API',
+      apiSub: ['REST · validation', 'security · rate limiting'],
+      auth: 'Session security',
+      authSub: ['short-lived JWT', 'rotating refresh cookie'],
+      domain: 'Messenger services',
+      domainSub: ['posts · replies · follows', 'likes · bookmarks · blocks'],
+      database: 'PostgreSQL 17',
+      databaseSub: ['Flyway migrations', 'cursor-paged feeds'],
+      deployment: 'One Docker image · one origin',
     },
   },
 
