@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, GitFork, LockKeyhole } from 'lucide-react'
 import Section from './Section'
 import ProjectModal from './ProjectModal'
 import AnimatedStat from './AnimatedStat'
@@ -48,17 +48,37 @@ export default function Projects() {
                 ))}
               </div>
 
-              <button
-                className="project-more"
-                onClick={(event) => {
-                  event.currentTarget.focus({ preventScroll: true })
-                  setOrigin(event.currentTarget.closest('.project-card'))
-                  setOpen(project)
-                }}
-              >
-                {content.projectLabels.more}
-                <ArrowRight size={16} />
-              </button>
+              <div className="project-actions">
+                <button
+                  className="project-more"
+                  onClick={(event) => {
+                    event.currentTarget.focus({ preventScroll: true })
+                    setOrigin(event.currentTarget.closest('.project-card'))
+                    setOpen(project)
+                  }}
+                >
+                  {content.projectLabels.more}
+                  <ArrowRight size={16} />
+                </button>
+
+                {project.repoUrl ? (
+                  <a
+                    className="project-github"
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    draggable={false}
+                  >
+                    <GitFork size={16} />
+                    {content.projectLabels.github}
+                  </a>
+                ) : (
+                  <span className="project-private">
+                    <LockKeyhole size={15} />
+                    {content.projectLabels.privateRepo}
+                  </span>
+                )}
+              </div>
             </article>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { gsap, Flip, useGSAP, motionQuery } from '../animation/gsap'
-import { X } from 'lucide-react'
+import { GitFork, LockKeyhole, X } from 'lucide-react'
 import AnimatedStat from './AnimatedStat'
 import TriageDiagram from './diagrams/TriageDiagram'
 import StockKeeperDiagram from './diagrams/StockKeeperDiagram'
@@ -193,6 +193,25 @@ export default function ProjectModal({ project, origin, closing, onClose, onClos
                 </span>
               ))}
             </div>
+          </div>
+
+          <div className="project-modal-actions">
+            {project.repoUrl ? (
+              <a
+                className="project-github"
+                href={project.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GitFork size={17} />
+                {content.projectLabels.github}
+              </a>
+            ) : (
+              <span className="project-private">
+                <LockKeyhole size={16} />
+                {content.projectLabels.privateRepo}
+              </span>
+            )}
           </div>
         </div>
       </div>

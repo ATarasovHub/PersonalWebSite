@@ -148,6 +148,8 @@ export const en: Content = {
     less: 'Show less',
     stack: 'Stack',
     diagramTitle: 'How it fits together',
+    github: 'View on GitHub',
+    privateRepo: 'Closed-source company project',
     close: 'Close',
     prev: 'Previous project',
     next: 'Next project',
@@ -170,6 +172,7 @@ export const en: Content = {
         { value: 'Cursor-based', label: 'feeds without gaps' },
       ],
       stack: ['Java 21', 'Spring Boot 4.1', 'React 19', 'TypeScript', 'PostgreSQL 17', 'Flyway', 'TanStack Query', 'Docker', 'Testcontainers', 'GitHub Actions'],
+      repoUrl: 'https://github.com/ATarasovHub/threadly',
       diagram: 'threadly',
     },
     {
@@ -219,6 +222,7 @@ export const en: Content = {
         { value: 'Price-sorted', label: 'routing with fallback' },
       ],
       stack: ['Java 25', 'Spring Boot 4', 'PostgreSQL', 'Flyway', 'Redis', 'Docker', 'OpenAPI', 'Virtual threads'],
+      repoUrl: 'https://github.com/ATarasovHub/messaginggateway',
       diagram: 'gateway',
     },
     {
@@ -235,6 +239,7 @@ export const en: Content = {
         { value: 'Offline', label: 'first by design' },
       ],
       stack: ['Kotlin', 'MVVM', 'Coroutines', 'Room', 'SQLite', 'Material UI', 'Play Store'],
+      repoUrl: 'https://github.com/ATarasovHub/StockKeeper',
       diagram: 'stock',
     },
   ],

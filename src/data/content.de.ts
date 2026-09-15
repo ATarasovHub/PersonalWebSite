@@ -148,6 +148,8 @@ export const de: Content = {
     less: 'Weniger anzeigen',
     stack: 'Technologien',
     diagramTitle: 'So greift es ineinander',
+    github: 'Auf GitHub ansehen',
+    privateRepo: 'Nicht öffentliches Unternehmensprojekt',
     close: 'Schließen',
     prev: 'Vorheriges Projekt',
     next: 'Nächstes Projekt',
@@ -170,6 +172,7 @@ export const de: Content = {
         { value: 'Cursor-basiert', label: 'Feeds ohne Lücken' },
       ],
       stack: ['Java 21', 'Spring Boot 4.1', 'React 19', 'TypeScript', 'PostgreSQL 17', 'Flyway', 'TanStack Query', 'Docker', 'Testcontainers', 'GitHub Actions'],
+      repoUrl: 'https://github.com/ATarasovHub/threadly',
       diagram: 'threadly',
     },
     {
@@ -219,6 +222,7 @@ export const de: Content = {
         { value: 'Preis-sortiert', label: 'Routing mit Ausweichkette' },
       ],
       stack: ['Java 25', 'Spring Boot 4', 'PostgreSQL', 'Flyway', 'Redis', 'Docker', 'OpenAPI', 'Virtual Threads'],
+      repoUrl: 'https://github.com/ATarasovHub/messaginggateway',
       diagram: 'gateway',
     },
     {
@@ -235,6 +239,7 @@ export const de: Content = {
         { value: 'Offline', label: 'von Grund auf ausgelegt' },
       ],
       stack: ['Kotlin', 'MVVM', 'Coroutines', 'Room', 'SQLite', 'Material UI', 'Play Store'],
+      repoUrl: 'https://github.com/ATarasovHub/StockKeeper',
       diagram: 'stock',
     },
   ],

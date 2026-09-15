@@ -1104,6 +1104,50 @@ main {
   transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease, gap 0.4s ease;
 }
 
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.project-actions .project-more {
+  margin-top: 0;
+}
+
+.project-github,
+.project-private {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+
+.project-github {
+  border: 1px solid var(--color-accent-dim);
+  color: var(--color-accent);
+  background: var(--color-bg-elevated);
+  transition: color 0.35s ease, border-color 0.35s ease, background 0.35s ease, transform 0.35s ease;
+}
+
+.project-github:hover {
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.project-private {
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-border);
+}
+
 .project-card:hover .project-more {
   color: var(--color-accent);
   border-color: var(--color-accent-dim);
@@ -1334,6 +1378,11 @@ main {
 
 .project-stack-wrap {
   margin-top: 26px;
+}
+
+.project-modal-actions {
+  display: flex;
+  margin-top: 22px;
 }
 
 .project-stack-wrap h4 {

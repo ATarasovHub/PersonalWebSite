@@ -28,6 +28,8 @@ export type Project = {
   approach: string
   metrics: { value: string; label: string }[]
   stack: string[]
+  /** Public source repository. Omitted for proprietary company work. */
+  repoUrl?: string
   /** Which architecture diagram to render inside this card. */
   diagram?: DiagramKey
 }
@@ -101,6 +103,8 @@ export type Content = {
     less: string
     stack: string
     diagramTitle: string
+    github: string
+    privateRepo: string
     close: string
     prev: string
     next: string
