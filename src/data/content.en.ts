@@ -87,6 +87,16 @@ export const en: Content = {
   credentialsHeading: 'Credentials',
   credentials: [
     {
+      title: 'AWS Cloud Practitioner Essentials',
+      issuer: 'Amazon Web Services',
+      type: 'Course completion',
+      summary: 'AWS core services, architecture, security, pricing and support models across the cloud platform.',
+      skills: ['AWS', 'Cloud fundamentals', 'Cloud security & billing'],
+      href: personal.linkedin,
+      action: 'See it on LinkedIn',
+      linkIcon: 'linkedin',
+    },
+    {
       title: 'Develop an agent with integrated tools',
       issuer: 'Microsoft',
       type: 'Applied Skills',
