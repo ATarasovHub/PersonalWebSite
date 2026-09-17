@@ -106,7 +106,7 @@ export const en: Content = {
       action: 'View credential',
     },
     {
-      title: 'Get started with Azure management tasks',
+      title: 'Azure management tasks',
       issuer: 'Microsoft',
       type: 'Applied Skills',
       summary: 'Compute, network and storage tasks across an Azure subscription.',
@@ -115,7 +115,7 @@ export const en: Content = {
       action: 'View credential',
     },
     {
-      title: 'Get started with identities and access using Microsoft Entra',
+      title: 'Identities and access with Microsoft Entra',
       issuer: 'Microsoft',
       type: 'Applied Skills',
       summary: 'Identity and access fundamentals with Microsoft Entra.',
