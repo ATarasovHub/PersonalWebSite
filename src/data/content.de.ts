@@ -34,11 +34,12 @@ export const de: Content = {
   },
 
   bio: [
-    'Ich bin Systemintegrator und mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit besteht darin, einzelne Bausteine zu einem Ganzen zu verbinden: Identitäten und Zugriffe in Active Directory und Microsoft Entra, Azure-Ressourcen, containerisierte Dienste sowie die APIs, Webhooks und Nachrichtenflüsse dazwischen.',
-    'Die Softwareseite kenne ich von innen. Bei tyntec habe ich Java- und Spring-Boot-Dienste für Telekommunikations-Messaging entwickelt, 56 Provider an ein Bestandssystem angebunden und Jira, ein lokales Sprachmodell und Rocket.Chat zu einem Support-Ablauf verbunden. Dadurch lese ich Code, Logs und Netzwerk, nicht nur die Admin-Konsole.',
-    'Die andere Hälfte meiner Arbeit ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
-    'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst, von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
-    'Meine Infrastrukturkenntnisse sind durch Microsoft-Applied-Skills-Nachweise für Entra-Identitäten, Active Directory Domain Services und Azure-Verwaltung belegt, dazu AWS Cloud Practitioner Essentials.',
+    'Ich bin Fachinformatiker mit zwei Jahren Berufserfahrung an der Schnittstelle von IT-Infrastruktur und Anwendungsentwicklung. Ich mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar.',
+    'Ich habe Praxis in der Administration von Windows- und Linux-Servern, Active Directory, Microsoft Entra und Microsoft 365, in der Benutzer- und Rechteverwaltung sowie in der Virtualisierung, und ich betreibe containerisierte Dienste mit Docker und Kubernetes.',
+    'Mein Schwerpunkt ist die Integration und Automatisierung bestehender Systeme über Webhooks und REST. Bei tyntec habe ich Jira, ein lokales Sprachmodell und Rocket.Chat zu einem durchgehenden Support-Prozess verbunden, 56 Provider an ein Bestandssystem angebunden und Kolleginnen und Kollegen im laufenden IT-Betrieb unterstützt.',
+    'Ein Teil davon ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
+    'Derzeit arbeite ich freiberuflich und setze für einen Logistikkunden ein Lagerverwaltungssystem um und in Betrieb: einen Android-Client und eine Spring-Boot-Serveranwendung mit eigener PostgreSQL-Datenbank, Datensicherung und Migrationen.',
+    'Belegt wird das durch vier Microsoft-Applied-Skills-Nachweise (Active Directory, Entra, Azure und KI-Agenten) sowie AWS Cloud Practitioner Essentials. Bachelor und IHK-Ausbildung habe ich mit 22 abgeschlossen, ich arbeite mich schnell in neue Systeme ein und bin offen für Weiterbildung und Zertifizierung.',
     'Dortmund ist derzeit mein Zuhause, aber ich bin sehr mobil: Für das richtige Team ziehe ich um, innerhalb Deutschlands wie auch ins Ausland.',
   ],
 
@@ -56,36 +57,36 @@ export const de: Content = {
 
   skillGroups: [
     {
-      title: 'Systemintegration',
-      items: ['REST & OpenAPI', 'Webhooks', 'SMPP', 'Anbindung externer APIs', 'Jira- & Rocket.Chat-Integration', 'Migration von Altsystemen'],
+      title: 'Systemadministration',
+      items: ['Active Directory (AD DS)', 'Microsoft Entra ID', 'Microsoft 365', 'Windows Server', 'Linux (Ubuntu, CentOS)', 'Benutzer- & Rechteverwaltung', 'Gruppenrichtlinien'],
     },
     {
-      title: 'Infrastruktur & Identität',
-      items: ['Active Directory (AD DS)', 'Gruppenrichtlinien', 'Microsoft Entra ID', 'Microsoft Azure', 'Virtuelle Maschinen', 'Netzwerk & Storage', 'AWS-Grundlagen', 'IT-Sicherheit'],
+      title: 'Virtualisierung & Container',
+      items: ['VMware', 'Hyper-V', 'Docker', 'Kubernetes'],
     },
     {
-      title: 'Sprachen',
-      items: ['Java 17/21', 'Kotlin', 'Python', 'TypeScript', 'JavaScript', 'SQL'],
+      title: 'Cloud',
+      items: ['Microsoft Azure', 'Ressourcenverwaltung', 'Identitäts- & Zugriffsverwaltung', 'AWS-Grundlagen'],
     },
     {
-      title: 'Backend',
-      items: ['Spring Boot 3', 'Spring Data JPA', 'FastAPI', 'Hibernate', 'Flyway', 'MapStruct', 'REST', 'OpenAPI'],
+      title: 'Netzwerk & Betrieb',
+      items: ['TCP/IP', 'DNS', 'DHCP', 'REST-Schnittstellen', 'Webhooks', 'SMPP', 'Monitoring', 'Jenkins CI'],
     },
     {
-      title: 'KI / LLM',
-      items: ['Ollama', 'On-Premises-LLM-Integration', 'Prompt Engineering', 'MLflow', 'Label Studio'],
+      title: 'Storage & Service',
+      items: ['Storage- & Backup-Konzepte', 'ITIL-Serviceprozesse'],
     },
     {
-      title: 'Frontend',
-      items: ['React', 'TypeScript', 'Material UI', 'Radix UI', 'Tailwind CSS', 'React Query'],
+      title: 'Automatisierung & KI',
+      items: ['Python', 'Bash', 'n8n', 'Ollama (On-Premises-KI)', 'MLflow', 'Label Studio'],
     },
     {
-      title: 'Daten',
-      items: ['PostgreSQL', 'SQLite', 'Caffeine Cache', 'Drizzle ORM'],
+      title: 'Ticketing & Werkzeuge',
+      items: ['Jira', 'Confluence', 'Rocket.Chat', 'Salesforce CRM', 'Git', 'Shopware'],
     },
     {
-      title: 'DevOps & Werkzeuge',
-      items: ['Docker', 'Kubernetes', 'Jenkins CI', 'Gradle', 'Maven', 'Git', 'Testcontainers', 'Jira'],
+      title: 'Entwicklung',
+      items: ['Java 17/21', 'Spring Boot 3', 'Python / FastAPI', 'Kotlin', 'TypeScript', 'SQL', 'PostgreSQL', 'React', 'Vue.js', 'Angular', 'PHP'],
     },
     {
       title: 'Außerdem',
@@ -341,33 +342,34 @@ export const de: Content = {
 
   experienceEntries: [
     {
-      role: 'Freiberuflicher Fachinformatiker',
+      role: 'Freiberuflicher IT-Dienstleister',
       org: 'Selbstständig',
       period: 'seit Juni 2026',
       location: 'Dortmund (remote)',
       summary:
-        'Eigenverantwortliche Umsetzung einer IT-Lösung für die Lagerlogistik eines Kunden: von der Anforderungsaufnahme über Architektur und Datenhaltung bis zum Release.',
+        'Kundenprojekt Logistik: eigenverantwortliche Entwicklung und Inbetriebnahme eines Lagerverwaltungssystems, von den Anforderungen bis zum Betrieb.',
       highlights: [
-        'Anforderungen gemeinsam mit dem Kunden aufgenommen und in eine Lösung für den Einsatz im Lager ohne verlässliches Netz übersetzt',
-        'Offline-fähige Datenhaltung auf den Geräten (Room/SQLite) mit versionierten Migrationen, damit Updates keine Daten kosten',
-        'Datenaustausch mit den Systemen des Kunden über Excel-Export sowie lokale Sicherung und Wiederherstellung auf neuen Geräten',
-        'Tests und Rollout über den Play Store in eigener Verantwortung (Kotlin, MVVM, Coroutines)',
+        'Lagerverwaltungslösung aus Android-Client (Kotlin) und Serveranwendung (Spring Boot 3, PostgreSQL)',
+        'Einrichtung von Datenbank, Datensicherung und versionierter Datenbankmigration',
+        'Offline-fähig im Lager, mit Excel-Export sowie lokaler Sicherung und Wiederherstellung auf neuen Geräten',
+        'Anforderungsaufnahme mit dem Kunden, Tests und Rollout über den Play Store in eigener Verantwortung',
       ],
     },
     {
       role: 'Fachinformatiker',
-      org: 'tyntec',
+      org: 'tyntec GmbH',
       period: 'Aug. 2024 - Juni 2026',
       location: 'Deutschland',
       summary:
-        'Integration von Systemen, Schnittstellen und Providern für eine weltweite Messaging-Plattform, dazu Aufbau und Betrieb der ersten On-Premises-KI-Dienste im Unternehmensnetz.',
+        'Systemintegration und Automatisierung für eine weltweite Messaging-Plattform, dazu Administration und Support der internen IT-Umgebung.',
       highlights: [
-        'Jira, ein lokal betriebenes Sprachmodell (Ollama) und Rocket.Chat per Webhook und FastAPI-Dienst zu einem durchgängigen Support-Ablauf verbunden: rund 7 Minuten Ersparnis pro Ticket, etwa 552 Stunden und 22.080 € pro Jahr, amortisiert in rund 6 Wochen',
-        'Betrieb der KI-Dienste vollständig on-premises, sodass keine Kundendaten das Unternehmensnetz verlassen',
-        '56 Upstream-Provider über eine zentrale REST-API (OpenAPI dokumentiert) an ein Rufnummern-Bestandssystem für rund 18.600 Kunden angebunden',
-        'Migration eines Java-EE/EJB-Altsystems auf Spring Boot 3 mit neuer Weboberfläche (React, TypeScript)',
-        'Mitarbeit an der Anbindung von SMS, WhatsApp, RCS, Viber und TTS über SMPP und REST, samt Least-Cost-Routing',
-        'Bereitstellung über Docker und Jenkins CI, abgesichert durch Integrationstests gegen echte PostgreSQL-Datenbanken (Testcontainers)',
+        'Administration und Support der internen IT-Umgebung: Benutzer- und Rechteverwaltung in Active Directory und Microsoft 365, Betreuung von Windows- und Linux-Servern sowie Unterstützung der Kolleginnen und Kollegen im laufenden Betrieb',
+        'Aufbau eines On-Premises-Dienstes zur automatisierten Ticketvorsortierung (Python, FastAPI, Ollama) auf eigener Hardware, ohne Abfluss von Daten nach außen: rund 7 Minuten weniger Aufwand pro Ticket, etwa 552 Stunden und 22.080 € Einsparung pro Jahr bei rund 6 Wochen Amortisation',
+        'Integration mehrerer Systeme zu einem durchgehenden Prozess: Jira-Webhooks, interner KI-Dienst und Rocket.Chat über einen Routing-Dienst gekoppelt, inklusive automatischer Antwortentwürfe und Ticketzuweisung im Chat',
+        'Bereitstellung und Betrieb der Dienste in Containern mit Docker und Kubernetes, automatisierte Builds und Tests über Jenkins CI',
+        'Aufbau einer zentralen Rufnummerninventar-Schnittstelle (Java 21, Spring Boot 3, PostgreSQL, OpenAPI) für 56 Anbieter und rund 18.600 Kunden weltweit',
+        'Ablösung einer Altanwendung (Java EE/EJB) durch Spring Boot 3 und React 19, inklusive Datenmigration und verbesserter Wartbarkeit',
+        'Mitarbeit an einer Messaging-Plattform (SMS, WhatsApp, RCS, Viber, TTS) mit Anbindung externer Anbieter über SMPP und REST',
       ],
     },
     {
@@ -390,7 +392,7 @@ export const de: Content = {
       org: 'Robert-Bosch-Berufskolleg der Stadt Dortmund',
       period: '2024 - 2026',
       description:
-        'Duale Ausbildung in der Anwendungsentwicklung: Java, Spring, Docker, Kubernetes, Jenkins und CI/CD, begleitend zur praktischen Arbeit bei tyntec.',
+        'Duale IHK-Ausbildung begleitend zur praktischen Arbeit bei tyntec, wegen guter Leistungen in Betrieb und Berufsschule um ein Jahr verkürzt, Abschlussnote der Berufsschule 2,3. Inhalte unter anderem Netzwerke, Serverbetrieb, Storage und Backup, ITIL-Serviceprozesse, Virtualisierung, Java, Docker, Kubernetes und CI/CD.',
       photo: 'rbbk',
       photoAlt:
         'Innenhof des Robert-Bosch-Berufskollegs in Dortmund, wo Andrii Tarasov seine Ausbildung zum Fachinformatiker absolvierte',

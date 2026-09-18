@@ -34,11 +34,12 @@ export const en: Content = {
   },
 
   bio: [
-    "I'm a system integration engineer who likes systems that stay boring in production: predictable, observable, easy to reason about a year from now. My work is making separate pieces work as one: identities and access in Active Directory and Microsoft Entra, Azure resources, containerized services, and the APIs, webhooks and message flows that connect them.",
-    'I know the software side from the inside. At tyntec I built Java and Spring Boot services for telecom messaging, connected 56 upstream providers to one inventory system, and wired Jira, a local language model and Rocket.Chat into one support workflow. That background means I can read the code, the logs and the network, not just the admin console.',
-    'The other half of my work is on-prem AI: wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
-    "Right now I'm freelancing, building a native Android app for warehouse logistics end to end, from requirements through architecture to the Play Store release.",
-    'My infrastructure skills are backed by Microsoft Applied Skills credentials for Entra identity, Active Directory Domain Services and Azure administration, plus AWS Cloud Practitioner Essentials.',
+    "I'm an IT specialist (Fachinformatiker) with two years of professional experience where IT infrastructure meets application development. I like systems that stay boring in production: predictable, observable, easy to reason about a year from now.",
+    'I have hands-on practice administering Windows and Linux servers, Active Directory, Microsoft Entra and Microsoft 365, managing users and permissions, and working with virtualization, and I run containerized services with Docker and Kubernetes.',
+    'My focus is integrating and automating existing systems through webhooks and REST. At tyntec I connected Jira, a local language model and Rocket.Chat into one end-to-end support process, linked 56 upstream providers to one inventory system, and supported colleagues in the internal IT environment day to day.',
+    'Part of that work is on-prem AI: wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
+    "Right now I'm freelancing, building and deploying a warehouse management system for a logistics client: an Android client plus a Spring Boot server with its own PostgreSQL database, backups and migrations.",
+    'Four Microsoft Applied Skills credentials (Active Directory, Entra, Azure and AI agents) and AWS Cloud Practitioner Essentials back this up. I finished both a B.Sc. and a German IHK apprenticeship by 22, pick up new systems quickly and am always open to further training and certification.',
     "Dortmund is home at the moment, but I'm very mobile: relocating for the right team is no obstacle, inside Germany or abroad.",
   ],
 
@@ -56,36 +57,36 @@ export const en: Content = {
 
   skillGroups: [
     {
-      title: 'System Integration',
-      items: ['REST & OpenAPI', 'Webhooks', 'SMPP', 'Third-party API integration', 'Jira & Rocket.Chat integration', 'Legacy system migration'],
+      title: 'System Administration',
+      items: ['Active Directory (AD DS)', 'Microsoft Entra ID', 'Microsoft 365', 'Windows Server', 'Linux (Ubuntu, CentOS)', 'User & permission management', 'Group Policy'],
     },
     {
-      title: 'Infrastructure & Identity',
-      items: ['Active Directory (AD DS)', 'Group Policy', 'Microsoft Entra ID', 'Microsoft Azure', 'Virtual machines', 'Networking & storage', 'AWS fundamentals', 'IT security basics'],
+      title: 'Virtualization & Containers',
+      items: ['VMware', 'Hyper-V', 'Docker', 'Kubernetes'],
     },
     {
-      title: 'Languages',
-      items: ['Java 17/21', 'Kotlin', 'Python', 'TypeScript', 'JavaScript', 'SQL'],
+      title: 'Cloud',
+      items: ['Microsoft Azure', 'Resource management', 'Identity & access management', 'AWS fundamentals'],
     },
     {
-      title: 'Backend',
-      items: ['Spring Boot 3', 'Spring Data JPA', 'FastAPI', 'Hibernate', 'Flyway', 'MapStruct', 'REST', 'OpenAPI'],
+      title: 'Network & Operations',
+      items: ['TCP/IP', 'DNS', 'DHCP', 'REST interfaces', 'Webhooks', 'SMPP', 'Monitoring', 'Jenkins CI'],
     },
     {
-      title: 'AI / LLM',
-      items: ['Ollama', 'On-prem LLM integration', 'Prompt engineering', 'MLflow', 'Label Studio'],
+      title: 'Storage & Service',
+      items: ['Storage & backup concepts', 'ITIL service processes'],
     },
     {
-      title: 'Frontend',
-      items: ['React', 'TypeScript', 'Material UI', 'Radix UI', 'Tailwind CSS', 'React Query'],
+      title: 'Automation & AI',
+      items: ['Python', 'Bash', 'n8n', 'Ollama (on-prem AI)', 'MLflow', 'Label Studio'],
     },
     {
-      title: 'Data',
-      items: ['PostgreSQL', 'SQLite', 'Caffeine Cache', 'Drizzle ORM'],
+      title: 'Ticketing & Tools',
+      items: ['Jira', 'Confluence', 'Rocket.Chat', 'Salesforce CRM', 'Git', 'Shopware'],
     },
     {
-      title: 'DevOps & Tools',
-      items: ['Docker', 'Kubernetes', 'Jenkins CI', 'Gradle', 'Maven', 'Git', 'Testcontainers', 'Jira'],
+      title: 'Development',
+      items: ['Java 17/21', 'Spring Boot 3', 'Python / FastAPI', 'Kotlin', 'TypeScript', 'SQL', 'PostgreSQL', 'React', 'Vue.js', 'Angular', 'PHP'],
     },
     {
       title: 'Also',
@@ -341,33 +342,34 @@ export const en: Content = {
 
   experienceEntries: [
     {
-      role: 'Freelance Fachinformatiker (IT Specialist)',
+      role: 'Freelance IT Professional',
       org: 'Self-employed',
       period: 'Jun 2026 - present',
       location: 'Dortmund (remote)',
       summary:
-        'Delivering an IT solution for a logistics client’s warehouse on my own: from gathering requirements through architecture and data storage to release.',
+        'Client project in logistics: building and deploying a warehouse management system on my own, from requirements to operation.',
       highlights: [
-        'Gathered requirements with the client and turned them into a solution that works on the warehouse floor without a reliable network',
-        'Offline-capable on-device data storage (Room/SQLite) with versioned migrations, so an update never costs users their data',
-        'Data exchange with the client’s systems through Excel export, plus local backup and restore onto new devices',
-        'Testing and rollout through the Play Store, all under my ownership (Kotlin, MVVM, Coroutines)',
+        'Warehouse management solution made of an Android client (Kotlin) and a server application (Spring Boot 3, PostgreSQL)',
+        'Set up the database, backups and versioned database migrations',
+        'Offline-capable on the warehouse floor, with Excel export and local backup and restore onto new devices',
+        'Requirements gathered with the client, testing and rollout through the Play Store, all under my ownership',
       ],
     },
     {
       role: 'Fachinformatiker (IT Specialist)',
-      org: 'tyntec',
+      org: 'tyntec GmbH',
       period: 'Aug 2024 - Jun 2026',
       location: 'Germany',
       summary:
-        'Integrating systems, interfaces and providers for a global messaging platform, and setting up and running the company’s first on-prem AI services inside the company network.',
+        'Systems integration and automation for a global messaging platform, plus administration and support of the internal IT environment.',
       highlights: [
-        'Connected Jira, a locally hosted language model (Ollama) and Rocket.Chat into one support workflow via webhooks and a FastAPI service, saving about 7 minutes per ticket, roughly 552 hours and €22,080 a year, paid back in ~6 weeks',
-        'Ran the AI services fully on-premises, so no customer data leaves the company network',
-        'Connected 56 upstream providers through one central REST API (documented with OpenAPI) to a phone-number inventory serving roughly 18,600 customers',
-        'Migrated a legacy Java EE/EJB system to Spring Boot 3 with a new web interface (React, TypeScript)',
-        'Contributed to integrating SMS, WhatsApp, RCS, Viber and TTS over SMPP and REST, with least-cost channel routing',
-        'Deployed with Docker and Jenkins CI, backed by integration tests against real PostgreSQL databases (Testcontainers)',
+        'Administered and supported the internal IT environment: user and permission management in Active Directory and Microsoft 365, maintenance of Windows and Linux servers, and day-to-day support for colleagues',
+        'Built an on-premises service for automated ticket triage (Python, FastAPI, Ollama) on in-house hardware with no data leaving the infrastructure, saving about 7 minutes per ticket, roughly 552 hours and €22,080 a year, paid back in ~6 weeks',
+        'Integrated several systems into one end-to-end process: Jira webhooks, the internal AI service and Rocket.Chat connected through a routing service, with automatic reply drafts and ticket assignment from chat',
+        'Deployed and operated the services in containers with Docker and Kubernetes, with automated builds and tests through Jenkins CI',
+        'Designed and built a central phone-number inventory interface (Java 21, Spring Boot 3, PostgreSQL, OpenAPI) for 56 providers and around 18,600 customers worldwide',
+        'Replaced a legacy Java EE/EJB application with Spring Boot 3 and React 19, including data migration and better maintainability',
+        'Contributed to a messaging platform (SMS, WhatsApp, RCS, Viber, TTS) connecting external providers over SMPP and REST',
       ],
     },
     {
@@ -390,7 +392,7 @@ export const en: Content = {
       org: 'Robert-Bosch-Berufskolleg der Stadt Dortmund',
       period: '2024 - 2026',
       description:
-        'Dual vocational training in application development: Java, Spring, Docker, Kubernetes, Jenkins and CI/CD, alongside on-the-job work at tyntec.',
+        'Dual IHK apprenticeship alongside on-the-job work at tyntec, shortened by one year for strong performance at the company and at school, final school grade 2.3. Coursework included networks, server operations, storage and backup, ITIL service processes, virtualization, Java, Docker, Kubernetes and CI/CD.',
       photo: 'rbbk',
       photoAlt:
         'Courtyard of the Robert-Bosch-Berufskolleg vocational college in Dortmund, where Andrii Tarasov trained as an application developer',
