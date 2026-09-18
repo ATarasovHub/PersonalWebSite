@@ -355,7 +355,7 @@ export const de: Content = {
       ],
     },
     {
-      role: 'Softwareentwickler',
+      role: 'Fachinformatiker',
       org: 'tyntec',
       period: 'Aug. 2024 - Juni 2026',
       location: 'Deutschland',

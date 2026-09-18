@@ -355,7 +355,7 @@ export const en: Content = {
       ],
     },
     {
-      role: 'Software Developer',
+      role: 'Fachinformatiker (IT Specialist)',
       org: 'tyntec',
       period: 'Aug 2024 - Jun 2026',
       location: 'Germany',
