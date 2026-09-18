@@ -57,7 +57,7 @@ export const en: Content = {
   skillGroups: [
     {
       title: 'System Integration',
-      items: ['REST & OpenAPI', 'Webhooks', 'SMPP', 'Third-party API integration', 'Jira & Rocket.Chat integration', 'Data migration', 'Legacy system migration'],
+      items: ['REST & OpenAPI', 'Webhooks', 'SMPP', 'Third-party API integration', 'Jira & Rocket.Chat integration', 'Legacy system migration'],
     },
     {
       title: 'Infrastructure & Identity',
