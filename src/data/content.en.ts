@@ -341,17 +341,17 @@ export const en: Content = {
 
   experienceEntries: [
     {
-      role: 'Freelance Software Developer',
+      role: 'Freelance Fachinformatiker (IT Specialist)',
       org: 'Self-employed',
       period: 'Jun 2026 - present',
       location: 'Dortmund (remote)',
       summary:
-        'Building a native Android app for a logistics client from scratch, owning everything from requirements to the Play Store release.',
+        'Delivering an IT solution for a logistics client’s warehouse on my own: from gathering requirements through architecture and data storage to release.',
       highlights: [
-        'Kotlin app with an MVVM architecture, ViewModels and Coroutines throughout',
-        'Local-first data layer on Room/SQLite with versioned migrations',
-        'Material UI screens, Excel export, and local backup for offline-friendly warehouse use',
-        'Full ownership: requirements gathering, architecture, implementation, testing, and release',
+        'Gathered requirements with the client and turned them into a solution that works on the warehouse floor without a reliable network',
+        'Offline-capable on-device data storage (Room/SQLite) with versioned migrations, so an update never costs users their data',
+        'Data exchange with the client’s systems through Excel export, plus local backup and restore onto new devices',
+        'Testing and rollout through the Play Store, all under my ownership (Kotlin, MVVM, Coroutines)',
       ],
     },
     {
@@ -360,14 +360,14 @@ export const en: Content = {
       period: 'Aug 2024 - Jun 2026',
       location: 'Germany',
       summary:
-        'Java/Spring Boot backend work for a global messaging platform, plus building and shipping the team’s first on-prem AI tools.',
+        'Integrating systems, interfaces and providers for a global messaging platform, and setting up and running the company’s first on-prem AI services inside the company network.',
       highlights: [
-        'Built an on-prem AI service (Python, FastAPI, Ollama) that reads, summarizes and classifies Jira tickets, saving roughly 7 minutes per ticket, about 552 hours and €22,080 a year, paid back in ~6 weeks',
-        'Shipped a Rocket.Chat support bot that drafts replies with an LLM and routes tickets from a Jira webhook through the AI service',
-        'Ran an LLM model-selection experiment tracked in MLflow and blind-evaluated in Label Studio',
-        'Designed and built a phone-number inventory REST API (Java 21, Spring Boot 3, PostgreSQL, Flyway, Caffeine, OpenAPI) for 56 providers and roughly 18,600 customers, covered by Testcontainers and Jenkins CI',
-        'Migrated a legacy Java EE/EJB numbering tool to Spring Boot 3 with a React 19 + TypeScript frontend',
-        'Contributed to an outbound messaging platform unifying SMS, WhatsApp, RCS, Viber and TTS over SMPP and REST, with least-cost channel routing',
+        'Connected Jira, a locally hosted language model (Ollama) and Rocket.Chat into one support workflow via webhooks and a FastAPI service, saving about 7 minutes per ticket, roughly 552 hours and €22,080 a year, paid back in ~6 weeks',
+        'Ran the AI services fully on-premises, so no customer data leaves the company network',
+        'Connected 56 upstream providers through one central REST API (documented with OpenAPI) to a phone-number inventory serving roughly 18,600 customers',
+        'Migrated a legacy Java EE/EJB system to Spring Boot 3 with a new web interface (React, TypeScript)',
+        'Contributed to integrating SMS, WhatsApp, RCS, Viber and TTS over SMPP and REST, with least-cost channel routing',
+        'Deployed with Docker and Jenkins CI, backed by integration tests against real PostgreSQL databases (Testcontainers)',
       ],
     },
     {

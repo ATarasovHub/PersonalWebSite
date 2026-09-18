@@ -341,17 +341,17 @@ export const de: Content = {
 
   experienceEntries: [
     {
-      role: 'Freiberuflicher Softwareentwickler',
+      role: 'Freiberuflicher Fachinformatiker',
       org: 'Selbstständig',
       period: 'seit Juni 2026',
       location: 'Dortmund (remote)',
       summary:
-        'Entwicklung einer nativen Android-App für einen Logistikkunden von Grund auf, von den Anforderungen bis zum Release im Play Store in eigener Verantwortung.',
+        'Eigenverantwortliche Umsetzung einer IT-Lösung für die Lagerlogistik eines Kunden: von der Anforderungsaufnahme über Architektur und Datenhaltung bis zum Release.',
       highlights: [
-        'Kotlin-App mit MVVM-Architektur, durchgängig mit ViewModels und Coroutines',
-        'Local-First-Datenschicht auf Room/SQLite mit versionierten Migrationen',
-        'Oberflächen mit Material UI, Excel-Export und lokale Sicherung für den Einsatz im Lager ohne verlässliches Netz',
-        'Volle Verantwortung: Anforderungsaufnahme, Architektur, Umsetzung, Tests und Veröffentlichung',
+        'Anforderungen gemeinsam mit dem Kunden aufgenommen und in eine Lösung für den Einsatz im Lager ohne verlässliches Netz übersetzt',
+        'Offline-fähige Datenhaltung auf den Geräten (Room/SQLite) mit versionierten Migrationen, damit Updates keine Daten kosten',
+        'Datenaustausch mit den Systemen des Kunden über Excel-Export sowie lokale Sicherung und Wiederherstellung auf neuen Geräten',
+        'Tests und Rollout über den Play Store in eigener Verantwortung (Kotlin, MVVM, Coroutines)',
       ],
     },
     {
@@ -360,14 +360,14 @@ export const de: Content = {
       period: 'Aug. 2024 - Juni 2026',
       location: 'Deutschland',
       summary:
-        'Backend-Entwicklung mit Java und Spring Boot für eine weltweite Messaging-Plattform, dazu Aufbau und Einführung der ersten On-Premises-KI-Werkzeuge im Team.',
+        'Integration von Systemen, Schnittstellen und Providern für eine weltweite Messaging-Plattform, dazu Aufbau und Betrieb der ersten On-Premises-KI-Dienste im Unternehmensnetz.',
       highlights: [
-        'Aufbau eines On-Premises-KI-Dienstes (Python, FastAPI, Ollama), der Jira-Tickets liest, zusammenfasst und klassifiziert, rund 7 Minuten Ersparnis pro Ticket, etwa 552 Stunden und 22.080 € pro Jahr, amortisiert in rund 6 Wochen',
-        'Entwicklung eines Rocket.Chat-Support-Bots, der Antworten per Sprachmodell entwirft und Tickets über einen Jira-Webhook durch den KI-Dienst leitet',
-        'Durchführung eines Modellvergleichs, protokolliert in MLflow und blind bewertet in Label Studio',
-        'Entwurf und Umsetzung einer REST-API zur Rufnummernverwaltung (Java 21, Spring Boot 3, PostgreSQL, Flyway, Caffeine, OpenAPI) für 56 Provider und rund 18.600 Kunden, abgesichert durch Testcontainers und Jenkins CI',
-        'Migration eines veralteten Java-EE/EJB-Werkzeugs auf Spring Boot 3 mit einem Frontend in React 19 und TypeScript',
-        'Mitarbeit an einer Versandplattform, die SMS, WhatsApp, RCS, Viber und TTS über SMPP und REST vereint, samt Least-Cost-Routing',
+        'Jira, ein lokal betriebenes Sprachmodell (Ollama) und Rocket.Chat per Webhook und FastAPI-Dienst zu einem durchgängigen Support-Ablauf verbunden: rund 7 Minuten Ersparnis pro Ticket, etwa 552 Stunden und 22.080 € pro Jahr, amortisiert in rund 6 Wochen',
+        'Betrieb der KI-Dienste vollständig on-premises, sodass keine Kundendaten das Unternehmensnetz verlassen',
+        '56 Upstream-Provider über eine zentrale REST-API (OpenAPI dokumentiert) an ein Rufnummern-Bestandssystem für rund 18.600 Kunden angebunden',
+        'Migration eines Java-EE/EJB-Altsystems auf Spring Boot 3 mit neuer Weboberfläche (React, TypeScript)',
+        'Mitarbeit an der Anbindung von SMS, WhatsApp, RCS, Viber und TTS über SMPP und REST, samt Least-Cost-Routing',
+        'Bereitstellung über Docker und Jenkins CI, abgesichert durch Integrationstests gegen echte PostgreSQL-Datenbanken (Testcontainers)',
       ],
     },
     {
