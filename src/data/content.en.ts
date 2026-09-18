@@ -2,9 +2,9 @@ import type { Content } from './types'
 import { personal } from './profile'
 
 export const en: Content = {
-  role: 'Fullstack Software Developer',
-  roleLine: 'Fullstack Developer · Java / Spring Boot · React',
-  tagline: 'I build production systems that save measurable time and money.',
+  role: 'System Integration Engineer',
+  roleLine: 'System Integration · Microsoft Infrastructure · Java / Spring Boot',
+  tagline: 'I connect systems, identities and infrastructure so they run reliably together.',
   location: 'Dortmund, Germany',
   status: 'Open to work',
 
@@ -34,10 +34,11 @@ export const en: Content = {
   },
 
   bio: [
-    "I'm a fullstack developer who likes systems that stay boring in production: predictable, observable, easy to reason about a year from now. Most of my recent work has been Java and Spring Boot microservices for telecom messaging (inventory systems, routing logic, and the plumbing that keeps millions of messages moving correctly), with React and TypeScript on the frontend.",
+    "I'm a system integration engineer who likes systems that stay boring in production: predictable, observable, easy to reason about a year from now. My work is making separate pieces work as one: identities and access in Active Directory and Microsoft Entra, Azure resources, containerized services, and the APIs, webhooks and message flows that connect them.",
+    'I know the software side from the inside. At tyntec I built Java and Spring Boot services for telecom messaging, connected 56 upstream providers to one inventory system, and wired Jira, a local language model and Rocket.Chat into one support workflow. That background means I can read the code, the logs and the network, not just the admin console.',
     'The other half of my work is on-prem AI: wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
     "Right now I'm freelancing, building a native Android app for warehouse logistics end to end, from requirements through architecture to the Play Store release.",
-    'The development work sits on infrastructure I know first hand: Entra identity, Active Directory and Azure, each backed by a Microsoft Applied Skills credential. That side of the job holds my interest as much as the code does, whether it goes by system integration or support.',
+    'My infrastructure skills are backed by Microsoft Applied Skills credentials for Entra identity, Active Directory Domain Services and Azure administration, plus AWS Cloud Practitioner Essentials.',
     "Dortmund is home at the moment, but I'm very mobile: relocating for the right team is no obstacle, inside Germany or abroad.",
   ],
 
@@ -54,6 +55,14 @@ export const en: Content = {
   ],
 
   skillGroups: [
+    {
+      title: 'System Integration',
+      items: ['REST & OpenAPI', 'Webhooks', 'SMPP', 'Third-party API integration', 'Jira & Rocket.Chat integration', 'Data migration', 'Legacy system migration'],
+    },
+    {
+      title: 'Infrastructure & Identity',
+      items: ['Active Directory (AD DS)', 'Group Policy', 'Microsoft Entra ID', 'Microsoft Azure', 'Virtual machines', 'Networking & storage', 'AWS fundamentals', 'IT security basics'],
+    },
     {
       title: 'Languages',
       items: ['Java 17/21', 'Kotlin', 'Python', 'TypeScript', 'JavaScript', 'SQL'],
@@ -401,7 +410,7 @@ export const en: Content = {
   contact: {
     heading: "Let's talk",
     intro:
-      'Open to positions as a developer, in system integration or in support, and to freelance work. Write to me directly or reach out on LinkedIn; both land with me straight away.',
+      'Open to positions in system integration, IT support and development, and to freelance work. Write to me directly or reach out on LinkedIn; both land with me straight away.',
     emailCta: 'Write me an email',
     linkedinCta: 'Connect on LinkedIn',
     copy: 'Copy address',
@@ -417,8 +426,8 @@ export const en: Content = {
   },
 
   meta: {
-    title: 'Andrii Tarasov | Fullstack Software Developer',
+    title: 'Andrii Tarasov | System Integration Engineer',
     description:
-      'Fullstack developer in Dortmund working across Java, Spring Boot, React, on-prem AI and Microsoft infrastructure. Open to developer, system integration and support roles.',
+      'System integration engineer in Dortmund: Active Directory, Microsoft Entra, Azure, Docker and API integration, backed by hands-on Java and Spring Boot development. Open to system integration and support roles.',
   },
 }

@@ -2,9 +2,9 @@ import type { Content } from './types'
 import { personal } from './profile'
 
 export const de: Content = {
-  role: 'Fullstack-Softwareentwickler',
-  roleLine: 'Fullstack-Entwickler · Java / Spring Boot · React',
-  tagline: 'Ich baue Produktivsysteme, die messbar Zeit und Geld sparen.',
+  role: 'Systemintegrator',
+  roleLine: 'Systemintegration · Microsoft-Infrastruktur · Java / Spring Boot',
+  tagline: 'Ich verbinde Systeme, Identitäten und Infrastruktur, damit sie zuverlässig zusammenarbeiten.',
   location: 'Dortmund, Deutschland',
   status: 'Offen für Angebote',
 
@@ -34,10 +34,11 @@ export const de: Content = {
   },
 
   bio: [
-    'Ich bin Fullstack-Entwickler und mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit der letzten Jahre bestand vor allem aus Java- und Spring-Boot-Microservices für Telekommunikations-Messaging (Bestandssysteme, Routing-Logik und die Infrastruktur, die dafür sorgt, dass Millionen Nachrichten korrekt ankommen), dazu React und TypeScript im Frontend.',
+    'Ich bin Systemintegrator und mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar. Meine Arbeit besteht darin, einzelne Bausteine zu einem Ganzen zu verbinden: Identitäten und Zugriffe in Active Directory und Microsoft Entra, Azure-Ressourcen, containerisierte Dienste sowie die APIs, Webhooks und Nachrichtenflüsse dazwischen.',
+    'Die Softwareseite kenne ich von innen. Bei tyntec habe ich Java- und Spring-Boot-Dienste für Telekommunikations-Messaging entwickelt, 56 Provider an ein Bestandssystem angebunden und Jira, ein lokales Sprachmodell und Rocket.Chat zu einem Support-Ablauf verbunden. Dadurch lese ich Code, Logs und Netzwerk, nicht nur die Admin-Konsole.',
     'Die andere Hälfte meiner Arbeit ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
     'Derzeit arbeite ich freiberuflich und entwickle eine native Android-App für die Lagerlogistik durchgängig selbst, von der Anforderungsanalyse über die Architektur bis zum Release im Play Store.',
-    'Die Entwicklung steht auf Infrastruktur, die ich aus erster Hand kenne: Entra-Identitäten, Active Directory und Azure, jeweils mit einem Microsoft-Applied-Skills-Nachweis belegt. Diese Seite der Arbeit interessiert mich genauso wie der Code, ob sie nun Systemintegration oder Support heißt.',
+    'Meine Infrastrukturkenntnisse sind durch Microsoft-Applied-Skills-Nachweise für Entra-Identitäten, Active Directory Domain Services und Azure-Verwaltung belegt, dazu AWS Cloud Practitioner Essentials.',
     'Dortmund ist derzeit mein Zuhause, aber ich bin sehr mobil: Für das richtige Team ziehe ich um, innerhalb Deutschlands wie auch ins Ausland.',
   ],
 
@@ -54,6 +55,14 @@ export const de: Content = {
   ],
 
   skillGroups: [
+    {
+      title: 'Systemintegration',
+      items: ['REST & OpenAPI', 'Webhooks', 'SMPP', 'Anbindung externer APIs', 'Jira- & Rocket.Chat-Integration', 'Datenmigration', 'Migration von Altsystemen'],
+    },
+    {
+      title: 'Infrastruktur & Identität',
+      items: ['Active Directory (AD DS)', 'Gruppenrichtlinien', 'Microsoft Entra ID', 'Microsoft Azure', 'Virtuelle Maschinen', 'Netzwerk & Storage', 'AWS-Grundlagen', 'IT-Sicherheit'],
+    },
     {
       title: 'Sprachen',
       items: ['Java 17/21', 'Kotlin', 'Python', 'TypeScript', 'JavaScript', 'SQL'],
@@ -401,7 +410,7 @@ export const de: Content = {
   contact: {
     heading: 'Sprechen wir',
     intro:
-      'Ich bin offen für Positionen als Entwickler, in der Systemintegration oder im Support sowie für freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
+      'Ich bin offen für Positionen in der Systemintegration, im IT-Support und in der Entwicklung sowie für freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
     emailCta: 'E-Mail schreiben',
     linkedinCta: 'Auf LinkedIn vernetzen',
     copy: 'Adresse kopieren',
@@ -417,8 +426,8 @@ export const de: Content = {
   },
 
   meta: {
-    title: 'Andrii Tarasov | Fullstack-Softwareentwickler',
+    title: 'Andrii Tarasov | Systemintegrator',
     description:
-      'Fullstack-Entwickler in Dortmund mit Java, Spring Boot, React, On-Premises-KI und Microsoft-Infrastruktur. Offen für Positionen als Entwickler, in der Systemintegration und im Support.',
+      'Systemintegrator in Dortmund: Active Directory, Microsoft Entra, Azure, Docker und API-Integration, mit praktischer Entwicklungserfahrung in Java und Spring Boot. Offen für Positionen in der Systemintegration und im Support.',
   },
 }
