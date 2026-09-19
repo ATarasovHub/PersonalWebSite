@@ -407,7 +407,7 @@ export const de: Content = {
       org: 'Nationale Universität für Radioelektronik Charkiw',
       period: '2021 - 2025',
       description:
-        'Grundlagen in Python, Algorithmen, Datenbanken, objektorientierter Programmierung und Software-Engineering.',
+        'Grundlagen in Python, Algorithmen, Datenbanken, objektorientierter Programmierung und Software-Engineering, dazu Computernetzwerke, Betriebssysteme, Serveradministration und Industrienetzwerke in der Automatisierung.',
       photo: 'khnure',
       photoAlt:
         'Hauptgebäude der Nationalen Universität für Radioelektronik Charkiw, wo Andrii Tarasov seinen B.Sc. erwarb',

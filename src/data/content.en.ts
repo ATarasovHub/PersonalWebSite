@@ -407,7 +407,7 @@ export const en: Content = {
       org: 'Kharkiv National University of Radio Electronics',
       period: '2021 - 2025',
       description:
-        'Foundations in Python, algorithms, databases, object-oriented programming and software engineering.',
+        'Foundations in Python, algorithms, databases, object-oriented programming and software engineering, plus computer networks, operating systems, server administration and industrial networks in automation.',
       photo: 'khnure',
       photoAlt:
         'Main building of Kharkiv National University of Radio Electronics, where Andrii Tarasov earned his B.Sc.',
