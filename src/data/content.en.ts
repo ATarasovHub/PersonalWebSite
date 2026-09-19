@@ -397,7 +397,7 @@ export const en: Content = {
       org: 'Robert-Bosch-Berufskolleg der Stadt Dortmund',
       period: '2024 - 2026',
       description:
-        'Dual IHK apprenticeship alongside on-the-job work at tyntec, shortened by one year for strong performance at the company and at school, final school grade 2.3. Coursework included object-oriented software development in Java, databases and SQL, networks, server operations, storage and backup, ITIL service processes, virtualization, Docker, Kubernetes and CI/CD.',
+        'Dual IHK apprenticeship alongside on-the-job work at tyntec, shortened by one year for strong performance at the company and at school. Coursework included object-oriented software development in Java, databases and SQL, networks, server operations, storage and backup, ITIL service processes, virtualization, Docker, Kubernetes and CI/CD.',
       photo: 'rbbk',
       photoAlt:
         'Courtyard of the Robert-Bosch-Berufskolleg vocational college in Dortmund, where Andrii Tarasov trained as an application developer',

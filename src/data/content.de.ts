@@ -397,7 +397,7 @@ export const de: Content = {
       org: 'Robert-Bosch-Berufskolleg der Stadt Dortmund',
       period: '2024 - 2026',
       description:
-        'Duale IHK-Ausbildung begleitend zur praktischen Arbeit bei tyntec, wegen guter Leistungen in Betrieb und Berufsschule um ein Jahr verkürzt, Abschlussnote der Berufsschule 2,3. Inhalte unter anderem objektorientierte Softwareentwicklung mit Java, Datenbanken und SQL, Netzwerke, Serverbetrieb, Storage und Backup, ITIL-Serviceprozesse, Virtualisierung, Docker, Kubernetes und CI/CD.',
+        'Duale IHK-Ausbildung begleitend zur praktischen Arbeit bei tyntec, wegen guter Leistungen in Betrieb und Berufsschule um ein Jahr verkürzt. Inhalte unter anderem objektorientierte Softwareentwicklung mit Java, Datenbanken und SQL, Netzwerke, Serverbetrieb, Storage und Backup, ITIL-Serviceprozesse, Virtualisierung, Docker, Kubernetes und CI/CD.',
       photo: 'rbbk',
       photoAlt:
         'Innenhof des Robert-Bosch-Berufskollegs in Dortmund, wo Andrii Tarasov seine Ausbildung zum Fachinformatiker absolvierte',
