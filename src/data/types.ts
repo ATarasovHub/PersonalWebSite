@@ -1,6 +1,6 @@
 export type Lang = 'en' | 'de'
 
-export type DiagramKey = 'triage' | 'stock' | 'gateway' | 'threadly'
+export type DiagramKey = 'triage' | 'stock' | 'gateway' | 'threadly' | 'nrw'
 
 export type SkillGroup = {
   title: string
@@ -177,6 +177,21 @@ export type Content = {
       database: string
       databaseSub: string[]
       deployment: string
+    }
+    nrw: {
+      caption: string
+      boundary: string
+      edge: string
+      edgeSub: string[]
+      management: string
+      managementSub: string[]
+      domain: string
+      domainSub: string[]
+      services: string
+      servicesSub: string[]
+      clients: string
+      clientsSub: string[]
+      automation: string
     }
   }
 

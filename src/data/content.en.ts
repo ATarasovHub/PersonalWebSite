@@ -169,6 +169,24 @@ export const en: Content = {
 
   projects: [
     {
+      title: 'NRW Corp Lab · Windows Infrastructure as Code',
+      context: 'Personal infrastructure lab · 2026',
+      summary:
+        'A reproducible Windows Server 2025 corporate lab for a fictional 30-person company, from Proxmox VMs to tested identity, policy, file services and recovery automation.',
+      problem:
+        'A realistic small-company Windows environment is more than a domain controller and a few users. It needs segmented networking, resilient identity and DNS, maintainable permissions, enforceable policy, recovery procedures and proof that the deployed system behaves as designed — without relying on an undocumented sequence of manual clicks.',
+      approach:
+        'I designed a four-VLAN topology behind an OPNsense default-deny firewall and automated the VM layer with Packer and Terraform on Proxmox. Two Windows Server 2025 domain controllers provide replicated AD-integrated DNS and load-balanced DHCP. PowerShell scripts create the OU, user and AGDLP permission model, deploy Group Policy and LAPS, configure SMB/NTFS/FSRM file services, and run backup workflows. Desired state lives in versioned data files; Pester checks both that data in CI and the live lab for replication, DHCP, RSoP and exact NTFS ACLs.',
+      metrics: [
+        { value: '4 VLANs', label: 'segmented by trust level' },
+        { value: '2 DCs', label: 'redundant AD, DNS and DHCP' },
+        { value: '8 VMs', label: 'rebuildable infrastructure' },
+      ],
+      stack: ['Windows Server 2025', 'Active Directory', 'PowerShell 7', 'Proxmox VE', 'Terraform', 'Packer', 'OPNsense', 'Group Policy', 'Windows LAPS', 'Pester', 'PSScriptAnalyzer', 'GitHub Actions'],
+      repoUrl: 'https://github.com/ATarasovHub/nrw-corp-lab',
+      diagram: 'nrw',
+    },
+    {
       title: 'Threadly · Internal Company Messenger',
       context: 'Company messenger · 2026',
       summary:
@@ -323,6 +341,22 @@ export const en: Content = {
       database: 'PostgreSQL 17',
       databaseSub: ['Flyway migrations', 'cursor-paged feeds'],
       deployment: 'One Docker image · one origin',
+    },
+    nrw: {
+      caption:
+        'Terraform provisions the virtual machines; versioned PowerShell desired state configures and validates the services inside them. OPNsense is the only route between trust zones.',
+      boundary: 'Proxmox VE · infrastructure as code',
+      edge: 'OPNsense edge',
+      edgeSub: ['routing · firewall', 'DHCP relay · DNS'],
+      management: 'MGMT VLAN',
+      managementSub: ['MGMT01', 'PowerShell · RSAT'],
+      domain: 'SERVER VLAN',
+      domainSub: ['DC01 + DC02', 'AD DS · DNS · DHCP'],
+      services: 'Member services',
+      servicesSub: ['FS01 · SMB/NTFS', 'LNX01 · Ubuntu/SSSD'],
+      clients: 'CLIENT + GUEST',
+      clientsSub: ['Windows 11', 'isolated guest devices'],
+      automation: 'Packer + Terraform · PowerShell desired state · Pester validation',
     },
   },
 

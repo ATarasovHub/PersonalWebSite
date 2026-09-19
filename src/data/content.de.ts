@@ -169,6 +169,24 @@ export const de: Content = {
 
   projects: [
     {
+      title: 'NRW Corp Lab · Windows-Infrastruktur als Code',
+      context: 'Eigenes Infrastruktur-Lab · 2026',
+      summary:
+        'Ein reproduzierbares Windows-Server-2025-Unternehmenslab für eine fiktive Firma mit 30 Mitarbeitenden – von Proxmox-VMs bis zu getesteter Identitäts-, Richtlinien-, Dateidienst- und Recovery-Automation.',
+      problem:
+        'Eine realistische Windows-Umgebung für ein kleines Unternehmen besteht aus mehr als einem Domänencontroller und einigen Benutzern. Sie braucht segmentierte Netze, ausfallsichere Identitäts- und DNS-Dienste, wartbare Berechtigungen, durchsetzbare Richtlinien, Recovery-Abläufe und den Nachweis, dass das ausgerollte System wie geplant funktioniert – ohne eine undokumentierte Folge manueller Klicks.',
+      approach:
+        'Ich habe eine Topologie mit vier VLANs hinter einer OPNsense-Firewall mit Default-Deny entworfen und die VM-Schicht mit Packer und Terraform auf Proxmox automatisiert. Zwei Windows-Server-2025-Domänencontroller stellen repliziertes AD-integriertes DNS und DHCP im Lastenausgleich bereit. PowerShell-Skripte erzeugen OU-, Benutzer- und AGDLP-Berechtigungsmodell, rollen Gruppenrichtlinien und LAPS aus, konfigurieren SMB-/NTFS-/FSRM-Dateidienste und führen Backups aus. Der Sollzustand liegt in versionierten Datendateien; Pester prüft diese in CI und das laufende Lab auf Replikation, DHCP, RSoP und exakte NTFS-ACLs.',
+      metrics: [
+        { value: '4 VLANs', label: 'nach Vertrauensstufe segmentiert' },
+        { value: '2 DCs', label: 'redundantes AD, DNS und DHCP' },
+        { value: '8 VMs', label: 'reproduzierbare Infrastruktur' },
+      ],
+      stack: ['Windows Server 2025', 'Active Directory', 'PowerShell 7', 'Proxmox VE', 'Terraform', 'Packer', 'OPNsense', 'Group Policy', 'Windows LAPS', 'Pester', 'PSScriptAnalyzer', 'GitHub Actions'],
+      repoUrl: 'https://github.com/ATarasovHub/nrw-corp-lab',
+      diagram: 'nrw',
+    },
+    {
       title: 'Threadly · Interner Unternehmens-Messenger',
       context: 'Unternehmens-Messenger · 2026',
       summary:
@@ -323,6 +341,22 @@ export const de: Content = {
       database: 'PostgreSQL 17',
       databaseSub: ['Flyway-Migrationen', 'Cursor-paginierte Feeds'],
       deployment: 'Ein Docker-Image · eine Origin',
+    },
+    nrw: {
+      caption:
+        'Terraform stellt die virtuellen Maschinen bereit; versionierter PowerShell-Sollzustand konfiguriert und prüft die Dienste darin. OPNsense ist der einzige Weg zwischen den Vertrauenszonen.',
+      boundary: 'Proxmox VE · Infrastructure as Code',
+      edge: 'OPNsense-Gateway',
+      edgeSub: ['Routing · Firewall', 'DHCP-Relay · DNS'],
+      management: 'MGMT-VLAN',
+      managementSub: ['MGMT01', 'PowerShell · RSAT'],
+      domain: 'SERVER-VLAN',
+      domainSub: ['DC01 + DC02', 'AD DS · DNS · DHCP'],
+      services: 'Mitgliedsdienste',
+      servicesSub: ['FS01 · SMB/NTFS', 'LNX01 · Ubuntu/SSSD'],
+      clients: 'CLIENT + GUEST',
+      clientsSub: ['Windows 11', 'isolierte Gastgeräte'],
+      automation: 'Packer + Terraform · PowerShell-Sollzustand · Pester-Validierung',
     },
   },
 
