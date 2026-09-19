@@ -2,9 +2,9 @@ import type { Content } from './types'
 import { personal } from './profile'
 
 export const de: Content = {
-  role: 'Systemintegrator',
-  roleLine: 'Systemintegration · Microsoft-Infrastruktur · Java / Spring Boot',
-  tagline: 'Ich verbinde Systeme, Identitäten und Infrastruktur, damit sie zuverlässig zusammenarbeiten.',
+  role: 'Anwendungsentwickler & Systemintegrator',
+  roleLine: 'Anwendungsentwicklung · Systemintegration · Java / Spring Boot · Microsoft-Infrastruktur',
+  tagline: 'Ich entwickle Anwendungen und verbinde sie mit den Systemen und der Infrastruktur, auf denen sie zuverlässig laufen.',
   location: 'Dortmund, Deutschland',
   status: 'Offen für Angebote',
 
@@ -34,9 +34,10 @@ export const de: Content = {
   },
 
   bio: [
-    'Ich bin Fachinformatiker mit zwei Jahren Berufserfahrung an der Schnittstelle von IT-Infrastruktur und Anwendungsentwicklung. Ich mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar.',
-    'Ich habe Praxis in der Administration von Windows- und Linux-Servern, Active Directory, Microsoft Entra und Microsoft 365, in der Benutzer- und Rechteverwaltung sowie in der Virtualisierung, und ich betreibe containerisierte Dienste mit Docker und Kubernetes.',
-    'Mein Schwerpunkt ist die Integration und Automatisierung bestehender Systeme über Webhooks und REST. Bei tyntec habe ich Jira, ein lokales Sprachmodell und Rocket.Chat zu einem durchgehenden Support-Prozess verbunden, 56 Provider an ein Bestandssystem angebunden und Kolleginnen und Kollegen im laufenden IT-Betrieb unterstützt.',
+    'Ich bin Fachinformatiker mit zwei Jahren Berufserfahrung in der Anwendungsentwicklung und der Systemintegration. Ich mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar.',
+    'Auf der Entwicklungsseite baue ich Backend-Dienste und REST-APIs mit Java und Spring Boot, Weboberflächen mit React und TypeScript sowie Android-Apps mit Kotlin. Dazu gehören sauberes Datenbankdesign mit PostgreSQL, versionierte Migrationen, Integrationstests gegen echte Datenbanken und CI/CD mit Jenkins und GitHub Actions.',
+    'Auf der Infrastrukturseite habe ich Praxis in der Administration von Windows- und Linux-Servern, Active Directory, Microsoft Entra und Microsoft 365, in der Benutzer- und Rechteverwaltung sowie in der Virtualisierung, und ich betreibe containerisierte Dienste mit Docker und Kubernetes.',
+    'Beides kommt dort zusammen, wo Systeme miteinander sprechen müssen. Bei tyntec habe ich eine zentrale Bestands-API für 56 Provider und rund 18.600 Kunden entwickelt, ein Java-EE-Altsystem auf Spring Boot 3 migriert, Jira, ein lokales Sprachmodell und Rocket.Chat zu einem durchgehenden Support-Prozess verbunden und Kolleginnen und Kollegen im laufenden IT-Betrieb unterstützt.',
     'Ein Teil davon ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
     'Derzeit arbeite ich freiberuflich und setze für einen Logistikkunden ein Lagerverwaltungssystem um und in Betrieb: einen Android-Client und eine Spring-Boot-Serveranwendung mit eigener PostgreSQL-Datenbank, Datensicherung und Migrationen.',
     'Belegt wird das durch vier Microsoft-Applied-Skills-Nachweise (Active Directory, Entra, Azure und KI-Agenten) sowie AWS Cloud Practitioner Essentials. Bachelor und IHK-Ausbildung habe ich mit 22 abgeschlossen, ich arbeite mich schnell in neue Systeme ein und bin offen für Weiterbildung und Zertifizierung.',
@@ -57,6 +58,26 @@ export const de: Content = {
 
   skillGroups: [
     {
+      title: 'Programmiersprachen',
+      items: ['Java 17/21', 'Kotlin', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'PHP', 'Bash'],
+    },
+    {
+      title: 'Backend & APIs',
+      items: ['Spring Boot 3', 'Spring Data JPA', 'Hibernate', 'FastAPI', 'REST & OpenAPI', 'MapStruct', 'Testcontainers'],
+    },
+    {
+      title: 'Frontend & Mobile',
+      items: ['React', 'Vue.js', 'Angular', 'Tailwind CSS', 'Material UI', 'React Query', 'Android (Kotlin, MVVM, Room)'],
+    },
+    {
+      title: 'Datenbanken',
+      items: ['PostgreSQL', 'SQLite', 'Flyway-Migrationen', 'Caffeine Cache'],
+    },
+    {
+      title: 'Integration & Automatisierung',
+      items: ['REST-Schnittstellen', 'Webhooks', 'SMPP', 'n8n', 'Ollama (On-Premises-KI)', 'MLflow', 'Label Studio'],
+    },
+    {
       title: 'Systemadministration',
       items: ['Active Directory (AD DS)', 'Microsoft Entra ID', 'Microsoft 365', 'Windows Server', 'Linux (Ubuntu, CentOS)', 'Benutzer- & Rechteverwaltung', 'Gruppenrichtlinien'],
     },
@@ -69,28 +90,12 @@ export const de: Content = {
       items: ['Microsoft Azure', 'Ressourcenverwaltung', 'Identitäts- & Zugriffsverwaltung', 'AWS-Grundlagen'],
     },
     {
-      title: 'Netzwerk & Betrieb',
-      items: ['TCP/IP', 'DNS', 'DHCP', 'REST-Schnittstellen', 'Webhooks', 'SMPP', 'Monitoring', 'Jenkins CI'],
+      title: 'Netzwerk, Betrieb & Service',
+      items: ['TCP/IP', 'DNS', 'DHCP', 'Monitoring', 'Storage- & Backup-Konzepte', 'ITIL-Serviceprozesse'],
     },
     {
-      title: 'Storage & Service',
-      items: ['Storage- & Backup-Konzepte', 'ITIL-Serviceprozesse'],
-    },
-    {
-      title: 'Automatisierung & KI',
-      items: ['Python', 'Bash', 'n8n', 'Ollama (On-Premises-KI)', 'MLflow', 'Label Studio'],
-    },
-    {
-      title: 'Ticketing & Werkzeuge',
-      items: ['Jira', 'Confluence', 'Rocket.Chat', 'Salesforce CRM', 'Git', 'Shopware'],
-    },
-    {
-      title: 'Entwicklung',
-      items: ['Java 17/21', 'Spring Boot 3', 'Python / FastAPI', 'Kotlin', 'TypeScript', 'SQL', 'PostgreSQL', 'React', 'Vue.js', 'Angular', 'PHP'],
-    },
-    {
-      title: 'Außerdem',
-      items: ['Blender (3D-Modellierung & Animation)', 'AutoCAD'],
+      title: 'DevOps & Werkzeuge',
+      items: ['Git', 'Jenkins CI', 'GitHub Actions', 'Gradle', 'Maven', 'Jira', 'Confluence', 'Rocket.Chat', 'Salesforce CRM', 'Shopware'],
     },
   ],
 
@@ -342,7 +347,7 @@ export const de: Content = {
 
   experienceEntries: [
     {
-      role: 'Freiberuflicher IT-Dienstleister',
+      role: 'Freiberuflicher Fachinformatiker (Entwicklung & Betrieb)',
       org: 'Selbstständig',
       period: 'seit Juni 2026',
       location: 'Dortmund (remote)',
@@ -361,14 +366,14 @@ export const de: Content = {
       period: 'Aug. 2024 - Juni 2026',
       location: 'Deutschland',
       summary:
-        'Systemintegration und Automatisierung für eine weltweite Messaging-Plattform, dazu Administration und Support der internen IT-Umgebung.',
+        'Anwendungsentwicklung und Systemintegration für eine weltweite Messaging-Plattform, dazu Administration und Support der internen IT-Umgebung.',
       highlights: [
+        'Entwicklung einer zentralen Rufnummerninventar-Schnittstelle (Java 21, Spring Boot 3, PostgreSQL, OpenAPI) für 56 Anbieter und rund 18.600 Kunden weltweit',
         'Administration und Support der internen IT-Umgebung: Benutzer- und Rechteverwaltung in Active Directory und Microsoft 365, Betreuung von Windows- und Linux-Servern sowie Unterstützung der Kolleginnen und Kollegen im laufenden Betrieb',
         'Aufbau eines On-Premises-Dienstes zur automatisierten Ticketvorsortierung (Python, FastAPI, Ollama) auf eigener Hardware, ohne Abfluss von Daten nach außen: rund 7 Minuten weniger Aufwand pro Ticket, etwa 552 Stunden und 22.080 € Einsparung pro Jahr bei rund 6 Wochen Amortisation',
         'Integration mehrerer Systeme zu einem durchgehenden Prozess: Jira-Webhooks, interner KI-Dienst und Rocket.Chat über einen Routing-Dienst gekoppelt, inklusive automatischer Antwortentwürfe und Ticketzuweisung im Chat',
-        'Bereitstellung und Betrieb der Dienste in Containern mit Docker und Kubernetes, automatisierte Builds und Tests über Jenkins CI',
-        'Aufbau einer zentralen Rufnummerninventar-Schnittstelle (Java 21, Spring Boot 3, PostgreSQL, OpenAPI) für 56 Anbieter und rund 18.600 Kunden weltweit',
         'Ablösung einer Altanwendung (Java EE/EJB) durch Spring Boot 3 und React 19, inklusive Datenmigration und verbesserter Wartbarkeit',
+        'Bereitstellung und Betrieb der Dienste in Containern mit Docker und Kubernetes, automatisierte Builds und Integrationstests (Testcontainers) über Jenkins CI',
         'Mitarbeit an einer Messaging-Plattform (SMS, WhatsApp, RCS, Viber, TTS) mit Anbindung externer Anbieter über SMPP und REST',
       ],
     },
@@ -392,7 +397,7 @@ export const de: Content = {
       org: 'Robert-Bosch-Berufskolleg der Stadt Dortmund',
       period: '2024 - 2026',
       description:
-        'Duale IHK-Ausbildung begleitend zur praktischen Arbeit bei tyntec, wegen guter Leistungen in Betrieb und Berufsschule um ein Jahr verkürzt, Abschlussnote der Berufsschule 2,3. Inhalte unter anderem Netzwerke, Serverbetrieb, Storage und Backup, ITIL-Serviceprozesse, Virtualisierung, Java, Docker, Kubernetes und CI/CD.',
+        'Duale IHK-Ausbildung begleitend zur praktischen Arbeit bei tyntec, wegen guter Leistungen in Betrieb und Berufsschule um ein Jahr verkürzt, Abschlussnote der Berufsschule 2,3. Inhalte unter anderem objektorientierte Softwareentwicklung mit Java, Datenbanken und SQL, Netzwerke, Serverbetrieb, Storage und Backup, ITIL-Serviceprozesse, Virtualisierung, Docker, Kubernetes und CI/CD.',
       photo: 'rbbk',
       photoAlt:
         'Innenhof des Robert-Bosch-Berufskollegs in Dortmund, wo Andrii Tarasov seine Ausbildung zum Fachinformatiker absolvierte',
@@ -412,7 +417,7 @@ export const de: Content = {
   contact: {
     heading: 'Sprechen wir',
     intro:
-      'Ich bin offen für Positionen in der Systemintegration, im IT-Support und in der Entwicklung sowie für freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
+      'Ich bin offen für Positionen in der Anwendungsentwicklung, der Systemintegration und im IT-Support sowie für freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
     emailCta: 'E-Mail schreiben',
     linkedinCta: 'Auf LinkedIn vernetzen',
     copy: 'Adresse kopieren',
@@ -428,8 +433,8 @@ export const de: Content = {
   },
 
   meta: {
-    title: 'Andrii Tarasov | Systemintegrator',
+    title: 'Andrii Tarasov | Anwendungsentwickler & Systemintegrator',
     description:
-      'Systemintegrator in Dortmund: Active Directory, Microsoft Entra, Azure, Docker und API-Integration, mit praktischer Entwicklungserfahrung in Java und Spring Boot. Offen für Positionen in der Systemintegration und im Support.',
+      'Fachinformatiker in Dortmund für Anwendungsentwicklung und Systemintegration: Java, Spring Boot, React und Kotlin sowie Active Directory, Microsoft Entra, Azure, Docker und API-Integration. Offen für Positionen in Entwicklung, Systemintegration und Support.',
   },
 }
