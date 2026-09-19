@@ -556,10 +556,12 @@ main {
 .about-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-self: start;
   gap: 16px;
 }
 
 .stat-card {
+  height: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 18px;
