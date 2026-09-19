@@ -556,7 +556,7 @@ main {
 .about-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  align-self: start;
+  align-self: center;
   gap: 16px;
 }
 
@@ -657,6 +657,13 @@ main {
 
 .skill-group:hover h3 {
   color: var(--color-accent);
+}
+
+.skill-summary {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
 /* Chips brighten together with their card, then lift individually. */

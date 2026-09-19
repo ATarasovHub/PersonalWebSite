@@ -109,6 +109,7 @@ export default function Skills() {
             <div className="skill-group">
               <span className="skill-sheen" aria-hidden="true" />
               <h3>{group.title}</h3>
+              <p className="skill-summary">{group.summary}</p>
               <div className="skill-chips">
                 {group.items.map((skill) => <span key={skill} className="skill-chip">{skill}</span>)}
               </div>

@@ -2,9 +2,9 @@ import type { Content } from './types'
 import { personal } from './profile'
 
 export const de: Content = {
-  role: 'Anwendungsentwickler & Systemintegrator',
-  roleLine: 'Anwendungsentwicklung · Systemintegration · Java / Spring Boot · Microsoft-Infrastruktur',
-  tagline: 'Ich entwickle Anwendungen und verbinde sie mit den Systemen und der Infrastruktur, auf denen sie zuverlässig laufen.',
+  role: 'Softwareentwickler · Java & Spring Boot',
+  roleLine: 'Softwareentwickler · Java & Spring Boot',
+  tagline: 'Ich entwickle Backend-Systeme und REST-APIs – mit Erfahrung in Systemintegration und IT-Betrieb.',
   location: 'Dortmund, Deutschland',
   status: 'Offen für Angebote',
 
@@ -34,14 +34,10 @@ export const de: Content = {
   },
 
   bio: [
-    'Ich bin Fachinformatiker mit zwei Jahren Berufserfahrung in der Anwendungsentwicklung und der Systemintegration. Ich mag Systeme, die im Produktivbetrieb langweilig bleiben: vorhersehbar, beobachtbar und auch in einem Jahr noch nachvollziehbar.',
-    'Auf der Entwicklungsseite baue ich Backend-Dienste und REST-APIs mit Java und Spring Boot, Weboberflächen mit React und TypeScript sowie Android-Apps mit Kotlin. Dazu gehören sauberes Datenbankdesign mit PostgreSQL, versionierte Migrationen, Integrationstests gegen echte Datenbanken und CI/CD mit Jenkins und GitHub Actions.',
-    'Auf der Infrastrukturseite habe ich Praxis in der Administration von Windows- und Linux-Servern, Active Directory, Microsoft Entra und Microsoft 365, in der Benutzer- und Rechteverwaltung sowie in der Virtualisierung, und ich betreibe containerisierte Dienste mit Docker und Kubernetes.',
-    'Beides kommt dort zusammen, wo Systeme miteinander sprechen müssen. Bei tyntec habe ich eine zentrale Bestands-API für 56 Provider und rund 18.600 Kunden entwickelt, ein Java-EE-Altsystem auf Spring Boot 3 migriert, Jira, ein lokales Sprachmodell und Rocket.Chat zu einem durchgehenden Support-Prozess verbunden und Kolleginnen und Kollegen im laufenden IT-Betrieb unterstützt.',
-    'Ein Teil davon ist On-Premises-KI: lokale Sprachmodelle in echte Arbeitsabläufe einbinden, statt Demos hinterherzulaufen. So ist die Ersparnis real und die Daten verlassen das Haus nicht.',
-    'Derzeit arbeite ich freiberuflich und setze für einen Logistikkunden ein Lagerverwaltungssystem um und in Betrieb: einen Android-Client und eine Spring-Boot-Serveranwendung mit eigener PostgreSQL-Datenbank, Datensicherung und Migrationen.',
-    'Belegt wird das durch vier Microsoft-Applied-Skills-Nachweise (Active Directory, Entra, Azure und KI-Agenten) sowie AWS Cloud Practitioner Essentials. Bachelor und IHK-Ausbildung habe ich mit 22 abgeschlossen, ich arbeite mich schnell in neue Systeme ein und bin offen für Weiterbildung und Zertifizierung.',
-    'Dortmund ist derzeit mein Zuhause, aber ich bin sehr mobil: Für das richtige Team ziehe ich um, innerhalb Deutschlands wie auch ins Ausland.',
+    'Ich bin Fachinformatiker für Anwendungsentwicklung mit zwei Jahren Berufserfahrung. Mein Schwerpunkt liegt auf Java, Spring Boot und PostgreSQL. Dazu bringe ich praktische Erfahrung in der Systemintegration und im Betrieb von Windows- und Linux-Umgebungen mit.',
+    'Bei tyntec habe ich eine Bestands-API für 56 Provider und rund 18.600 Kunden entwickelt, ein Java-EE-System auf Spring Boot 3 migriert und einen lokalen KI-Dienst zur Ticketbearbeitung umgesetzt. Die Ergebnisse dieser Arbeit finden Sie in den Projekten.',
+    'Aktuell entwickle ich freiberuflich ein Lagerverwaltungssystem für einen Logistikkunden: eine Android-App mit Kotlin und ein Spring-Boot-Backend. Von den Anforderungen über Datenbank und Tests bis zur Bereitstellung verantworte ich die Umsetzung selbst.',
+    'Ich habe einen Bachelorabschluss und eine verkürzte IHK-Ausbildung. Microsoft-Applied-Skills-Nachweise ergänzen meine praktische Erfahrung. Ich lebe in Dortmund und bin für eine passende Stelle innerhalb Deutschlands oder ins Ausland umzugsbereit.',
   ],
 
   offTheClock: {
@@ -58,44 +54,34 @@ export const de: Content = {
 
   skillGroups: [
     {
-      title: 'Programmiersprachen',
-      items: ['Java 17/21', 'Kotlin', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'PHP', 'Bash'],
+      title: 'Java & Backend',
+      summary: 'Bestands-API, Legacy-Migration und eigene Anwendungen mit relationalen Datenbanken und Integrationstests.',
+      items: ['Java', 'Spring Boot', 'REST & OpenAPI', 'Spring Data JPA', 'Hibernate', 'PostgreSQL', 'Flyway', 'Testcontainers'],
     },
     {
-      title: 'Backend & APIs',
-      items: ['Spring Boot 3', 'Spring Data JPA', 'Hibernate', 'FastAPI', 'REST & OpenAPI', 'MapStruct', 'Testcontainers'],
-    },
-    {
-      title: 'Frontend & Mobile',
-      items: ['React', 'Vue.js', 'Angular', 'Tailwind CSS', 'Material UI', 'React Query', 'Android (Kotlin, MVVM, Room)'],
-    },
-    {
-      title: 'Datenbanken',
-      items: ['PostgreSQL', 'SQLite', 'Flyway-Migrationen', 'Caffeine Cache'],
+      title: 'Web & Android',
+      summary: 'React-Oberflächen für Webanwendungen und eine offline-fähige Android-App für einen Logistikkunden.',
+      items: ['React', 'TypeScript', 'JavaScript', 'TanStack Query', 'Kotlin', 'Android · MVVM · Room', 'SQLite'],
     },
     {
       title: 'Integration & Automatisierung',
-      items: ['REST-Schnittstellen', 'Webhooks', 'SMPP', 'n8n', 'Ollama (On-Premises-KI)', 'MLflow', 'Label Studio'],
+      summary: 'Schnittstellen zwischen Diensten und lokale KI zur Bearbeitung von Support-Tickets bei tyntec.',
+      items: ['Python', 'FastAPI', 'REST-Schnittstellen', 'Webhooks', 'SMPP', 'Ollama', 'n8n'],
     },
     {
-      title: 'Systemadministration',
-      items: ['Active Directory (AD DS)', 'Microsoft Entra ID', 'Microsoft 365', 'Windows Server', 'Linux (Ubuntu, CentOS)', 'Benutzer- & Rechteverwaltung', 'Gruppenrichtlinien'],
+      title: 'Tests & Bereitstellung',
+      summary: 'Automatisierte Builds und Tests, containerisierte Anwendungen und versionierte Datenbankmigrationen.',
+      items: ['Git', 'GitHub Actions', 'Jenkins', 'Docker', 'Gradle', 'Maven', 'SQL', 'Bash'],
     },
     {
-      title: 'Virtualisierung & Container',
-      items: ['VMware', 'Hyper-V', 'Docker', 'Kubernetes'],
+      title: 'Systemintegration & Betrieb',
+      summary: 'Praktische Erfahrung mit Serveradministration, Benutzerrechten und Unterstützung im internen IT-Betrieb.',
+      items: ['Windows Server', 'Linux', 'Active Directory', 'Microsoft Entra ID', 'Microsoft 365', 'Gruppenrichtlinien', 'VMware', 'Hyper-V'],
     },
     {
-      title: 'Cloud',
-      items: ['Microsoft Azure', 'Ressourcenverwaltung', 'Identitäts- & Zugriffsverwaltung', 'AWS-Grundlagen'],
-    },
-    {
-      title: 'Netzwerk, Betrieb & Service',
-      items: ['TCP/IP', 'DNS', 'DHCP', 'Monitoring', 'Storage- & Backup-Konzepte', 'ITIL-Serviceprozesse'],
-    },
-    {
-      title: 'DevOps & Werkzeuge',
-      items: ['Git', 'Jenkins CI', 'GitHub Actions', 'Gradle', 'Maven', 'Jira', 'Confluence', 'Rocket.Chat', 'Salesforce CRM', 'Shopware'],
+      title: 'Cloud & Infrastruktur-Grundlagen',
+      summary: 'Ausbildung und Weiterbildung in Netzwerken und Infrastruktur, ergänzt durch Microsoft Applied Skills und einen AWS-Kursabschluss.',
+      items: ['Microsoft Azure', 'AWS-Grundlagen', 'TCP/IP', 'DNS & DHCP', 'Kubernetes', 'Monitoring', 'Storage & Backup', 'ITIL-Serviceprozesse'],
     },
   ],
 
@@ -417,7 +403,7 @@ export const de: Content = {
   contact: {
     heading: 'Sprechen wir',
     intro:
-      'Ich bin offen für Positionen in der Anwendungsentwicklung, der Systemintegration und im IT-Support sowie für freiberufliche Projekte. Schreiben Sie mir direkt oder melden Sie sich über LinkedIn; beides erreicht mich sofort.',
+      'Ich suche eine Stelle in der Softwareentwicklung mit Java und Spring Boot. Auch Aufgaben an der Schnittstelle zu Systemintegration und IT-Betrieb interessieren mich. Für freiberufliche Projekte bin ich ebenfalls offen. Schreiben Sie mir per E-Mail oder auf LinkedIn.',
     emailCta: 'E-Mail schreiben',
     linkedinCta: 'Auf LinkedIn vernetzen',
     copy: 'Adresse kopieren',
@@ -433,8 +419,8 @@ export const de: Content = {
   },
 
   meta: {
-    title: 'Andrii Tarasov | Anwendungsentwickler & Systemintegrator',
+    title: 'Andrii Tarasov | Java & Spring Boot Entwickler',
     description:
-      'Fachinformatiker in Dortmund für Anwendungsentwicklung und Systemintegration: Java, Spring Boot, React und Kotlin sowie Active Directory, Microsoft Entra, Azure, Docker und API-Integration. Offen für Positionen in Entwicklung, Systemintegration und Support.',
+      'Java- und Spring-Boot-Entwickler in Dortmund mit Erfahrung in Systemintegration. Projekte, Berufserfahrung und Lebenslauf. Offen für Angebote und umzugsbereit.',
   },
 }

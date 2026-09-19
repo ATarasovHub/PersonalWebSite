@@ -2,9 +2,9 @@ import type { Content } from './types'
 import { personal } from './profile'
 
 export const en: Content = {
-  role: 'Software Developer & System Integration Engineer',
-  roleLine: 'Application Development · System Integration · Java / Spring Boot · Microsoft Infrastructure',
-  tagline: 'I build applications and connect them to the systems and infrastructure they run on reliably.',
+  role: 'Software Developer · Java & Spring Boot',
+  roleLine: 'Software Developer · Java & Spring Boot',
+  tagline: 'I build backend systems and REST APIs, with hands-on experience in system integration and IT operations.',
   location: 'Dortmund, Germany',
   status: 'Open to work',
 
@@ -34,14 +34,10 @@ export const en: Content = {
   },
 
   bio: [
-    "I'm an IT specialist (Fachinformatiker) with two years of professional experience in application development and system integration. I like systems that stay boring in production: predictable, observable, easy to reason about a year from now.",
-    'On the development side I build backend services and REST APIs with Java and Spring Boot, web front ends with React and TypeScript, and Android apps with Kotlin. That includes clean PostgreSQL data models, versioned migrations, integration tests against real databases, and CI/CD with Jenkins and GitHub Actions.',
-    'On the infrastructure side I have hands-on practice administering Windows and Linux servers, Active Directory, Microsoft Entra and Microsoft 365, managing users and permissions, and working with virtualization, and I run containerized services with Docker and Kubernetes.',
-    'The two meet wherever systems have to talk to each other. At tyntec I built a central inventory API for 56 providers and around 18,600 customers, migrated a Java EE legacy system to Spring Boot 3, connected Jira, a local language model and Rocket.Chat into one end-to-end support process, and supported colleagues in the internal IT environment day to day.',
-    'Part of that work is on-prem AI: wiring local language models into real workflows instead of chasing demos, so the savings are real and the data never leaves the building.',
-    "Right now I'm freelancing, building and deploying a warehouse management system for a logistics client: an Android client plus a Spring Boot server with its own PostgreSQL database, backups and migrations.",
-    'Four Microsoft Applied Skills credentials (Active Directory, Entra, Azure and AI agents) and AWS Cloud Practitioner Essentials back this up. I finished both a B.Sc. and a German IHK apprenticeship by 22, pick up new systems quickly and am always open to further training and certification.',
-    "Dortmund is home at the moment, but I'm very mobile: relocating for the right team is no obstacle, inside Germany or abroad.",
+    'I am a qualified IT specialist in application development with two years of professional experience. My focus is Java, Spring Boot and PostgreSQL, complemented by hands-on experience in system integration and Windows and Linux environments.',
+    'At tyntec, I built an inventory API for 56 providers and around 18,600 customers, migrated a Java EE system to Spring Boot 3, and developed a local AI service for support tickets. The projects below show the results of that work.',
+    'I am currently freelancing on a warehouse management system for a logistics client: a Kotlin Android app and a Spring Boot backend. I own the implementation from requirements and database design through testing and deployment.',
+    'I hold a bachelor’s degree and completed an accelerated German IHK apprenticeship. Microsoft Applied Skills credentials complement my practical experience. Based in Dortmund, I am open to relocating within Germany or abroad for the right role.',
   ],
 
   offTheClock: {
@@ -58,44 +54,34 @@ export const en: Content = {
 
   skillGroups: [
     {
-      title: 'Programming Languages',
-      items: ['Java 17/21', 'Kotlin', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'PHP', 'Bash'],
+      title: 'Java & Backend',
+      summary: 'Inventory APIs, legacy migration and applications with relational databases and integration tests.',
+      items: ['Java', 'Spring Boot', 'REST & OpenAPI', 'Spring Data JPA', 'Hibernate', 'PostgreSQL', 'Flyway', 'Testcontainers'],
     },
     {
-      title: 'Backend & APIs',
-      items: ['Spring Boot 3', 'Spring Data JPA', 'Hibernate', 'FastAPI', 'REST & OpenAPI', 'MapStruct', 'Testcontainers'],
-    },
-    {
-      title: 'Frontend & Mobile',
-      items: ['React', 'Vue.js', 'Angular', 'Tailwind CSS', 'Material UI', 'React Query', 'Android (Kotlin, MVVM, Room)'],
-    },
-    {
-      title: 'Databases',
-      items: ['PostgreSQL', 'SQLite', 'Flyway migrations', 'Caffeine Cache'],
+      title: 'Web & Android',
+      summary: 'React web interfaces and an Android app that works offline for a logistics client.',
+      items: ['React', 'TypeScript', 'JavaScript', 'TanStack Query', 'Kotlin', 'Android · MVVM · Room', 'SQLite'],
     },
     {
       title: 'Integration & Automation',
-      items: ['REST interfaces', 'Webhooks', 'SMPP', 'n8n', 'Ollama (on-prem AI)', 'MLflow', 'Label Studio'],
+      summary: 'Connecting services through APIs and integrating local AI into support workflows at tyntec.',
+      items: ['Python', 'FastAPI', 'REST interfaces', 'Webhooks', 'SMPP', 'Ollama', 'n8n'],
     },
     {
-      title: 'System Administration',
-      items: ['Active Directory (AD DS)', 'Microsoft Entra ID', 'Microsoft 365', 'Windows Server', 'Linux (Ubuntu, CentOS)', 'User & permission management', 'Group Policy'],
+      title: 'Testing & Deployment',
+      summary: 'Automated builds and tests, containerized applications and versioned database migrations.',
+      items: ['Git', 'GitHub Actions', 'Jenkins', 'Docker', 'Gradle', 'Maven', 'SQL', 'Bash'],
     },
     {
-      title: 'Virtualization & Containers',
-      items: ['VMware', 'Hyper-V', 'Docker', 'Kubernetes'],
+      title: 'System Integration & Operations',
+      summary: 'Hands-on experience with server administration, user permissions and internal IT support.',
+      items: ['Windows Server', 'Linux', 'Active Directory', 'Microsoft Entra ID', 'Microsoft 365', 'Group Policy', 'VMware', 'Hyper-V'],
     },
     {
-      title: 'Cloud',
-      items: ['Microsoft Azure', 'Resource management', 'Identity & access management', 'AWS fundamentals'],
-    },
-    {
-      title: 'Network, Operations & Service',
-      items: ['TCP/IP', 'DNS', 'DHCP', 'Monitoring', 'Storage & backup concepts', 'ITIL service processes'],
-    },
-    {
-      title: 'DevOps & Tools',
-      items: ['Git', 'Jenkins CI', 'GitHub Actions', 'Gradle', 'Maven', 'Jira', 'Confluence', 'Rocket.Chat', 'Salesforce CRM', 'Shopware'],
+      title: 'Cloud & Infrastructure Foundations',
+      summary: 'Networking and infrastructure coursework, complemented by Microsoft Applied Skills and an AWS course completion.',
+      items: ['Microsoft Azure', 'AWS fundamentals', 'TCP/IP', 'DNS & DHCP', 'Kubernetes', 'Monitoring', 'Storage & backup', 'ITIL service processes'],
     },
   ],
 
@@ -417,7 +403,7 @@ export const en: Content = {
   contact: {
     heading: "Let's talk",
     intro:
-      'Open to positions in software development, system integration and IT support, and to freelance work. Write to me directly or reach out on LinkedIn; both land with me straight away.',
+      'I am looking for a software development role with Java and Spring Boot. I am also interested in work that combines development with system integration and IT operations, and I am open to freelance projects. Get in touch by email or on LinkedIn.',
     emailCta: 'Write me an email',
     linkedinCta: 'Connect on LinkedIn',
     copy: 'Copy address',
@@ -433,8 +419,8 @@ export const en: Content = {
   },
 
   meta: {
-    title: 'Andrii Tarasov | Software Developer & System Integration Engineer',
+    title: 'Andrii Tarasov | Java & Spring Boot Developer',
     description:
-      'IT specialist in Dortmund for application development and system integration: Java, Spring Boot, React and Kotlin, plus Active Directory, Microsoft Entra, Azure, Docker and API integration. Open to development, system integration and support roles.',
+      'Java and Spring Boot developer in Dortmund with system integration experience. Projects, professional experience and CV. Open to work and relocation.',
   },
 }

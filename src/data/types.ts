@@ -4,6 +4,7 @@ export type DiagramKey = 'triage' | 'stock' | 'gateway' | 'threadly'
 
 export type SkillGroup = {
   title: string
+  summary: string
   items: string[]
 }
 
