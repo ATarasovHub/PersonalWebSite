@@ -36,7 +36,7 @@ export const en: Content = {
   bio: [
     'I am a qualified IT specialist in application development with two years of professional experience. My focus is Java, Spring Boot and PostgreSQL, complemented by hands-on experience in system integration and Windows and Linux environments.',
     'At tyntec, I built an inventory API for 56 providers and around 18,600 customers, migrated a Java EE system to Spring Boot 3, and developed a local AI service for support tickets. The projects below show the results of that work.',
-    'I am currently freelancing on a warehouse management system for a logistics client: a Kotlin Android app and a Spring Boot backend. I own the implementation from requirements and database design through testing and deployment.',
+    'I currently work remotely for Ukrspetskabel on a warehouse management system: a Kotlin Android app and a Spring Boot backend. I own the implementation from requirements and database design through testing and deployment.',
     'I hold a bachelor’s degree and completed an accelerated German IHK apprenticeship. Microsoft Applied Skills credentials complement my practical experience. Based in Dortmund, I am open to relocating within Germany or abroad for the right role.',
   ],
 
@@ -256,7 +256,7 @@ export const en: Content = {
     },
     {
       title: 'Warehouse Logistics App',
-      context: 'Freelance · 2026-present',
+      context: 'Ukrspetskabel · Remote · 2026-present',
       summary:
         'An offline-first Android app for warehouse staff, owned end to end from requirements to the Play Store release.',
       problem:
@@ -367,12 +367,12 @@ export const en: Content = {
 
   experienceEntries: [
     {
-      role: 'Freelance Software Developer & IT Professional',
-      org: 'Self-employed',
+      role: 'Software Developer & IT Professional',
+      org: 'Ukrspetskabel',
       period: 'Jun 2026 - present',
       location: 'Dortmund (remote)',
       summary:
-        'Client project in logistics: building and deploying a warehouse management system on my own, from requirements to operation.',
+        'Logistics project: building and deploying a warehouse management system on my own, from requirements to operation.',
       highlights: [
         'Warehouse management solution made of an Android client (Kotlin) and a server application (Spring Boot 3, PostgreSQL)',
         'Set up the database, backups and versioned database migrations',

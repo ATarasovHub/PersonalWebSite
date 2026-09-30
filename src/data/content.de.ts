@@ -36,7 +36,7 @@ export const de: Content = {
   bio: [
     'Ich bin Fachinformatiker für Anwendungsentwicklung mit zwei Jahren Berufserfahrung. Mein Schwerpunkt liegt auf Java, Spring Boot und PostgreSQL. Dazu bringe ich praktische Erfahrung in der Systemintegration und im Betrieb von Windows- und Linux-Umgebungen mit.',
     'Bei tyntec habe ich eine Bestands-API für 56 Provider und rund 18.600 Kunden entwickelt, ein Java-EE-System auf Spring Boot 3 migriert und einen lokalen KI-Dienst zur Ticketbearbeitung umgesetzt. Die Ergebnisse dieser Arbeit finden Sie in den Projekten.',
-    'Aktuell entwickle ich freiberuflich ein Lagerverwaltungssystem für einen Logistikkunden: eine Android-App mit Kotlin und ein Spring-Boot-Backend. Von den Anforderungen über Datenbank und Tests bis zur Bereitstellung verantworte ich die Umsetzung selbst.',
+    'Aktuell entwickle ich remote für Ukrspetskabel ein Lagerverwaltungssystem: eine Android-App mit Kotlin und ein Spring-Boot-Backend. Von den Anforderungen über Datenbank und Tests bis zur Bereitstellung verantworte ich die Umsetzung selbst.',
     'Ich habe einen Bachelorabschluss und eine verkürzte IHK-Ausbildung. Microsoft-Applied-Skills-Nachweise ergänzen meine praktische Erfahrung. Ich lebe in Dortmund und bin für eine passende Stelle innerhalb Deutschlands oder ins Ausland umzugsbereit.',
   ],
 
@@ -256,7 +256,7 @@ export const de: Content = {
     },
     {
       title: 'App für die Lagerlogistik',
-      context: 'Freiberuflich · seit 2026',
+      context: 'Ukrspetskabel · Remote · seit 2026',
       summary:
         'Eine offline-taugliche Android-App für Lagerpersonal, durchgängig in Eigenregie von den Anforderungen bis zum Play-Store-Release.',
       problem:
@@ -367,12 +367,12 @@ export const de: Content = {
 
   experienceEntries: [
     {
-      role: 'Freiberuflicher Fachinformatiker (Entwicklung & Betrieb)',
-      org: 'Selbstständig',
+      role: 'Fachinformatiker (Entwicklung & Betrieb)',
+      org: 'Ukrspetskabel',
       period: 'seit Juni 2026',
       location: 'Dortmund (remote)',
       summary:
-        'Kundenprojekt Logistik: eigenverantwortliche Entwicklung und Inbetriebnahme eines Lagerverwaltungssystems, von den Anforderungen bis zum Betrieb.',
+        'Logistikprojekt: eigenverantwortliche Entwicklung und Inbetriebnahme eines Lagerverwaltungssystems, von den Anforderungen bis zum Betrieb.',
       highlights: [
         'Lagerverwaltungslösung aus Android-Client (Kotlin) und Serveranwendung (Spring Boot 3, PostgreSQL)',
         'Einrichtung von Datenbank, Datensicherung und versionierter Datenbankmigration',
