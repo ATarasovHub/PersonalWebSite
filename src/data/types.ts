@@ -210,6 +210,8 @@ export type Content = {
   }
 
   footer: string
+  /** Labels for the legal pages linked from the footer. */
+  legal: { imprint: string; privacy: string }
   langToggleLabel: string
   themeToggle: {
     toDark: string

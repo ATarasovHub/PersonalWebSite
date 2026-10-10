@@ -71,6 +71,10 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
 
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
     let prefersReducedMotion = motionPreference.matches
+    // On a phone a track that moves under the thumb is hard to read and to
+    // tap, so there it only moves when the visitor swipes or steps it.
+    const handheld = window.matchMedia('(max-width: 899px), (pointer: coarse)')
+    let isHandheld = handheld.matches
     let visible = false
     let hovered = false
     let focused = false
@@ -103,7 +107,7 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
         // The visitor owns the position; follow it rather than fight it.
         offset.current = el.scrollLeft
       } else {
-        const drift = paused || prefersReducedMotion || hovered || focused ? 0 : DRIFT_SPEED
+        const drift = paused || prefersReducedMotion || isHandheld || hovered || focused ? 0 : DRIFT_SPEED
         // Resync if anything else moved the track since the last frame.
         if (Math.abs(el.scrollLeft - offset.current) > 1.5) offset.current = el.scrollLeft
         offset.current += (drift + velocity.current) * dt
@@ -142,12 +146,14 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
       if (!el.contains(event.relatedTarget as Node | null)) { focused = false; hold() }
     }
     const onMotionChange = () => { prefersReducedMotion = motionPreference.matches; velocity.current = 0 }
+    const onHandheldChange = () => { isHandheld = handheld.matches }
     el.addEventListener('pointerenter', onEnter)
     el.addEventListener('pointerleave', onLeave)
     el.addEventListener('focusin', onFocus)
     el.addEventListener('focusout', onBlur)
     document.addEventListener('visibilitychange', start)
     motionPreference.addEventListener('change', onMotionChange)
+    handheld.addEventListener('change', onHandheldChange)
 
     // Drag or swipe to scrub, with a flick carrying over when released.
     let startX = 0
@@ -213,6 +219,7 @@ export function useMarquee({ paused = false, step = 444 }: Options = {}) {
       el.removeEventListener('focusout', onBlur)
       document.removeEventListener('visibilitychange', start)
       motionPreference.removeEventListener('change', onMotionChange)
+      handheld.removeEventListener('change', onHandheldChange)
       if (rafId) cancelAnimationFrame(rafId)
       el.removeEventListener('pointerdown', onPointerDown)
       window.removeEventListener('pointermove', onPointerMove)

@@ -26,6 +26,10 @@ export default function Footer() {
         <span>
           &copy; {new Date().getFullYear()} {personal.name}
         </span>
+        <nav className="footer-links" aria-label={`${content.legal.imprint}, ${content.legal.privacy}`}>
+          <a href={`${import.meta.env.BASE_URL}impressum.html`} lang="de">{content.legal.imprint}</a>
+          <a href={`${import.meta.env.BASE_URL}datenschutz.html`} lang="de">{content.legal.privacy}</a>
+        </nav>
         <span className="footer-muted">{content.footer}</span>
       </div>
     </footer>

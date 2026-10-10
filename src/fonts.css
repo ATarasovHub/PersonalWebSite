@@ -1,0 +1,9 @@
+/* Served from this site rather than Google Fonts, so a visit does not hand
+   the visitor's IP address to a third party. Each file carries its own
+   unicode-range, so the browser only fetches the subsets it needs. */
+@import '@fontsource/instrument-sans/400.css';
+@import '@fontsource/instrument-sans/500.css';
+@import '@fontsource/instrument-sans/600.css';
+@import '@fontsource/instrument-sans/700.css';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';

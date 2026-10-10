@@ -1871,10 +1871,37 @@ main {
   color: var(--color-text-muted);
 }
 
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Small text, but each link still offers a full fingertip of height. */
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-block: -12px;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--color-text);
+}
+
+.footer-links a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 @media (min-width: 700px) {
   .footer-inner {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 }
 

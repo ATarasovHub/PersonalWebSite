@@ -446,6 +446,10 @@ export const de: Content = {
   },
 
   footer: 'Erstellt mit React & GSAP',
+  legal: {
+    imprint: 'Impressum',
+    privacy: 'Datenschutz',
+  },
   langToggleLabel: 'Zu Englisch wechseln',
   themeToggle: {
     toDark: 'Zum dunklen Design wechseln',
