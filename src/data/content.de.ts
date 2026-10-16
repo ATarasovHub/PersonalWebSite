@@ -219,6 +219,7 @@ export const de: Content = {
         { value: '7 Min.', label: 'gespart pro Ticket' },
       ],
       stack: ['Python', 'FastAPI', 'Ollama', 'Pydantic', 'MLflow', 'Label Studio', 'Rocket.Chat'],
+      repoUrl: 'https://github.com/ATarasovHub/ai-integration',
       diagram: 'triage',
     },
     {
